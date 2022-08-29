@@ -2,12 +2,7 @@
 
 Fontbakery version: 0.8.10
 
-<details><summary><b>[8] NotoSansMiao-Regular.ttf</b></summary><div><details><summary>🔥 <b>FAIL:</b> Checking OS/2 usWinAscent & usWinDescent. (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/universal.html#com.google.fonts/check/family/win_ascent_and_descent">com.google.fonts/check/family/win_ascent_and_descent</a>)</summary><div>
-
-
-* 🔥 **FAIL** OS/2.usWinAscent value should be equal or greater than 1268, but got 1142 instead [code: ascent]
-* 🔥 **FAIL** OS/2.usWinDescent value should be equal or greater than 553, but got 350 instead. [code: descent]
-</div></details><details><summary>🔥 <b>FAIL:</b> Check that texts shape as per expectation (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/<Section: Shaping Checks>.html#com.google.fonts/check/shaping/regression">com.google.fonts/check/shaping/regression</a>)</summary><div>
+<details><summary><b>[7] NotoSansMiao-Regular.ttf</b></summary><div><details><summary>🔥 <b>FAIL:</b> Check that texts shape as per expectation (<a href="https://font-bakery.readthedocs.io/en/stable/fontbakery/profiles/<Section: Shaping Checks>.html#com.google.fonts/check/shaping/regression">com.google.fonts/check/shaping/regression</a>)</summary><div>
 
 
 * 🔥 **FAIL** qa/shaping_tests/miao.json: Expected and actual shaping not matching
@@ -475,8 +470,8 @@ Use -F or --full-lists to disable shortening of long lists. [code: found-short-s
 
 | 💔 ERROR | 🔥 FAIL | ⚠ WARN | 💤 SKIP | ℹ INFO | 🍞 PASS | 🔎 DEBUG |
 |:-----:|:----:|:----:|:----:|:----:|:----:|:----:|
-| 0 | 2 | 6 | 110 | 7 | 102 | 0 |
-| 0% | 1% | 3% | 48% | 3% | 45% | 0% |
+| 0 | 1 | 6 | 110 | 7 | 103 | 0 |
+| 0% | 0% | 3% | 48% | 3% | 45% | 0% |
 
 **Note:** The following loglevels were omitted in this report:
 * **SKIP**
