@@ -1,5 +1,5 @@
 {
-.appVersion = "3316";
+.appVersion = "3217";
 DisplayStrings = (
 "/u16F04.lpo/u16F10.lpo/u16F23.lpo/u16F33.lpo/u16F39.lpo/u16F57.lpo/u16F58.lpo/u16F72.lpo/u16F7E.lpo/space/space"
 );
@@ -491,7 +491,7 @@ code = "lookup MultipleSubstitution16 {\012    lookupflag 0;\012    ;\012    # O
 name = MultipleSubstitution16;
 },
 {
-code = "languagesystem plrd dflt;\012";
+code = "languagesystem DFLT dflt;\012languagesystem plrd dflt;\012languagesystem plrd LPO;\012";
 name = Languagesystems;
 }
 );
@@ -511,6 +511,10 @@ name = kern;
 {
 code = "# Automatic Code Start\012";
 name = mkmk;
+},
+{
+code = "script plrd;\012language LPO;\012\012sub [u16F04 u16F10 u16F23 u16F33 u16F39 u16F57 u16F58 u16F72 u16F7E ] by\012    [u16F04.lpo u16F10.lpo u16F23.lpo u16F33.lpo u16F39.lpo u16F57.lpo u16F58.lpo u16F72.lpo u16F7E.lpo];\012";
+name = locl;
 }
 );
 fontMaster = (
