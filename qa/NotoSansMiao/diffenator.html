@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>Diffenator3</title>
+	<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct"
+		crossorigin="anonymous"></script>
+	<style type="text/css">
+		@font-face {
+      font-family: "Font Before";
+      src: url();
+    }
+
+    @font-face {
+      font-family: "Font After";
+      src: url();
+    }
+
+    .font-before, .font-after {
+      font-variation-settings: "wght" 400, "wdth" 100;
+    }
+
+    .font-before {
+      font-family: "Font Before", "Adobe Notdef";
+    }
+
+    .font-after {
+      font-family: "Font After", "Adobe Notdef";
+    }
+
+	:root {
+	--node-pt-size: 40px;
+	}
+
+	@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+body {
+    background-color: #b3d4f5 !important;
+    font-family: "Montserrat", sans-serif !important;
+}
+
+.nav-pills .nav-item.show .nav-link, .nav-pills .nav-link.active {
+    background-color: #ced9e4 !important;
+}
+.nav-item {
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 2px;
+}
+
+.nav-pills .nav-link{
+    background-color: #9fcaf5 !important;
+}
+h4 {
+    color: #6f7882 !important;
+}
+
+@font-face {
+    font-family: "Adobe NotDef";
+    src: url(https://cdn.jsdelivr.net/gh/adobe-fonts/adobe-notdef/AND-Regular.ttf);
+}
+
+.box-title {
+    width: 100%;
+    font-size: 8pt;
+    font-weight: 700;
+    border-top: 1px solid black;
+    padding-top: 5px;
+    margin-bottom: 10pt;
+    display: block;
+}
+
+.box {
+    margin-bottom: 20pt;
+    width: 100%;
+    float: left;
+}
+
+.box-text {}
+
+#ui-nav {
+    position: fixed;
+    right: 20px;
+    z-index: 100;
+}
+
+#font-toggle {}
+
+.ui-nav-item {
+    display: block;
+    cursor: pointer;
+    -webkit-user-select: none;
+    /* Safari */
+    -moz-user-select: none;
+    /* Firefox */
+    -ms-user-select: none;
+    /* IE10+/Edge */
+    user-select: none;
+    /* Standard */
+    text-align: center;
+    color: white;
+    background-color: black;
+    display: block;
+    font-size: 14pt;
+    padding: 5px;
+    margin: 2px;
+}
+
+/* Stuff needed for the table differ */
+body {
+    font-family: Helvetica;
+}
+
+.node {
+    font-family: courier;
+    cursor: pointer;
+    position: relative;
+    left: 30px;
+    padding: 5px;
+    display: block;
+    border: 1px dashed grey;
+    background-color: #e9e9ee;
+}
+
+.header {
+    font-weight: bold;
+}
+
+.attr-before {
+    color: green;
+    cursor: text;
+}
+
+.attr-after {
+    color: red;
+    cursor: text;
+}
+
+.leaf {
+    font-weight: bold;
+}
+
+.old .cell .new {
+    display: none;
+}
+
+.new .cell .old {
+    display: none;
+}
+
+.both .cell .old {
+    opacity: 0.75;
+    color: red;
+}
+
+.both .cell .new {
+    opacity: 0.75;
+    position: absolute;
+    top: 0;
+    color: green;
+}
+
+.spacer {
+    display: block;
+    float: left;
+    width: 100%;
+}
+
+#ot-panel {
+    max-height: 400px;
+    overflow-y: scroll;
+    background: white;
+    padding: 10px;
+    display: none;
+   }
+
+   .cell{
+    z-index: -100;
+    float: left;
+    display: block;
+    text-align: center;
+    padding: 5pt;
+    margin: 5pt;
+    width: 50pt;
+    font-size: var(--node-pt-size);
+    line-height: calc(var(--node-pt-size) * 1.5);
+  }
+  .cell-word{
+    z-index: -100;
+    float: left;
+    display: block;
+    text-align: center;
+    padding: 5pt;
+    margin: 5pt;
+    font-size: var(--node-pt-size);
+    line-height: calc(var(--node-pt-size) * 1.5);
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+  }
+  .cell-glyph{
+    z-index: -100;
+    float: left;
+    display: block;
+    text-align: center;
+    border-radius: 5pt;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+    padding: 5pt;
+    margin: 5pt;
+    width: calc(var(--node-pt-size) * 2);
+    min-height: calc(var(--node-pt-size) * 2);
+    font-size: var(--node-pt-size);
+  }
+  .cell-glyph.font-before, .cell-word.font-before {
+    background: #eff6f2;
+  }
+  .cell-glyph.font-after, .cell-word.font-after {
+    background: #f7f4f4;
+  }
+
+  .cell-glyph:hover {
+    box-shadow: none;
+    background: #f0f0f5;
+  }
+  .cat-strings .cell {
+    clear: both;
+    position: static;
+    float: none;
+    text-align: left;
+  }
+  .codepoint {
+    text-align: center;
+    font-family: sans-serif;
+    font-size: 10pt;
+    line-height: 10pt;
+  }
+  .box-title {
+    clear: both;
+  }
+  .node.closed::before {
+    content: "+";
+    margin-right: 5pt;
+  }
+  .node.open::before {
+    content: "-";
+    margin-right: 5pt;
+  }
+
+  .tooltip pre {
+    background-color: #6f7882;
+    padding: 5px;
+    white-space: pre-wrap;
+    word-break: break-all;
+  }
+  .tooltip {
+    line-height: 1em;
+  }
+  .tooltip-inner {
+    max-width: 300px;
+  }
+
+  h1,h2,h3,h4,h5 {
+    clear: both;
+  }
+
+  #locationnav li {
+    white-space: wrap;
+  }
+
+  #userdefined div { width: 100%; }
+  
+/* The following rules are used in the WASM version, not in the CLI version.
+   But we keep them here so we can share them between the two versions. */
+
+   .modal-dialog {
+    max-width: 100% !important;
+    margin: 0 !important;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100vh;
+    display: flex;
+  }
+
+  .fontdrop {
+    padding: 30px;
+    border-radius: 20px;
+    outline: 3px dashed #ffffffff;
+    outline-offset: -20px;
+  }
+
+  #fontbefore {
+    background-color: #ddffdddd;
+  }
+
+  #fontafter {
+    background-color: #ffdddddd;
+  }
+
+  .dragging {
+    background-image: linear-gradient(rgb(0 0 0/5%) 0 0);
+    outline: 5px dashed #ffffffff;
+  }
+
+  #diffkerns {
+    max-height: 500px;
+    overflow-y: scroll;
+  }
+		</style>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+	integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+
+</head>
+
+<body>
+
+		<div id="ui-nav">
+		  <div class="ui-nav-item" id="fonttoggle">Old</div>
+		  <div class="ui-nav-item" id="fontanimate">Animate</div>
+		  <div id="axes">
+		  </div>
+		</div>
+	
+	<div class="row">
+		<div class="col-2">
+			<ul class="nav nav-pills" id="locationnav">
+			</ul>
+		</div>
+		<div class="col-9 mt-3">
+			<div id="title"></div>
+			<div id="cmapdiff"> </div>
+			<div id="main"></div>
+			<div id="userdefined">
+				<h4>User defined sample text</h4>
+				<div contenteditable="true" class="font-before cell-word">
+					You can type your own text here to see it previewed in the fonts.
+				</div>
+				<div style="clear: both"></div>
+			</div>
+			<div id="diffkerns"> </div>
+			<div id="difftable"> </div>
+		</div>
+	</div>
+	<script type="module">
+		function renderTableDiff(node, toplevel) {
+  var wrapper = $("<div> </div>");
+  if (!node) {
+    return wrapper;
+  }
+  if (Array.isArray(node) && node.length == 2) {
+    var before = $("<span/>");
+    before.addClass("attr-before");
+    before.html(" " + node[0] + " ");
+    var after = $("<span/>");
+    after.addClass("attr-after");
+    after.append(renderTableDiff(node[1], true).children());
+    wrapper.append(before);
+    wrapper.append(after);
+    return wrapper;
+  }
+  if (node.constructor != Object) {
+    var thing = $("<span/>");
+    thing.html(node);
+    wrapper.append(thing);
+    return wrapper;
+  }
+  for (const [key, value] of Object.entries(node)) {
+    var display = $("<div/>");
+    display.addClass("node");
+    if (!toplevel) {
+      display.hide();
+    }
+    display.append(key);
+    display.append(renderTableDiff(value, false).children());
+    if (display.children(".node").length > 0) {
+      display.addClass("closed");
+    }
+    wrapper.append(display);
+  }
+  return wrapper;
+}
+
+function addAGlyph(glyph, where) {
+  let title = "";
+  if (glyph.name) {
+    title = "name: " + glyph.name;
+  }
+  let cp =
+    "<br>U+" +
+    glyph.string.codePointAt(0).toString(16).padStart(4, "0").toUpperCase();
+  where.append(`
+        <div class="cell-glyph font-before">
+        <div data-toggle="tooltip" data-html="true" data-title="${glyph.differing_pixels} pixels"> ${glyph.string}
+        <div class="codepoint" data-toggle="tooltip" data-html="true" data-title="${title}">
+		${cp}
+        </div>
+        </div>
+    `);
+}
+
+function addAWord(diff, where) {
+  if (!diff.buffer_b) {
+    diff.buffer_b = diff.buffer_a;
+  }
+  where.append(`
+		<div class="cell-word font-before">
+		<span data-toggle="tooltip" data-html="true" data-title="Before: <pre>${diff.buffer_a}</pre>After: <pre>${diff.buffer_b}</pre><br>difference: ${diff.differing_pixels} pixels">
+		${diff.word}
+		</span>
+		</div>
+	`);
+}
+
+function diffTables(report) {
+  $("#difftable").empty();
+  $("#difftable").append(`<h4 class="mt-2 box-title">Table-level details</h4>`);
+  $("#difftable").append(
+    renderTableDiff({ tables: report["tables"] }, true).children()
+  );
+  $("#difftable .node").on("click", function (e) {
+    $(this).toggleClass("closed open");
+    $(this).children(".node").toggle();
+    e.stopPropagation();
+  });
+}
+function diffKerns(report) {
+  $("#diffkerns").empty();
+  $("#diffkerns").append(`<h4 class="mt-2">Modified Kerns</h4>`);
+  $("#diffkerns").append(
+    `<table class="table table-striped" id="diffkerns"><tr><th>Pair</th><th>Old</old><th>New</th></table>`
+  );
+  for (let [pair, value] of Object.entries(report["kerns"])) {
+    if (pair == "error") {
+      $("#diffkerns").append(`<p class="text-danger">Error: ${value}</p>`);
+      continue;
+    } else {
+      let row = $("<tr>");
+      row.append(`<td>${pair}</td>`);
+      row.append(`<td>${serializeKernBefore(value)}</td>`);
+      row.append(`<td>${serializeKernAfter(value)}</td>`);
+      $("#diffkerns table").append(row);
+    }
+  }
+}
+
+function serializeKernBefore(kern) {
+  if (Array.isArray(kern)) {
+    return serializeKern(kern[0], -1);
+  }
+  return serializeKern(kern, 0);
+}
+
+function serializeKernAfter(kern) {
+  if (Array.isArray(kern)) {
+    return serializeKern(kern[1], -1);
+  }
+  return serializeKern(kern, 1);
+}
+
+function serializeKern(kern, index) {
+  let string = "";
+  if (kern === null || kern === undefined) {
+    return "(null)";
+  }
+  if (kern.x) {
+    string += serializeKernValue(kern.x, index);
+  } else if (kern.y) {
+    string = "0";
+  }
+
+  if (kern.y) {
+    string += "," + serializeKernValue(kern.y, index);
+  }
+  if (!kern.x_placement && !kern.y_placement) {
+    return string;
+  }
+  string += "@";
+  if (kern.x_placement) {
+    string += serializeKernValue(kern.x_placement, index);
+  } else if (kern.y_placement) {
+    string += "0";
+  }
+  if (kern.y_placement) {
+    string += "," + serializeKernValue(kern.y_placement, index);
+  }
+  return string;
+}
+
+function serializeKernValue(kern, index) {
+  if (typeof kern == "number") {
+    return kern;
+  }
+  let string = "(";
+  let verybig = Object.entries(kern).length > 5;
+  for (let [key, value] of Object.entries(kern)) {
+    if (key == "default") {
+      string += value[index] + " ";
+    } else {
+      string += value[index] + "@" + key + " ";
+    }
+    if (verybig) {
+      string += "<br>";
+    }
+  }
+  return string.trim() + ")";
+}
+
+function cmapDiff(report) {
+  if (report.cmap_diff && (report.cmap_diff.new || report.cmap_diff.missing)) {
+    $("#cmapdiff").append(
+      `<h4 class="mt-2">Added and Removed Encoded Glyphs</h4>`
+    );
+    if (report["cmap_diff"]["new"]) {
+      $("#cmapdiff").append(`<h4 class="box-title">Added Glyphs</h4>`);
+      let added = $("<div>");
+      for (let glyph of report["cmap_diff"]["new"]) {
+        addAGlyph(glyph, added);
+      }
+      $("#cmapdiff").append(added);
+    }
+
+    if (report["cmap_diff"]["missing"]) {
+      $("#cmapdiff").append(`<h4 class="box-title">Removed Glyphs</h4>`);
+      let missing = $("<div>");
+      for (let glyph of report["cmap_diff"]["missing"]) {
+        addAGlyph(glyph, missing);
+      }
+      $("#cmapdiff").append(missing);
+    }
+  } else {
+    $("#cmapdiff").append(`<p>No changes to encoded glyphs</p>`);
+  }
+}
+
+function setupAnimation() {
+  $("#fonttoggle").click(function () {
+    if ($(this).text() == "Old") {
+      $(this).text("New");
+      $(".font-before").removeClass("font-before").addClass("font-after");
+    } else {
+      $(this).text("Old");
+      $(".font-after").removeClass("font-after").addClass("font-before");
+    }
+  });
+
+  let animationHandle;
+  function animate() {
+    $("#fonttoggle").click();
+    animationHandle = setTimeout(animate, 1000);
+  }
+  $("#fontanimate").click(function () {
+    if ($(this).text() == "Animate") {
+      $(this).text("Stop");
+      animate();
+    } else {
+      $(this).text("Animate");
+      clearTimeout(animationHandle);
+    }
+  });
+}
+
+export {
+  renderTableDiff,
+  addAGlyph,
+  addAWord,
+  cmapDiff,
+  diffTables,
+  diffKerns,
+  setupAnimation,
+};
+
+	var report = {"tables":{"GDEF":{"glyph_classes":{"u16F04.lpo":[null,"Base"],"u16F10.lpo":[null,"Base"],"u16F23.lpo":[null,"Base"],"u16F33.lpo":[null,"Base"],"u16F39.lpo":[null,"Base"]}},"GPOS":{"script_list":{"DFLT/dflt":[null,{"lookups":[0,1,2]}],"plrd/LPO ":[null,{"lookups":[0,1,2]}]},"feature_list":{"abvm":{"3":[null,3]},"kern":{"0":[4,6],"1":[6,8]},"mark":{"0":[3,4],"1":[null,5]}},"lookup_list":{"0":{"0":{"marks":{"anchor_1":[{"u16F54.blw":{"x":0,"y":0},"u16F55.blw":{"x":0,"y":0},"u16F56.blw":{"x":0,"y":-10},"u16F57.blw":{"x":-60,"y":0},"u16F58.blw":{"x":-30,"y":0},"u16F59.blw":{"x":0,"y":-20},"u16F5A.blw":{"x":0,"y":-10},"u16F5B.blw":{"x":0,"y":50},"u16F5C.blw":{"x":-100,"y":50},"u16F5D.blw":{"x":0,"y":-40},"u16F5E.blw":{"x":0,"y":50},"u16F5F.blw":{"x":-80,"y":50},"u16F60.blw":{"x":10,"y":60},"u16F61.blw":{"x":0,"y":-10},"u16F62.blw":{"x":-60,"y":-10},"u16F63.blw":{"x":-120,"y":-10},"u16F64.blw":{"x":-120,"y":-10},"u16F65.blw":{"x":-40,"y":-10},"u16F66.blw":{"x":0,"y":0},"u16F67.blw":{"x":0,"y":-10},"u16F68.blw":{"x":0,"y":-10},"u16F69.blw":{"x":-30,"y":-10},"u16F6A.blw":{"x":0,"y":-10},"u16F6B.blw":{"x":0,"y":0},"u16F6C.blw":{"x":-20,"y":0},"u16F6D.blw":{"x":-20,"y":0},"u16F6E.blw":{"x":0,"y":0},"u16F6F.blw":{"x":0,"y":0},"u16F70.blw":{"x":-10,"y":0},"u16F71.blw":{"x":-20,"y":-40},"u16F72.blw":{"x":0,"y":0},"u16F73.blw":{"x":-20,"y":0},"u16F74.blw":{"x":0,"y":-10},"u16F75.blw":{"x":0,"y":0},"u16F76.blw":{"x":0,"y":-10},"u16F77.blw":{"x":0,"y":0},"u16F78.blw":{"x":0,"y":-10},"u16F79.blw":{"x":0,"y":0},"u16F7A.blw":{"x":-10,"y":-10},"u16F7B.blw":{"x":0,"y":0},"u16F7C.blw":{"x":0,"y":-10},"u16F7D.blw":{"x":-30,"y":0},"u16F7E.blw":{"x":-30,"y":0},"u16F7F.blw":{"x":-20,"y":0},"u16F80.blw":{"x":0,"y":-30},"u16F81.blw":{"x":-20,"y":-10},"u16F82.blw":{"x":-70,"y":0},"u16F83.blw":{"x":0,"y":-10},"u16F84.blw":{"x":0,"y":-10},"u16F85.blw":{"x":-100,"y":50},"u16F86.blw":{"x":0,"y":-10},"u16F87.blw":{"x":0,"y":-10}},null]},"bases":{"u16F00":{"anchor_1":[{"x":230,"y":0},null]},"u16F01":{"anchor_1":[{"x":230,"y":0},null]},"u16F02":{"anchor_1":[{"x":280,"y":0},null]},"u16F03":{"anchor_1":[{"x":280,"y":0},null]},"u16F04":{"anchor_1":[{"x":220,"y":0},null]},"u16F05":{"anchor_1":[{"x":220,"y":0},null]},"u16F06":{"anchor_1":[{"x":410,"y":0},null]},"u16F07":{"anchor_1":[{"x":280,"y":0},null]},"u16F08":{"anchor_1":[{"x":310,"y":0},null]},"u16F09":{"anchor_1":[{"x":350,"y":0},null]},"u16F0A":{"anchor_1":[{"x":290,"y":0},null]},"u16F0B":{"anchor_1":[{"x":290,"y":0},null]},"u16F0C":{"anchor_1":[{"x":290,"y":0},null]},"u16F0D":{"anchor_1":[{"x":290,"y":0},null]},"u16F0E":{"anchor_1":[{"x":290,"y":0},null]},"u16F0F":{"anchor_1":[{"x":290,"y":0},null]},"u16F10":{"anchor_1":[{"x":350,"y":0},null]},"u16F11":{"anchor_1":[{"x":420,"y":0},null]},"u16F12":{"anchor_1":[{"x":320,"y":0},null]},"u16F13":{"anchor_1":[{"x":420,"y":0},null]},"u16F14":{"anchor_1":[{"x":300,"y":0},null]},"u16F15":{"anchor_1":[{"x":380,"y":0},null]},"u16F16":{"anchor_1":[{"x":280,"y":0},null]},"u16F17":{"anchor_1":[{"x":360,"y":0},null]},"u16F18":{"anchor_1":[{"x":280,"y":0},null]},"u16F19":{"anchor_1":[{"x":320,"y":0},null]},"u16F1A":{"anchor_1":[{"x":310,"y":0},null]},"u16F1B":{"anchor_1":[{"x":340,"y":0},null]},"u16F1C":{"anchor_1":[{"x":310,"y":0},null]},"u16F1D":{"anchor_1":[{"x":340,"y":0},null]},"u16F1E":{"anchor_1":[{"x":220,"y":0},null]},"u16F1F":{"anchor_1":[{"x":220,"y":0},null]},"u16F20":{"anchor_1":[{"x":220,"y":0},null]},"u16F21":{"anchor_1":[{"x":220,"y":0},null]},"u16F22":{"anchor_1":[{"x":220,"y":0},null]},"u16F23":{"anchor_1":[{"x":300,"y":0},null]},"u16F24":{"anchor_1":[{"x":380,"y":0},null]},"u16F25":{"anchor_1":[{"x":420,"y":0},null]},"u16F26":{"anchor_1":[{"x":220,"y":0},null]},"u16F27":{"anchor_1":[{"x":260,"y":0},null]},"u16F28":{"anchor_1":[{"x":140,"y":0},null]},"u16F29":{"anchor_1":[{"x":210,"y":0},null]},"u16F2A":{"anchor_1":[{"x":280,"y":0},null]},"u16F2B":{"anchor_1":[{"x":280,"y":0},null]},"u16F2C":{"anchor_1":[{"x":280,"y":0},null]},"u16F2D":{"anchor_1":[{"x":310,"y":0},null]},"u16F2E":{"anchor_1":[{"x":380,"y":0},null]},"u16F2F":{"anchor_1":[{"x":280,"y":0},null]},"u16F30":{"anchor_1":[{"x":360,"y":0},null]},"u16F31":{"anchor_1":[{"x":280,"y":0},null]},"u16F32":{"anchor_1":[{"x":320,"y":0},null]},"u16F33":{"anchor_1":[{"x":220,"y":0},null]},"u16F34":{"anchor_1":[{"x":220,"y":0},null]},"u16F35":{"anchor_1":[{"x":320,"y":0},null]},"u16F36":{"anchor_1":[{"x":380,"y":0},null]},"u16F37":{"anchor_1":[{"x":230,"y":0},null]},"u16F38":{"anchor_1":[{"x":220,"y":0},null]},"u16F39":{"anchor_1":[{"x":220,"y":0},null]},"u16F3A":{"anchor_1":[{"x":300,"y":0},null]},"u16F3B":{"anchor_1":[{"x":300,"y":0},null]},"u16F3C":{"anchor_1":[{"x":300,"y":0},null]},"u16F3D":{"anchor_1":[{"x":310,"y":0},null]},"u16F3E":{"anchor_1":[{"x":340,"y":0},null]},"u16F3F":{"anchor_1":[{"x":350,"y":0},null]},"u16F40":{"anchor_1":[{"x":320,"y":0},null]},"u16F41":{"anchor_1":[{"x":340,"y":0},null]},"u16F42":{"anchor_1":[{"x":360,"y":0},null]},"u16F43":{"anchor_1":[{"x":300,"y":0},null]},"u16F44":{"anchor_1":[{"x":300,"y":0},null]},"u16F45":{"anchor_1":[{"x":280,"y":0},null]},"u16F46":{"anchor_1":[{"x":220,"y":0},null]},"u16F47":{"anchor_1":[{"x":320,"y":0},null]},"u16F48":{"anchor_1":[{"x":290,"y":0},null]},"u16F49":{"anchor_1":[{"x":290,"y":0},null]},"u16F4A":{"anchor_1":[{"x":290,"y":0},null]},"u16F04.lpo":[null,{"anchor_0":{"x":280,"y":785}}],"u16F10.lpo":[null,{"anchor_0":{"x":369,"y":785}}],"u16F23.lpo":[null,{"anchor_0":{"x":355,"y":785}}],"u16F33.lpo":[null,{"anchor_0":{"x":266,"y":785}}],"u16F39.lpo":[null,{"anchor_0":{"x":230,"y":785}}]}}},"1":{"0":{"type":["mark_to_mark","mark_to_base"],"marks":{"anchor_0":{"u16F54.blw":{"x":[-140,0]},"u16F55.blw":{"x":[-215,0]},"u16F56.blw":{"x":[-135,0],"y":[0,-10]},"u16F57.blw":{"x":[-185,-60]},"u16F58.blw":{"x":[-180,-30]},"u16F59.blw":{"x":[-140,0],"y":[0,-20]},"u16F5A.blw":{"x":[-200,0],"y":[0,-10]},"u16F5B.blw":{"x":[-140,0]},"u16F5C.blw":{"x":[-155,-100]},"u16F5D.blw":{"x":[-160,0],"y":[0,-40]},"u16F5E.blw":{"x":[-140,0],"y":[60,50]},"u16F5F.blw":{"x":[-210,-80],"y":[60,50]},"u16F60.blw":{"x":[-150,10],"y":[80,60]},"u16F61.blw":{"x":[-140,0],"y":[0,-10]},"u16F62.blw":{"x":[-210,-60],"y":[0,-10]},"u16F63.blw":{"x":[-275,-120],"y":[0,-10]},"u16F64.blw":{"x":[-275,-120],"y":[0,-10]},"u16F65.blw":{"x":[-240,-40],"y":[0,-10]},"u16F66.blw":{"x":[-120,0]},"u16F67.blw":{"x":[-235,0],"y":[0,-10]},"u16F68.blw":{"x":[-235,0],"y":[0,-10]},"u16F69.blw":{"x":[-240,-30],"y":[0,-10]},"u16F6A.blw":{"x":[-145,0],"y":[0,-10]},"u16F6B.blw":{"x":[-215,0]},"u16F6C.blw":{"x":[-305,-20]},"u16F6D.blw":{"x":[-305,-20]},"u16F6E.blw":{"x":[-235,0]},"u16F6F.blw":{"x":[-235,0]},"u16F70.blw":{"x":[-250,-10]},"u16F71.blw":{"x":[-160,-20],"y":[0,-40]},"u16F72.blw":{"x":[-140,0]},"u16F73.blw":{"x":[-145,-20]},"u16F74.blw":{"x":[-145,0],"y":[0,-10]},"u16F75.blw":{"x":[-120,0]},"u16F76.blw":{"x":[-140,0],"y":[0,-10]},"u16F77.blw":{"x":[-115,0]},"u16F78.blw":{"x":[-140,0],"y":[0,-10]},"u16F79.blw":{"x":[-40,0]},"u16F7A.blw":{"x":[-140,-10],"y":[0,-10]},"u16F7B.blw":{"x":[-120,0]},"u16F7C.blw":{"x":[-150,0],"y":[0,-10]},"u16F7D.blw":{"x":[-140,-30],"y":[30,0]},"u16F7E.blw":{"x":[-145,-30],"y":[30,0]},"u16F7F.blw":{"x":[-145,-20]},"u16F80.blw":{"x":[-145,0],"y":[50,-30]},"u16F81.blw":{"x":[-140,-20],"y":[30,-10]},"u16F82.blw":{"x":[-115,-70]},"u16F83.blw":{"x":[-180,0],"y":[0,-10]},"u16F84.blw":{"x":[-180,0],"y":[0,-10]},"u16F85.blw":{"x":[-155,-100]},"u16F86.blw":{"x":[-145,0],"y":[0,-10]},"u16F87.blw":{"x":[-235,0],"y":[0,-10]}}},"basemarks":[{"u16F54.blw":{"anchor_0":{"x":180,"y":0}},"u16F55.blw":{"anchor_0":{"x":250,"y":0}},"u16F56.blw":{"anchor_0":{"x":180,"y":0}},"u16F57.blw":{"anchor_0":{"x":220,"y":0}},"u16F58.blw":{"anchor_0":{"x":220,"y":0}},"u16F59.blw":{"anchor_0":{"x":180,"y":0}},"u16F5A.blw":{"anchor_0":{"x":220,"y":0}},"u16F5B.blw":{"anchor_0":{"x":180,"y":0}},"u16F5C.blw":{"anchor_0":{"x":180,"y":0}},"u16F5D.blw":{"anchor_0":{"x":200,"y":0}},"u16F5E.blw":{"anchor_0":{"x":180,"y":0}},"u16F5F.blw":{"anchor_0":{"x":240,"y":0}},"u16F60.blw":{"anchor_0":{"x":180,"y":0}},"u16F61.blw":{"anchor_0":{"x":180,"y":0}},"u16F62.blw":{"anchor_0":{"x":260,"y":0}},"u16F63.blw":{"anchor_0":{"x":300,"y":0}},"u16F64.blw":{"anchor_0":{"x":300,"y":0}},"u16F65.blw":{"anchor_0":{"x":280,"y":0}},"u16F66.blw":{"anchor_0":{"x":160,"y":0}},"u16F67.blw":{"anchor_0":{"x":280,"y":0}},"u16F68.blw":{"anchor_0":{"x":280,"y":0}},"u16F69.blw":{"anchor_0":{"x":260,"y":0}},"u16F6A.blw":{"anchor_0":{"x":180,"y":0}},"u16F6B.blw":{"anchor_0":{"x":220,"y":0}},"u16F6C.blw":{"anchor_0":{"x":320,"y":0}},"u16F6D.blw":{"anchor_0":{"x":340,"y":0}},"u16F6E.blw":{"anchor_0":{"x":280,"y":0}},"u16F6F.blw":{"anchor_0":{"x":280,"y":0}},"u16F70.blw":{"anchor_0":{"x":260,"y":0}},"u16F71.blw":{"anchor_0":{"x":200,"y":0}},"u16F72.blw":{"anchor_0":{"x":180,"y":0}},"u16F73.blw":{"anchor_0":{"x":180,"y":0}},"u16F74.blw":{"anchor_0":{"x":180,"y":0}},"u16F75.blw":{"anchor_0":{"x":180,"y":0}},"u16F76.blw":{"anchor_0":{"x":180,"y":0}},"u16F77.blw":{"anchor_0":{"x":160,"y":0}},"u16F78.blw":{"anchor_0":{"x":180,"y":0}},"u16F79.blw":{"anchor_0":{"x":100,"y":0}},"u16F7A.blw":{"anchor_0":{"x":180,"y":0}},"u16F7B.blw":{"anchor_0":{"x":180,"y":0}},"u16F7C.blw":{"anchor_0":{"x":180,"y":0}},"u16F7D.blw":{"anchor_0":{"x":180,"y":0}},"u16F7E.blw":{"anchor_0":{"x":180,"y":0}},"u16F7F.blw":{"anchor_0":{"x":180,"y":0}},"u16F80.blw":{"anchor_0":{"x":180,"y":0}},"u16F81.blw":{"anchor_0":{"x":180,"y":0}},"u16F82.blw":{"anchor_0":{"x":160,"y":0}},"u16F83.blw":{"anchor_0":{"x":220,"y":0}},"u16F84.blw":{"anchor_0":{"x":220,"y":0}},"u16F85.blw":{"anchor_0":{"x":180,"y":0}},"u16F86.blw":{"anchor_0":{"x":180,"y":0}},"u16F87.blw":{"anchor_0":{"x":280,"y":0}}},null],"bases":[null,{"u16F00":{"anchor_0":{"x":230,"y":0}},"u16F01":{"anchor_0":{"x":230,"y":0}},"u16F02":{"anchor_0":{"x":280,"y":0}},"u16F03":{"anchor_0":{"x":280,"y":0}},"u16F04":{"anchor_0":{"x":220,"y":0}},"u16F05":{"anchor_0":{"x":220,"y":0}},"u16F06":{"anchor_0":{"x":410,"y":0}},"u16F07":{"anchor_0":{"x":280,"y":0}},"u16F08":{"anchor_0":{"x":310,"y":0}},"u16F09":{"anchor_0":{"x":350,"y":0}},"u16F0A":{"anchor_0":{"x":290,"y":0}},"u16F0B":{"anchor_0":{"x":290,"y":0}},"u16F0C":{"anchor_0":{"x":290,"y":0}},"u16F0D":{"anchor_0":{"x":290,"y":0}},"u16F0E":{"anchor_0":{"x":290,"y":0}},"u16F0F":{"anchor_0":{"x":290,"y":0}},"u16F10":{"anchor_0":{"x":350,"y":0}},"u16F11":{"anchor_0":{"x":420,"y":0}},"u16F12":{"anchor_0":{"x":320,"y":0}},"u16F13":{"anchor_0":{"x":420,"y":0}},"u16F14":{"anchor_0":{"x":300,"y":0}},"u16F15":{"anchor_0":{"x":380,"y":0}},"u16F16":{"anchor_0":{"x":280,"y":0}},"u16F17":{"anchor_0":{"x":360,"y":0}},"u16F18":{"anchor_0":{"x":280,"y":0}},"u16F19":{"anchor_0":{"x":320,"y":0}},"u16F1A":{"anchor_0":{"x":310,"y":0}},"u16F1B":{"anchor_0":{"x":340,"y":0}},"u16F1C":{"anchor_0":{"x":310,"y":0}},"u16F1D":{"anchor_0":{"x":340,"y":0}},"u16F1E":{"anchor_0":{"x":220,"y":0}},"u16F1F":{"anchor_0":{"x":220,"y":0}},"u16F20":{"anchor_0":{"x":220,"y":0}},"u16F21":{"anchor_0":{"x":220,"y":0}},"u16F22":{"anchor_0":{"x":220,"y":0}},"u16F23":{"anchor_0":{"x":300,"y":0}},"u16F24":{"anchor_0":{"x":380,"y":0}},"u16F25":{"anchor_0":{"x":420,"y":0}},"u16F26":{"anchor_0":{"x":220,"y":0}},"u16F27":{"anchor_0":{"x":260,"y":0}},"u16F28":{"anchor_0":{"x":140,"y":0}},"u16F29":{"anchor_0":{"x":210,"y":0}},"u16F2A":{"anchor_0":{"x":280,"y":0}},"u16F2B":{"anchor_0":{"x":280,"y":0}},"u16F2C":{"anchor_0":{"x":280,"y":0}},"u16F2D":{"anchor_0":{"x":310,"y":0}},"u16F2E":{"anchor_0":{"x":380,"y":0}},"u16F2F":{"anchor_0":{"x":280,"y":0}},"u16F30":{"anchor_0":{"x":360,"y":0}},"u16F31":{"anchor_0":{"x":280,"y":0}},"u16F32":{"anchor_0":{"x":320,"y":0}},"u16F33":{"anchor_0":{"x":220,"y":0}},"u16F34":{"anchor_0":{"x":220,"y":0}},"u16F35":{"anchor_0":{"x":320,"y":0}},"u16F36":{"anchor_0":{"x":380,"y":0}},"u16F37":{"anchor_0":{"x":230,"y":0}},"u16F38":{"anchor_0":{"x":220,"y":0}},"u16F39":{"anchor_0":{"x":220,"y":0}},"u16F3A":{"anchor_0":{"x":300,"y":0}},"u16F3B":{"anchor_0":{"x":300,"y":0}},"u16F3C":{"anchor_0":{"x":300,"y":0}},"u16F3D":{"anchor_0":{"x":310,"y":0}},"u16F3E":{"anchor_0":{"x":340,"y":0}},"u16F3F":{"anchor_0":{"x":350,"y":0}},"u16F40":{"anchor_0":{"x":320,"y":0}},"u16F41":{"anchor_0":{"x":340,"y":0}},"u16F42":{"anchor_0":{"x":360,"y":0}},"u16F43":{"anchor_0":{"x":300,"y":0}},"u16F44":{"anchor_0":{"x":300,"y":0}},"u16F45":{"anchor_0":{"x":280,"y":0}},"u16F46":{"anchor_0":{"x":220,"y":0}},"u16F47":{"anchor_0":{"x":320,"y":0}},"u16F48":{"anchor_0":{"x":290,"y":0}},"u16F49":{"anchor_0":{"x":290,"y":0}},"u16F4A":{"anchor_0":{"x":290,"y":0}},"u16F04.lpo":{"anchor_0":{"x":280,"y":0}},"u16F10.lpo":{"anchor_0":{"x":348,"y":0}},"u16F23.lpo":{"anchor_0":{"x":313,"y":0}},"u16F33.lpo":{"anchor_0":{"x":228,"y":0}},"u16F39.lpo":{"anchor_0":{"x":220,"y":0}}}]}},"2":{"0":{"marks":{"anchor_0":{"u16F54.abv":[{"x":-140,"y":0},null],"u16F55.abv":[{"x":-215,"y":0},null],"u16F56.abv":[{"x":-135,"y":0},null],"u16F57.abv":[{"x":-185,"y":0},null],"u16F58.abv":[{"x":-180,"y":0},null],"u16F59.abv":[{"x":-140,"y":0},null],"u16F5A.abv":[{"x":-200,"y":0},null],"u16F5B.abv":[{"x":-140,"y":0},null],"u16F5C.abv":[{"x":-155,"y":0},null],"u16F5D.abv":[{"x":-160,"y":0},null],"u16F5E.abv":[{"x":-140,"y":0},null],"u16F5F.abv":[{"x":-210,"y":0},null],"u16F60.abv":[{"x":-150,"y":0},null],"u16F61.abv":[{"x":-140,"y":0},null],"u16F62.abv":[{"x":-210,"y":0},null],"u16F63.abv":[{"x":-275,"y":0},null],"u16F64.abv":[{"x":-275,"y":0},null],"u16F65.abv":[{"x":-240,"y":0},null],"u16F66.abv":[{"x":-120,"y":0},null],"u16F67.abv":[{"x":-235,"y":0},null],"u16F68.abv":[{"x":-235,"y":0},null],"u16F69.abv":[{"x":-240,"y":0},null],"u16F6A.abv":[{"x":-145,"y":0},null],"u16F6B.abv":[{"x":-215,"y":0},null],"u16F6C.abv":[{"x":-305,"y":0},null],"u16F6D.abv":[{"x":-300,"y":0},null],"u16F6E.abv":[{"x":-235,"y":0},null],"u16F6F.abv":[{"x":-235,"y":0},null],"u16F70.abv":[{"x":-250,"y":0},null],"u16F71.abv":[{"x":-160,"y":0},null],"u16F72.abv":[{"x":-140,"y":0},null],"u16F73.abv":[{"x":-145,"y":0},null],"u16F74.abv":[{"x":-145,"y":0},null],"u16F75.abv":[{"x":-120,"y":0},null],"u16F76.abv":[{"x":-140,"y":0},null],"u16F77.abv":[{"x":-115,"y":0},null],"u16F78.abv":[{"x":-140,"y":0},null],"u16F79.abv":[{"x":-40,"y":0},null],"u16F7A.abv":[{"x":-140,"y":0},null],"u16F7B.abv":[{"x":-120,"y":0},null],"u16F7C.abv":[{"x":-150,"y":0},null],"u16F7D.abv":[{"x":-140,"y":0},null],"u16F7E.abv":[{"x":-145,"y":0},null],"u16F7F.abv":[{"x":-145,"y":0},null],"u16F80.abv":[{"x":-145,"y":0},null],"u16F81.abv":[{"x":-140,"y":0},null],"u16F82.abv":[{"x":-115,"y":0},null],"u16F83.abv":[{"x":-180,"y":0},null],"u16F84.abv":[{"x":-180,"y":0},null],"u16F85.abv":[{"x":-155,"y":0},null],"u16F86.abv":[{"x":-145,"y":0},null],"u16F87.abv":[{"x":-235,"y":0},null],"u16F54.blw":[null,{"x":-140,"y":0}],"u16F55.blw":[null,{"x":-215,"y":0}],"u16F56.blw":[null,{"x":-135,"y":0}],"u16F57.blw":[null,{"x":-185,"y":0}],"u16F58.blw":[null,{"x":-180,"y":0}],"u16F59.blw":[null,{"x":-140,"y":0}],"u16F5A.blw":[null,{"x":-200,"y":0}],"u16F5B.blw":[null,{"x":-140,"y":50}],"u16F5C.blw":[null,{"x":-155,"y":50}],"u16F5D.blw":[null,{"x":-160,"y":0}],"u16F5E.blw":[null,{"x":-140,"y":60}],"u16F5F.blw":[null,{"x":-210,"y":60}],"u16F60.blw":[null,{"x":-150,"y":80}],"u16F61.blw":[null,{"x":-140,"y":0}],"u16F62.blw":[null,{"x":-210,"y":0}],"u16F63.blw":[null,{"x":-275,"y":0}],"u16F64.blw":[null,{"x":-275,"y":0}],"u16F65.blw":[null,{"x":-240,"y":0}],"u16F66.blw":[null,{"x":-120,"y":0}],"u16F67.blw":[null,{"x":-235,"y":0}],"u16F68.blw":[null,{"x":-235,"y":0}],"u16F69.blw":[null,{"x":-240,"y":0}],"u16F6A.blw":[null,{"x":-145,"y":0}],"u16F6B.blw":[null,{"x":-215,"y":0}],"u16F6C.blw":[null,{"x":-305,"y":0}],"u16F6D.blw":[null,{"x":-305,"y":0}],"u16F6E.blw":[null,{"x":-235,"y":0}],"u16F6F.blw":[null,{"x":-235,"y":0}],"u16F70.blw":[null,{"x":-250,"y":0}],"u16F71.blw":[null,{"x":-160,"y":0}],"u16F72.blw":[null,{"x":-140,"y":0}],"u16F73.blw":[null,{"x":-145,"y":0}],"u16F74.blw":[null,{"x":-145,"y":0}],"u16F75.blw":[null,{"x":-120,"y":0}],"u16F76.blw":[null,{"x":-140,"y":0}],"u16F77.blw":[null,{"x":-115,"y":0}],"u16F78.blw":[null,{"x":-140,"y":0}],"u16F79.blw":[null,{"x":-40,"y":0}],"u16F7A.blw":[null,{"x":-140,"y":0}],"u16F7B.blw":[null,{"x":-120,"y":0}],"u16F7C.blw":[null,{"x":-150,"y":0}],"u16F7D.blw":[null,{"x":-140,"y":30}],"u16F7E.blw":[null,{"x":-145,"y":30}],"u16F7F.blw":[null,{"x":-145,"y":0}],"u16F80.blw":[null,{"x":-145,"y":50}],"u16F81.blw":[null,{"x":-140,"y":30}],"u16F82.blw":[null,{"x":-115,"y":0}],"u16F83.blw":[null,{"x":-180,"y":0}],"u16F84.blw":[null,{"x":-180,"y":0}],"u16F85.blw":[null,{"x":-155,"y":50}],"u16F86.blw":[null,{"x":-145,"y":0}],"u16F87.blw":[null,{"x":-235,"y":0}]}},"basemarks":{"u16F54.abv":[{"anchor_0":{"x":180,"y":0}},null],"u16F55.abv":[{"anchor_0":{"x":250,"y":0}},null],"u16F56.abv":[{"anchor_0":{"x":180,"y":0}},null],"u16F57.abv":[{"anchor_0":{"x":220,"y":0}},null],"u16F58.abv":[{"anchor_0":{"x":220,"y":0}},null],"u16F59.abv":[{"anchor_0":{"x":180,"y":0}},null],"u16F5A.abv":[{"anchor_0":{"x":220,"y":0}},null],"u16F5B.abv":[{"anchor_0":{"x":180,"y":0}},null],"u16F5C.abv":[{"anchor_0":{"x":180,"y":0}},null],"u16F5D.abv":[{"anchor_0":{"x":200,"y":0}},null],"u16F5E.abv":[{"anchor_0":{"x":180,"y":0}},null],"u16F5F.abv":[{"anchor_0":{"x":240,"y":0}},null],"u16F60.abv":[{"anchor_0":{"x":180,"y":0}},null],"u16F61.abv":[{"anchor_0":{"x":180,"y":0}},null],"u16F62.abv":[{"anchor_0":{"x":260,"y":0}},null],"u16F63.abv":[{"anchor_0":{"x":300,"y":0}},null],"u16F64.abv":[{"anchor_0":{"x":300,"y":0}},null],"u16F65.abv":[{"anchor_0":{"x":280,"y":0}},null],"u16F66.abv":[{"anchor_0":{"x":160,"y":0}},null],"u16F67.abv":[{"anchor_0":{"x":280,"y":0}},null],"u16F68.abv":[{"anchor_0":{"x":280,"y":0}},null],"u16F69.abv":[{"anchor_0":{"x":260,"y":0}},null],"u16F6A.abv":[{"anchor_0":{"x":180,"y":0}},null],"u16F6B.abv":[{"anchor_0":{"x":220,"y":0}},null],"u16F6C.abv":[{"anchor_0":{"x":320,"y":0}},null],"u16F6D.abv":[{"anchor_0":{"x":340,"y":0}},null],"u16F6E.abv":[{"anchor_0":{"x":280,"y":0}},null],"u16F6F.abv":[{"anchor_0":{"x":280,"y":0}},null],"u16F70.abv":[{"anchor_0":{"x":260,"y":0}},null],"u16F71.abv":[{"anchor_0":{"x":200,"y":0}},null],"u16F72.abv":[{"anchor_0":{"x":180,"y":0}},null],"u16F73.abv":[{"anchor_0":{"x":180,"y":0}},null],"u16F74.abv":[{"anchor_0":{"x":180,"y":0}},null],"u16F75.abv":[{"anchor_0":{"x":160,"y":0}},null],"u16F76.abv":[{"anchor_0":{"x":180,"y":0}},null],"u16F77.abv":[{"anchor_0":{"x":160,"y":0}},null],"u16F78.abv":[{"anchor_0":{"x":180,"y":0}},null],"u16F79.abv":[{"anchor_0":{"x":100,"y":0}},null],"u16F7A.abv":[{"anchor_0":{"x":180,"y":0}},null],"u16F7B.abv":[{"anchor_0":{"x":180,"y":0}},null],"u16F7C.abv":[{"anchor_0":{"x":180,"y":0}},null],"u16F7D.abv":[{"anchor_0":{"x":180,"y":0}},null],"u16F7E.abv":[{"anchor_0":{"x":180,"y":0}},null],"u16F7F.abv":[{"anchor_0":{"x":180,"y":0}},null],"u16F80.abv":[{"anchor_0":{"x":180,"y":0}},null],"u16F81.abv":[{"anchor_0":{"x":180,"y":0}},null],"u16F82.abv":[{"anchor_0":{"x":160,"y":0}},null],"u16F83.abv":[{"anchor_0":{"x":220,"y":0}},null],"u16F84.abv":[{"anchor_0":{"x":220,"y":0}},null],"u16F85.abv":[{"anchor_0":{"x":180,"y":0}},null],"u16F86.abv":[{"anchor_0":{"x":180,"y":0}},null],"u16F87.abv":[{"anchor_0":{"x":280,"y":0}},null],"u16F54.blw":[null,{"anchor_0":{"x":180,"y":0}}],"u16F55.blw":[null,{"anchor_0":{"x":250,"y":0}}],"u16F56.blw":[null,{"anchor_0":{"x":180,"y":0}}],"u16F57.blw":[null,{"anchor_0":{"x":220,"y":0}}],"u16F58.blw":[null,{"anchor_0":{"x":220,"y":0}}],"u16F59.blw":[null,{"anchor_0":{"x":180,"y":0}}],"u16F5A.blw":[null,{"anchor_0":{"x":220,"y":0}}],"u16F5B.blw":[null,{"anchor_0":{"x":180,"y":0}}],"u16F5C.blw":[null,{"anchor_0":{"x":180,"y":0}}],"u16F5D.blw":[null,{"anchor_0":{"x":200,"y":0}}],"u16F5E.blw":[null,{"anchor_0":{"x":180,"y":0}}],"u16F5F.blw":[null,{"anchor_0":{"x":240,"y":0}}],"u16F60.blw":[null,{"anchor_0":{"x":180,"y":0}}],"u16F61.blw":[null,{"anchor_0":{"x":180,"y":0}}],"u16F62.blw":[null,{"anchor_0":{"x":260,"y":0}}],"u16F63.blw":[null,{"anchor_0":{"x":300,"y":0}}],"u16F64.blw":[null,{"anchor_0":{"x":300,"y":0}}],"u16F65.blw":[null,{"anchor_0":{"x":280,"y":0}}],"u16F66.blw":[null,{"anchor_0":{"x":160,"y":0}}],"u16F67.blw":[null,{"anchor_0":{"x":280,"y":0}}],"u16F68.blw":[null,{"anchor_0":{"x":280,"y":0}}],"u16F69.blw":[null,{"anchor_0":{"x":260,"y":0}}],"u16F6A.blw":[null,{"anchor_0":{"x":180,"y":0}}],"u16F6B.blw":[null,{"anchor_0":{"x":220,"y":0}}],"u16F6C.blw":[null,{"anchor_0":{"x":320,"y":0}}],"u16F6D.blw":[null,{"anchor_0":{"x":340,"y":0}}],"u16F6E.blw":[null,{"anchor_0":{"x":280,"y":0}}],"u16F6F.blw":[null,{"anchor_0":{"x":280,"y":0}}],"u16F70.blw":[null,{"anchor_0":{"x":260,"y":0}}],"u16F71.blw":[null,{"anchor_0":{"x":200,"y":0}}],"u16F72.blw":[null,{"anchor_0":{"x":180,"y":0}}],"u16F73.blw":[null,{"anchor_0":{"x":180,"y":0}}],"u16F74.blw":[null,{"anchor_0":{"x":180,"y":0}}],"u16F75.blw":[null,{"anchor_0":{"x":180,"y":0}}],"u16F76.blw":[null,{"anchor_0":{"x":180,"y":0}}],"u16F77.blw":[null,{"anchor_0":{"x":160,"y":0}}],"u16F78.blw":[null,{"anchor_0":{"x":180,"y":0}}],"u16F79.blw":[null,{"anchor_0":{"x":100,"y":0}}],"u16F7A.blw":[null,{"anchor_0":{"x":180,"y":0}}],"u16F7B.blw":[null,{"anchor_0":{"x":180,"y":0}}],"u16F7C.blw":[null,{"anchor_0":{"x":180,"y":0}}],"u16F7D.blw":[null,{"anchor_0":{"x":180,"y":0}}],"u16F7E.blw":[null,{"anchor_0":{"x":180,"y":0}}],"u16F7F.blw":[null,{"anchor_0":{"x":180,"y":0}}],"u16F80.blw":[null,{"anchor_0":{"x":180,"y":0}}],"u16F81.blw":[null,{"anchor_0":{"x":180,"y":0}}],"u16F82.blw":[null,{"anchor_0":{"x":160,"y":0}}],"u16F83.blw":[null,{"anchor_0":{"x":220,"y":0}}],"u16F84.blw":[null,{"anchor_0":{"x":220,"y":0}}],"u16F85.blw":[null,{"anchor_0":{"x":180,"y":0}}],"u16F86.blw":[null,{"anchor_0":{"x":180,"y":0}}],"u16F87.blw":[null,{"anchor_0":{"x":280,"y":0}}]}}},"3":{"0":{"type":["mark_to_base","mark_to_mark"],"marks":{"anchor_0":{"u16F54.abv":{"x":[0,-140],"y":[785,0]},"u16F55.abv":{"x":[80,-215],"y":[785,0]},"u16F56.abv":{"x":[0,-135],"y":[785,0]},"u16F57.abv":{"x":[30,-185],"y":[785,0]},"u16F58.abv":{"x":[30,-180],"y":[785,0]},"u16F59.abv":{"x":[0,-140],"y":[785,0]},"u16F5A.abv":{"x":[-60,-200],"y":[785,0]},"u16F5B.abv":{"x":[0,-140],"y":[785,0]},"u16F5C.abv":{"x":[-30,-155],"y":[785,0]},"u16F5D.abv":{"x":[30,-160],"y":[785,0]},"u16F5E.abv":{"x":[0,-140],"y":[785,0]},"u16F5F.abv":{"x":[0,-210],"y":[785,0]},"u16F60.abv":{"x":[40,-150],"y":[785,0]},"u16F61.abv":{"x":[0,-140],"y":[785,0]},"u16F62.abv":{"x":[-30,-210],"y":[785,0]},"u16F63.abv":{"x":[-40,-275],"y":[785,0]},"u16F64.abv":{"x":[-40,-275],"y":[785,0]},"u16F65.abv":{"x":[-30,-240],"y":[785,0]},"u16F66.abv":{"x":[0,-120],"y":[785,0]},"u16F67.abv":{"x":[0,-235],"y":[785,0]},"u16F68.abv":{"x":[0,-235],"y":[785,0]},"u16F69.abv":{"x":[-30,-240],"y":[785,0]},"u16F6A.abv":{"x":[0,-145],"y":[785,0]},"u16F6B.abv":{"x":[-60,-215],"y":[785,0]},"u16F6C.abv":{"x":[-20,-305],"y":[785,0]},"u16F6D.abv":{"x":[-20,-300],"y":[785,0]},"u16F6E.abv":{"x":[0,-235],"y":[785,0]},"u16F6F.abv":{"x":[0,-235],"y":[785,0]},"u16F70.abv":{"x":[0,-250],"y":[785,0]},"u16F71.abv":{"x":[-20,-160],"y":[785,0]},"u16F72.abv":{"x":[40,-140],"y":[785,0]},"u16F73.abv":{"x":[-80,-145],"y":[785,0]},"u16F74.abv":{"x":[30,-145],"y":[785,0]},"u16F75.abv":{"x":[50,-120],"y":[785,0]},"u16F76.abv":{"x":[50,-140],"y":[785,0]},"u16F77.abv":{"x":[-70,-115],"y":[785,0]},"u16F78.abv":{"x":[-80,-140],"y":[785,0]},"u16F79.abv":{"x":[0,-40],"y":[785,0]},"u16F7A.abv":{"x":[0,-140],"y":[785,0]},"u16F7B.abv":{"x":[0,-120],"y":[785,0]},"u16F7C.abv":{"x":[50,-150],"y":[785,0]},"u16F7D.abv":{"x":[0,-140],"y":[785,0]},"u16F7E.abv":{"x":[0,-145],"y":[785,0]},"u16F7F.abv":{"x":[-80,-145],"y":[785,0]},"u16F80.abv":{"x":[0,-145],"y":[785,0]},"u16F81.abv":{"x":[-10,-140],"y":[785,0]},"u16F82.abv":{"x":[0,-115],"y":[785,0]},"u16F83.abv":{"x":[0,-180],"y":[785,0]},"u16F84.abv":{"x":[0,-180],"y":[785,0]},"u16F85.abv":{"x":[-30,-155],"y":[785,0]},"u16F86.abv":{"x":[40,-145],"y":[785,0]},"u16F87.abv":{"x":[0,-235],"y":[785,0]}},"anchor_1":[{"u16F54.blw":{"x":0,"y":0},"u16F55.blw":{"x":0,"y":0},"u16F56.blw":{"x":0,"y":-10},"u16F57.blw":{"x":-60,"y":0},"u16F58.blw":{"x":-30,"y":0},"u16F59.blw":{"x":0,"y":-20},"u16F5A.blw":{"x":0,"y":-10},"u16F5B.blw":{"x":0,"y":50},"u16F5C.blw":{"x":-100,"y":50},"u16F5D.blw":{"x":0,"y":-40},"u16F5E.blw":{"x":0,"y":50},"u16F5F.blw":{"x":-80,"y":50},"u16F60.blw":{"x":10,"y":60},"u16F61.blw":{"x":0,"y":-10},"u16F62.blw":{"x":-60,"y":-10},"u16F63.blw":{"x":-120,"y":-10},"u16F64.blw":{"x":-120,"y":-10},"u16F65.blw":{"x":-40,"y":-10},"u16F66.blw":{"x":0,"y":0},"u16F67.blw":{"x":0,"y":-10},"u16F68.blw":{"x":0,"y":-10},"u16F69.blw":{"x":-30,"y":-10},"u16F6A.blw":{"x":0,"y":-10},"u16F6B.blw":{"x":0,"y":0},"u16F6C.blw":{"x":-20,"y":0},"u16F6D.blw":{"x":-20,"y":0},"u16F6E.blw":{"x":0,"y":0},"u16F6F.blw":{"x":0,"y":0},"u16F70.blw":{"x":-10,"y":0},"u16F71.blw":{"x":-20,"y":-40},"u16F72.blw":{"x":0,"y":0},"u16F73.blw":{"x":-20,"y":0},"u16F74.blw":{"x":0,"y":-10},"u16F75.blw":{"x":0,"y":0},"u16F76.blw":{"x":0,"y":-10},"u16F77.blw":{"x":0,"y":0},"u16F78.blw":{"x":0,"y":-10},"u16F79.blw":{"x":0,"y":0},"u16F7A.blw":{"x":-10,"y":-10},"u16F7B.blw":{"x":0,"y":0},"u16F7C.blw":{"x":0,"y":-10},"u16F7D.blw":{"x":-30,"y":0},"u16F7E.blw":{"x":-30,"y":0},"u16F7F.blw":{"x":-20,"y":0},"u16F80.blw":{"x":0,"y":-30},"u16F81.blw":{"x":-20,"y":-10},"u16F82.blw":{"x":-70,"y":0},"u16F83.blw":{"x":0,"y":-10},"u16F84.blw":{"x":0,"y":-10},"u16F85.blw":{"x":-100,"y":50},"u16F86.blw":{"x":0,"y":-10},"u16F87.blw":{"x":0,"y":-10}},null]},"bases":[{"uni25CC":{"anchor_0":{"x":290,"y":611},"anchor_1":{"x":290,"y":0}}},null],"basemarks":[null,{"u16F54.abv":{"anchor_0":{"x":180,"y":0}},"u16F55.abv":{"anchor_0":{"x":250,"y":0}},"u16F56.abv":{"anchor_0":{"x":180,"y":0}},"u16F57.abv":{"anchor_0":{"x":220,"y":0}},"u16F58.abv":{"anchor_0":{"x":220,"y":0}},"u16F59.abv":{"anchor_0":{"x":180,"y":0}},"u16F5A.abv":{"anchor_0":{"x":220,"y":0}},"u16F5B.abv":{"anchor_0":{"x":180,"y":0}},"u16F5C.abv":{"anchor_0":{"x":180,"y":0}},"u16F5D.abv":{"anchor_0":{"x":200,"y":0}},"u16F5E.abv":{"anchor_0":{"x":180,"y":0}},"u16F5F.abv":{"anchor_0":{"x":240,"y":0}},"u16F60.abv":{"anchor_0":{"x":180,"y":0}},"u16F61.abv":{"anchor_0":{"x":180,"y":0}},"u16F62.abv":{"anchor_0":{"x":260,"y":0}},"u16F63.abv":{"anchor_0":{"x":300,"y":0}},"u16F64.abv":{"anchor_0":{"x":300,"y":0}},"u16F65.abv":{"anchor_0":{"x":280,"y":0}},"u16F66.abv":{"anchor_0":{"x":160,"y":0}},"u16F67.abv":{"anchor_0":{"x":280,"y":0}},"u16F68.abv":{"anchor_0":{"x":280,"y":0}},"u16F69.abv":{"anchor_0":{"x":260,"y":0}},"u16F6A.abv":{"anchor_0":{"x":180,"y":0}},"u16F6B.abv":{"anchor_0":{"x":220,"y":0}},"u16F6C.abv":{"anchor_0":{"x":320,"y":0}},"u16F6D.abv":{"anchor_0":{"x":340,"y":0}},"u16F6E.abv":{"anchor_0":{"x":280,"y":0}},"u16F6F.abv":{"anchor_0":{"x":280,"y":0}},"u16F70.abv":{"anchor_0":{"x":260,"y":0}},"u16F71.abv":{"anchor_0":{"x":200,"y":0}},"u16F72.abv":{"anchor_0":{"x":180,"y":0}},"u16F73.abv":{"anchor_0":{"x":180,"y":0}},"u16F74.abv":{"anchor_0":{"x":180,"y":0}},"u16F75.abv":{"anchor_0":{"x":160,"y":0}},"u16F76.abv":{"anchor_0":{"x":180,"y":0}},"u16F77.abv":{"anchor_0":{"x":160,"y":0}},"u16F78.abv":{"anchor_0":{"x":180,"y":0}},"u16F79.abv":{"anchor_0":{"x":100,"y":0}},"u16F7A.abv":{"anchor_0":{"x":180,"y":0}},"u16F7B.abv":{"anchor_0":{"x":180,"y":0}},"u16F7C.abv":{"anchor_0":{"x":180,"y":0}},"u16F7D.abv":{"anchor_0":{"x":180,"y":0}},"u16F7E.abv":{"anchor_0":{"x":180,"y":0}},"u16F7F.abv":{"anchor_0":{"x":180,"y":0}},"u16F80.abv":{"anchor_0":{"x":180,"y":0}},"u16F81.abv":{"anchor_0":{"x":180,"y":0}},"u16F82.abv":{"anchor_0":{"x":160,"y":0}},"u16F83.abv":{"anchor_0":{"x":220,"y":0}},"u16F84.abv":{"anchor_0":{"x":220,"y":0}},"u16F85.abv":{"anchor_0":{"x":180,"y":0}},"u16F86.abv":{"anchor_0":{"x":180,"y":0}},"u16F87.abv":{"anchor_0":{"x":280,"y":0}}}]}},"4":{"0":{"type":["chained_sequence_context","mark_to_base"],"rules":[["[u16F54.abv u16F55.abv u16F56.abv u16F57.abv u16F58.abv u16F59.abv u16F5A.abv u16F5B.abv u16F5C.abv u16F5D.abv u16F5E.abv u16F5F.abv u16F60.abv u16F61.abv u16F62.abv u16F63.abv u16F64.abv u16F65.abv u16F66.abv u16F67.abv u16F68.abv u16F69.abv u16F6A.abv u16F6B.abv u16F6C.abv u16F6D.abv u16F6E.abv u16F6F.abv u16F70.abv u16F71.abv u16F72.abv u16F73.abv u16F74.abv u16F75.abv u16F76.abv u16F77.abv u16F78.abv u16F79.abv u16F7A.abv u16F7B.abv u16F7C.abv u16F7D.abv u16F7E.abv u16F7F.abv u16F80.abv u16F81.abv u16F82.abv u16F83.abv u16F84.abv u16F85.abv u16F86.abv u16F87.abv]' lookup lookup_5 [u16F54.abv u16F55.abv u16F56.abv u16F57.abv u16F58.abv u16F59.abv u16F5A.abv u16F5B.abv u16F5C.abv u16F5D.abv u16F5E.abv u16F5F.abv u16F60.abv u16F61.abv u16F62.abv u16F63.abv u16F64.abv u16F65.abv u16F66.abv u16F67.abv u16F68.abv u16F69.abv u16F6A.abv u16F6B.abv u16F6C.abv u16F6D.abv u16F6E.abv u16F6F.abv u16F70.abv u16F71.abv u16F72.abv u16F73.abv u16F74.abv u16F75.abv u16F76.abv u16F77.abv u16F78.abv u16F79.abv u16F7A.abv u16F7B.abv u16F7C.abv u16F7D.abv u16F7E.abv u16F7F.abv u16F80.abv u16F81.abv u16F82.abv u16F83.abv u16F84.abv u16F85.abv u16F86.abv u16F87.abv]' "],null],"marks":[null,{"anchor_0":{"u16F54.abv":{"x":0,"y":785},"u16F55.abv":{"x":80,"y":785},"u16F56.abv":{"x":0,"y":785},"u16F57.abv":{"x":30,"y":785},"u16F58.abv":{"x":30,"y":785},"u16F59.abv":{"x":0,"y":785},"u16F5A.abv":{"x":-60,"y":785},"u16F5B.abv":{"x":0,"y":785},"u16F5C.abv":{"x":-30,"y":785},"u16F5D.abv":{"x":30,"y":785},"u16F5E.abv":{"x":0,"y":785},"u16F5F.abv":{"x":0,"y":785},"u16F60.abv":{"x":40,"y":785},"u16F61.abv":{"x":0,"y":785},"u16F62.abv":{"x":-30,"y":785},"u16F63.abv":{"x":-40,"y":785},"u16F64.abv":{"x":-40,"y":785},"u16F65.abv":{"x":-30,"y":785},"u16F66.abv":{"x":0,"y":785},"u16F67.abv":{"x":0,"y":785},"u16F68.abv":{"x":0,"y":785},"u16F69.abv":{"x":-30,"y":785},"u16F6A.abv":{"x":0,"y":785},"u16F6B.abv":{"x":-60,"y":785},"u16F6C.abv":{"x":-20,"y":785},"u16F6D.abv":{"x":-20,"y":785},"u16F6E.abv":{"x":0,"y":785},"u16F6F.abv":{"x":0,"y":785},"u16F70.abv":{"x":0,"y":785},"u16F71.abv":{"x":-20,"y":785},"u16F72.abv":{"x":40,"y":785},"u16F73.abv":{"x":-80,"y":785},"u16F74.abv":{"x":30,"y":785},"u16F75.abv":{"x":50,"y":785},"u16F76.abv":{"x":50,"y":785},"u16F77.abv":{"x":-70,"y":785},"u16F78.abv":{"x":-80,"y":785},"u16F79.abv":{"x":0,"y":785},"u16F7A.abv":{"x":0,"y":785},"u16F7B.abv":{"x":0,"y":785},"u16F7C.abv":{"x":50,"y":785},"u16F7D.abv":{"x":0,"y":785},"u16F7E.abv":{"x":0,"y":785},"u16F7F.abv":{"x":-80,"y":785},"u16F80.abv":{"x":0,"y":785},"u16F81.abv":{"x":-10,"y":785},"u16F82.abv":{"x":0,"y":785},"u16F83.abv":{"x":0,"y":785},"u16F84.abv":{"x":0,"y":785},"u16F85.abv":{"x":-30,"y":785},"u16F86.abv":{"x":40,"y":785},"u16F87.abv":{"x":0,"y":785}}}],"bases":[null,{"uni25CC":{"anchor_0":{"x":290,"y":611}}}]}},"5":{"0":{"type":["single","mark_to_base"],"u16F54.abv":[{"x_placement":-150},null],"u16F55.abv":[{"x_placement":-150},null],"u16F56.abv":[{"x_placement":-150},null],"u16F57.abv":[{"x_placement":-150},null],"u16F58.abv":[{"x_placement":-150},null],"u16F59.abv":[{"x_placement":-150},null],"u16F5A.abv":[{"x_placement":-150},null],"u16F5B.abv":[{"x_placement":-150},null],"u16F5C.abv":[{"x_placement":-150},null],"u16F5D.abv":[{"x_placement":-150},null],"u16F5E.abv":[{"x_placement":-150},null],"u16F5F.abv":[{"x_placement":-150},null],"u16F60.abv":[{"x_placement":-150},null],"u16F61.abv":[{"x_placement":-150},null],"u16F62.abv":[{"x_placement":-150},null],"u16F63.abv":[{"x_placement":-150},null],"u16F64.abv":[{"x_placement":-150},null],"u16F65.abv":[{"x_placement":-150},null],"u16F66.abv":[{"x_placement":-150},null],"u16F67.abv":[{"x_placement":-150},null],"u16F68.abv":[{"x_placement":-150},null],"u16F69.abv":[{"x_placement":-150},null],"u16F6A.abv":[{"x_placement":-150},null],"u16F6B.abv":[{"x_placement":-150},null],"u16F6C.abv":[{"x_placement":-150},null],"u16F6D.abv":[{"x_placement":-150},null],"u16F6E.abv":[{"x_placement":-150},null],"u16F6F.abv":[{"x_placement":-150},null],"u16F70.abv":[{"x_placement":-150},null],"u16F71.abv":[{"x_placement":-150},null],"u16F72.abv":[{"x_placement":-150},null],"u16F73.abv":[{"x_placement":-150},null],"u16F74.abv":[{"x_placement":-150},null],"u16F75.abv":[{"x_placement":-150},null],"u16F76.abv":[{"x_placement":-150},null],"u16F77.abv":[{"x_placement":-150},null],"u16F78.abv":[{"x_placement":-150},null],"u16F79.abv":[{"x_placement":-150},null],"u16F7A.abv":[{"x_placement":-150},null],"u16F7B.abv":[{"x_placement":-150},null],"u16F7C.abv":[{"x_placement":-150},null],"u16F7D.abv":[{"x_placement":-150},null],"u16F7E.abv":[{"x_placement":-150},null],"u16F7F.abv":[{"x_placement":-150},null],"u16F80.abv":[{"x_placement":-150},null],"u16F81.abv":[{"x_placement":-150},null],"u16F82.abv":[{"x_placement":-150},null],"u16F83.abv":[{"x_placement":-150},null],"u16F84.abv":[{"x_placement":-150},null],"u16F85.abv":[{"x_placement":-150},null],"u16F86.abv":[{"x_placement":-150},null],"u16F87.abv":[{"x_placement":-150},null],"marks":[null,{"anchor_0":{"u16F54.blw":{"x":0,"y":0},"u16F55.blw":{"x":0,"y":0},"u16F56.blw":{"x":0,"y":-10},"u16F57.blw":{"x":-60,"y":0},"u16F58.blw":{"x":-30,"y":0},"u16F59.blw":{"x":0,"y":-20},"u16F5A.blw":{"x":0,"y":-10},"u16F5B.blw":{"x":0,"y":50},"u16F5C.blw":{"x":-100,"y":50},"u16F5D.blw":{"x":0,"y":-40},"u16F5E.blw":{"x":0,"y":50},"u16F5F.blw":{"x":-80,"y":50},"u16F60.blw":{"x":10,"y":60},"u16F61.blw":{"x":0,"y":-10},"u16F62.blw":{"x":-60,"y":-10},"u16F63.blw":{"x":-120,"y":-10},"u16F64.blw":{"x":-120,"y":-10},"u16F65.blw":{"x":-40,"y":-10},"u16F66.blw":{"x":0,"y":0},"u16F67.blw":{"x":0,"y":-10},"u16F68.blw":{"x":0,"y":-10},"u16F69.blw":{"x":-30,"y":-10},"u16F6A.blw":{"x":0,"y":-10},"u16F6B.blw":{"x":0,"y":0},"u16F6C.blw":{"x":-20,"y":0},"u16F6D.blw":{"x":-20,"y":0},"u16F6E.blw":{"x":0,"y":0},"u16F6F.blw":{"x":0,"y":0},"u16F70.blw":{"x":-10,"y":0},"u16F71.blw":{"x":-20,"y":-40},"u16F72.blw":{"x":0,"y":0},"u16F73.blw":{"x":-20,"y":0},"u16F74.blw":{"x":0,"y":-10},"u16F75.blw":{"x":0,"y":0},"u16F76.blw":{"x":0,"y":-10},"u16F77.blw":{"x":0,"y":0},"u16F78.blw":{"x":0,"y":-10},"u16F79.blw":{"x":0,"y":0},"u16F7A.blw":{"x":-10,"y":-10},"u16F7B.blw":{"x":0,"y":0},"u16F7C.blw":{"x":0,"y":-10},"u16F7D.blw":{"x":-30,"y":0},"u16F7E.blw":{"x":-30,"y":0},"u16F7F.blw":{"x":-20,"y":0},"u16F80.blw":{"x":0,"y":-30},"u16F81.blw":{"x":-20,"y":-10},"u16F82.blw":{"x":-70,"y":0},"u16F83.blw":{"x":0,"y":-10},"u16F84.blw":{"x":0,"y":-10},"u16F85.blw":{"x":-100,"y":50},"u16F86.blw":{"x":0,"y":-10},"u16F87.blw":{"x":0,"y":-10}}}],"bases":[null,{"uni25CC":{"anchor_0":{"x":290,"y":0}}}]}},"6":{"0":{"rules":{"0":["[u16F54.blw u16F55.blw u16F56.blw u16F57.blw u16F58.blw u16F59.blw u16F5A.blw u16F5B.blw u16F5C.blw u16F5D.blw u16F5E.blw u16F5F.blw u16F60.blw u16F61.blw u16F62.blw u16F63.blw u16F64.blw u16F65.blw u16F66.blw u16F67.blw u16F68.blw u16F69.blw u16F6A.blw u16F6B.blw u16F6C.blw u16F6D.blw u16F6E.blw u16F6F.blw u16F70.blw u16F71.blw u16F72.blw u16F73.blw u16F74.blw u16F75.blw u16F76.blw u16F77.blw u16F78.blw u16F79.blw u16F7A.blw u16F7B.blw u16F7C.blw u16F7D.blw u16F7E.blw u16F7F.blw u16F80.blw u16F81.blw u16F82.blw u16F83.blw u16F84.blw u16F85.blw u16F86.blw u16F87.blw]' lookup lookup_7 [u16F54.blw u16F55.blw u16F56.blw u16F57.blw u16F58.blw u16F59.blw u16F5A.blw u16F5B.blw u16F5C.blw u16F5D.blw u16F5E.blw u16F5F.blw u16F60.blw u16F61.blw u16F62.blw u16F63.blw u16F64.blw u16F65.blw u16F66.blw u16F67.blw u16F68.blw u16F69.blw u16F6A.blw u16F6B.blw u16F6C.blw u16F6D.blw u16F6E.blw u16F6F.blw u16F70.blw u16F71.blw u16F72.blw u16F73.blw u16F74.blw u16F75.blw u16F76.blw u16F77.blw u16F78.blw u16F79.blw u16F7A.blw u16F7B.blw u16F7C.blw u16F7D.blw u16F7E.blw u16F7F.blw u16F80.blw u16F81.blw u16F82.blw u16F83.blw u16F84.blw u16F85.blw u16F86.blw u16F87.blw]' ","[u16F54.abv u16F55.abv u16F56.abv u16F57.abv u16F58.abv u16F59.abv u16F5A.abv u16F5B.abv u16F5C.abv u16F5D.abv u16F5E.abv u16F5F.abv u16F60.abv u16F61.abv u16F62.abv u16F63.abv u16F64.abv u16F65.abv u16F66.abv u16F67.abv u16F68.abv u16F69.abv u16F6A.abv u16F6B.abv u16F6C.abv u16F6D.abv u16F6E.abv u16F6F.abv u16F70.abv u16F71.abv u16F72.abv u16F73.abv u16F74.abv u16F75.abv u16F76.abv u16F77.abv u16F78.abv u16F79.abv u16F7A.abv u16F7B.abv u16F7C.abv u16F7D.abv u16F7E.abv u16F7F.abv u16F80.abv u16F81.abv u16F82.abv u16F83.abv u16F84.abv u16F85.abv u16F86.abv u16F87.abv]' lookup lookup_7 [u16F54.abv u16F55.abv u16F56.abv u16F57.abv u16F58.abv u16F59.abv u16F5A.abv u16F5B.abv u16F5C.abv u16F5D.abv u16F5E.abv u16F5F.abv u16F60.abv u16F61.abv u16F62.abv u16F63.abv u16F64.abv u16F65.abv u16F66.abv u16F67.abv u16F68.abv u16F69.abv u16F6A.abv u16F6B.abv u16F6C.abv u16F6D.abv u16F6E.abv u16F6F.abv u16F70.abv u16F71.abv u16F72.abv u16F73.abv u16F74.abv u16F75.abv u16F76.abv u16F77.abv u16F78.abv u16F79.abv u16F7A.abv u16F7B.abv u16F7C.abv u16F7D.abv u16F7E.abv u16F7F.abv u16F80.abv u16F81.abv u16F82.abv u16F83.abv u16F84.abv u16F85.abv u16F86.abv u16F87.abv]' "]}}},"7":{"0":{"u16F54.blw":[{"x_placement":-150},null],"u16F55.blw":[{"x_placement":-150},null],"u16F56.blw":[{"x_placement":-150},null],"u16F57.blw":[{"x_placement":-150},null],"u16F58.blw":[{"x_placement":-150},null],"u16F59.blw":[{"x_placement":-150},null],"u16F5A.blw":[{"x_placement":-150},null],"u16F5B.blw":[{"x_placement":-150},null],"u16F5C.blw":[{"x_placement":-150},null],"u16F5D.blw":[{"x_placement":-150},null],"u16F5E.blw":[{"x_placement":-150},null],"u16F5F.blw":[{"x_placement":-150},null],"u16F60.blw":[{"x_placement":-150},null],"u16F61.blw":[{"x_placement":-150},null],"u16F62.blw":[{"x_placement":-150},null],"u16F63.blw":[{"x_placement":-150},null],"u16F64.blw":[{"x_placement":-150},null],"u16F65.blw":[{"x_placement":-150},null],"u16F66.blw":[{"x_placement":-150},null],"u16F67.blw":[{"x_placement":-150},null],"u16F68.blw":[{"x_placement":-150},null],"u16F69.blw":[{"x_placement":-150},null],"u16F6A.blw":[{"x_placement":-150},null],"u16F6B.blw":[{"x_placement":-150},null],"u16F6C.blw":[{"x_placement":-150},null],"u16F6D.blw":[{"x_placement":-150},null],"u16F6E.blw":[{"x_placement":-150},null],"u16F6F.blw":[{"x_placement":-150},null],"u16F70.blw":[{"x_placement":-150},null],"u16F71.blw":[{"x_placement":-150},null],"u16F72.blw":[{"x_placement":-150},null],"u16F73.blw":[{"x_placement":-150},null],"u16F74.blw":[{"x_placement":-150},null],"u16F75.blw":[{"x_placement":-150},null],"u16F76.blw":[{"x_placement":-150},null],"u16F77.blw":[{"x_placement":-150},null],"u16F78.blw":[{"x_placement":-150},null],"u16F79.blw":[{"x_placement":-150},null],"u16F7A.blw":[{"x_placement":-150},null],"u16F7B.blw":[{"x_placement":-150},null],"u16F7C.blw":[{"x_placement":-150},null],"u16F7D.blw":[{"x_placement":-150},null],"u16F7E.blw":[{"x_placement":-150},null],"u16F7F.blw":[{"x_placement":-150},null],"u16F80.blw":[{"x_placement":-150},null],"u16F81.blw":[{"x_placement":-150},null],"u16F82.blw":[{"x_placement":-150},null],"u16F83.blw":[{"x_placement":-150},null],"u16F84.blw":[{"x_placement":-150},null],"u16F85.blw":[{"x_placement":-150},null],"u16F86.blw":[{"x_placement":-150},null],"u16F87.blw":[{"x_placement":-150},null],"u16F54.abv":[null,{"x_placement":-150}],"u16F55.abv":[null,{"x_placement":-150}],"u16F56.abv":[null,{"x_placement":-150}],"u16F57.abv":[null,{"x_placement":-150}],"u16F58.abv":[null,{"x_placement":-150}],"u16F59.abv":[null,{"x_placement":-150}],"u16F5A.abv":[null,{"x_placement":-150}],"u16F5B.abv":[null,{"x_placement":-150}],"u16F5C.abv":[null,{"x_placement":-150}],"u16F5D.abv":[null,{"x_placement":-150}],"u16F5E.abv":[null,{"x_placement":-150}],"u16F5F.abv":[null,{"x_placement":-150}],"u16F60.abv":[null,{"x_placement":-150}],"u16F61.abv":[null,{"x_placement":-150}],"u16F62.abv":[null,{"x_placement":-150}],"u16F63.abv":[null,{"x_placement":-150}],"u16F64.abv":[null,{"x_placement":-150}],"u16F65.abv":[null,{"x_placement":-150}],"u16F66.abv":[null,{"x_placement":-150}],"u16F67.abv":[null,{"x_placement":-150}],"u16F68.abv":[null,{"x_placement":-150}],"u16F69.abv":[null,{"x_placement":-150}],"u16F6A.abv":[null,{"x_placement":-150}],"u16F6B.abv":[null,{"x_placement":-150}],"u16F6C.abv":[null,{"x_placement":-150}],"u16F6D.abv":[null,{"x_placement":-150}],"u16F6E.abv":[null,{"x_placement":-150}],"u16F6F.abv":[null,{"x_placement":-150}],"u16F70.abv":[null,{"x_placement":-150}],"u16F71.abv":[null,{"x_placement":-150}],"u16F72.abv":[null,{"x_placement":-150}],"u16F73.abv":[null,{"x_placement":-150}],"u16F74.abv":[null,{"x_placement":-150}],"u16F75.abv":[null,{"x_placement":-150}],"u16F76.abv":[null,{"x_placement":-150}],"u16F77.abv":[null,{"x_placement":-150}],"u16F78.abv":[null,{"x_placement":-150}],"u16F79.abv":[null,{"x_placement":-150}],"u16F7A.abv":[null,{"x_placement":-150}],"u16F7B.abv":[null,{"x_placement":-150}],"u16F7C.abv":[null,{"x_placement":-150}],"u16F7D.abv":[null,{"x_placement":-150}],"u16F7E.abv":[null,{"x_placement":-150}],"u16F7F.abv":[null,{"x_placement":-150}],"u16F80.abv":[null,{"x_placement":-150}],"u16F81.abv":[null,{"x_placement":-150}],"u16F82.abv":[null,{"x_placement":-150}],"u16F83.abv":[null,{"x_placement":-150}],"u16F84.abv":[null,{"x_placement":-150}],"u16F85.abv":[null,{"x_placement":-150}],"u16F86.abv":[null,{"x_placement":-150}],"u16F87.abv":[null,{"x_placement":-150}]}},"8":[null,[{"type":"chained_sequence_context","rules":["[u16F54.blw u16F55.blw u16F56.blw u16F57.blw u16F58.blw u16F59.blw u16F5A.blw u16F5B.blw u16F5C.blw u16F5D.blw u16F5E.blw u16F5F.blw u16F60.blw u16F61.blw u16F62.blw u16F63.blw u16F64.blw u16F65.blw u16F66.blw u16F67.blw u16F68.blw u16F69.blw u16F6A.blw u16F6B.blw u16F6C.blw u16F6D.blw u16F6E.blw u16F6F.blw u16F70.blw u16F71.blw u16F72.blw u16F73.blw u16F74.blw u16F75.blw u16F76.blw u16F77.blw u16F78.blw u16F79.blw u16F7A.blw u16F7B.blw u16F7C.blw u16F7D.blw u16F7E.blw u16F7F.blw u16F80.blw u16F81.blw u16F82.blw u16F83.blw u16F84.blw u16F85.blw u16F86.blw u16F87.blw]' lookup lookup_9 [u16F54.blw u16F55.blw u16F56.blw u16F57.blw u16F58.blw u16F59.blw u16F5A.blw u16F5B.blw u16F5C.blw u16F5D.blw u16F5E.blw u16F5F.blw u16F60.blw u16F61.blw u16F62.blw u16F63.blw u16F64.blw u16F65.blw u16F66.blw u16F67.blw u16F68.blw u16F69.blw u16F6A.blw u16F6B.blw u16F6C.blw u16F6D.blw u16F6E.blw u16F6F.blw u16F70.blw u16F71.blw u16F72.blw u16F73.blw u16F74.blw u16F75.blw u16F76.blw u16F77.blw u16F78.blw u16F79.blw u16F7A.blw u16F7B.blw u16F7C.blw u16F7D.blw u16F7E.blw u16F7F.blw u16F80.blw u16F81.blw u16F82.blw u16F83.blw u16F84.blw u16F85.blw u16F86.blw u16F87.blw]' "]}]],"9":[null,[{"type":"single","u16F54.blw":{"x_placement":-150},"u16F55.blw":{"x_placement":-150},"u16F56.blw":{"x_placement":-150},"u16F57.blw":{"x_placement":-150},"u16F58.blw":{"x_placement":-150},"u16F59.blw":{"x_placement":-150},"u16F5A.blw":{"x_placement":-150},"u16F5B.blw":{"x_placement":-150},"u16F5C.blw":{"x_placement":-150},"u16F5D.blw":{"x_placement":-150},"u16F5E.blw":{"x_placement":-150},"u16F5F.blw":{"x_placement":-150},"u16F60.blw":{"x_placement":-150},"u16F61.blw":{"x_placement":-150},"u16F62.blw":{"x_placement":-150},"u16F63.blw":{"x_placement":-150},"u16F64.blw":{"x_placement":-150},"u16F65.blw":{"x_placement":-150},"u16F66.blw":{"x_placement":-150},"u16F67.blw":{"x_placement":-150},"u16F68.blw":{"x_placement":-150},"u16F69.blw":{"x_placement":-150},"u16F6A.blw":{"x_placement":-150},"u16F6B.blw":{"x_placement":-150},"u16F6C.blw":{"x_placement":-150},"u16F6D.blw":{"x_placement":-150},"u16F6E.blw":{"x_placement":-150},"u16F6F.blw":{"x_placement":-150},"u16F70.blw":{"x_placement":-150},"u16F71.blw":{"x_placement":-150},"u16F72.blw":{"x_placement":-150},"u16F73.blw":{"x_placement":-150},"u16F74.blw":{"x_placement":-150},"u16F75.blw":{"x_placement":-150},"u16F76.blw":{"x_placement":-150},"u16F77.blw":{"x_placement":-150},"u16F78.blw":{"x_placement":-150},"u16F79.blw":{"x_placement":-150},"u16F7A.blw":{"x_placement":-150},"u16F7B.blw":{"x_placement":-150},"u16F7C.blw":{"x_placement":-150},"u16F7D.blw":{"x_placement":-150},"u16F7E.blw":{"x_placement":-150},"u16F7F.blw":{"x_placement":-150},"u16F80.blw":{"x_placement":-150},"u16F81.blw":{"x_placement":-150},"u16F82.blw":{"x_placement":-150},"u16F83.blw":{"x_placement":-150},"u16F84.blw":{"x_placement":-150},"u16F85.blw":{"x_placement":-150},"u16F86.blw":{"x_placement":-150},"u16F87.blw":{"x_placement":-150}}]]}},"GSUB":{"script_list":{"DFLT/dflt":[null,{"lookups":[0]}],"plrd/LPO ":[null,{"lookups":[0,1]}]},"feature_list":{"locl":[null,[18]]},"lookup_list":{"12":{"0":{"rules":{"1":["[u16F54 u16F55 u16F56 u16F57 u16F58 u16F59 u16F5A u16F5B u16F5C u16F5D u16F5E u16F5F u16F60 u16F61 u16F62 u16F63 u16F64 u16F65 u16F66 u16F67 u16F68 u16F69 u16F6A u16F6B u16F6C u16F6D u16F6E u16F6F u16F70 u16F71 u16F72 u16F73 u16F74 u16F75 u16F76 u16F77 u16F78 u16F79 u16F7A u16F7B u16F7C u16F7D u16F7E u16F7F u16F80 u16F81 u16F82 u16F83 u16F84 u16F85 u16F86 u16F87]' lookup lookup_14 [u16F54.rht u16F55.rht u16F56.rht u16F57.rht u16F58.rht u16F59.rht u16F5A.rht u16F5B.rht u16F5C.rht u16F5D.rht u16F5E.rht u16F5F.rht u16F60.rht u16F61.rht u16F62.rht u16F63.rht u16F64.rht u16F65.rht u16F66.rht u16F67.rht u16F68.rht u16F69.rht u16F6A.rht u16F6B.rht u16F6C.rht u16F6D.rht u16F6E.rht u16F6F.rht u16F70.rht u16F71.rht u16F72.rht u16F73.rht u16F74.rht u16F75.rht u16F76.rht u16F77.rht u16F78.rht u16F79.rht u16F7A.rht u16F7B.rht u16F7C.rht u16F7D.rht u16F7E.rht u16F7F.rht u16F80.rht u16F81.rht u16F82.rht u16F83.rht u16F84.rht u16F85.rht u16F86.rht u16F87.rht]",null],"2":["[u16F54 u16F55 u16F56 u16F57 u16F58 u16F59 u16F5A u16F5B u16F5C u16F5D u16F5E u16F5F u16F60 u16F61 u16F62 u16F63 u16F64 u16F65 u16F66 u16F67 u16F68 u16F69 u16F6A u16F6B u16F6C u16F6D u16F6E u16F6F u16F70 u16F71 u16F72 u16F73 u16F74 u16F75 u16F76 u16F77 u16F78 u16F79 u16F7A u16F7B u16F7C u16F7D u16F7E u16F7F u16F80 u16F81 u16F82 u16F83 u16F84 u16F85 u16F86 u16F87]' lookup lookup_15 [u16F54.abv u16F55.abv u16F56.abv u16F57.abv u16F58.abv u16F59.abv u16F5A.abv u16F5B.abv u16F5C.abv u16F5D.abv u16F5E.abv u16F5F.abv u16F60.abv u16F61.abv u16F62.abv u16F63.abv u16F64.abv u16F65.abv u16F66.abv u16F67.abv u16F68.abv u16F69.abv u16F6A.abv u16F6B.abv u16F6C.abv u16F6D.abv u16F6E.abv u16F6F.abv u16F70.abv u16F71.abv u16F72.abv u16F73.abv u16F74.abv u16F75.abv u16F76.abv u16F77.abv u16F78.abv u16F79.abv u16F7A.abv u16F7B.abv u16F7C.abv u16F7D.abv u16F7E.abv u16F7F.abv u16F80.abv u16F81.abv u16F82.abv u16F83.abv u16F84.abv u16F85.abv u16F86.abv u16F87.abv]",null],"3":["[u16F54 u16F55 u16F56 u16F57 u16F58 u16F59 u16F5A u16F5B u16F5C u16F5D u16F5E u16F5F u16F60 u16F61 u16F62 u16F63 u16F64 u16F65 u16F66 u16F67 u16F68 u16F69 u16F6A u16F6B u16F6C u16F6D u16F6E u16F6F u16F70 u16F71 u16F72 u16F73 u16F74 u16F75 u16F76 u16F77 u16F78 u16F79 u16F7A u16F7B u16F7C u16F7D u16F7E u16F7F u16F80 u16F81 u16F82 u16F83 u16F84 u16F85 u16F86 u16F87]' lookup lookup_16 [u16F54.blw u16F55.blw u16F56.blw u16F57.blw u16F58.blw u16F59.blw u16F5A.blw u16F5B.blw u16F5C.blw u16F5D.blw u16F5E.blw u16F5F.blw u16F60.blw u16F61.blw u16F62.blw u16F63.blw u16F64.blw u16F65.blw u16F66.blw u16F67.blw u16F68.blw u16F69.blw u16F6A.blw u16F6B.blw u16F6C.blw u16F6D.blw u16F6E.blw u16F6F.blw u16F70.blw u16F71.blw u16F72.blw u16F73.blw u16F74.blw u16F75.blw u16F76.blw u16F77.blw u16F78.blw u16F79.blw u16F7A.blw u16F7B.blw u16F7C.blw u16F7D.blw u16F7E.blw u16F7F.blw u16F80.blw u16F81.blw u16F82.blw u16F83.blw u16F84.blw u16F85.blw u16F86.blw u16F87.blw]",null]}},"1":[null,{"type":"chained_sequence_context","rules":["[u16F54 u16F55 u16F56 u16F57 u16F58 u16F59 u16F5A u16F5B u16F5C u16F5D u16F5E u16F5F u16F60 u16F61 u16F62 u16F63 u16F64 u16F65 u16F66 u16F67 u16F68 u16F69 u16F6A u16F6B u16F6C u16F6D u16F6E u16F6F u16F70 u16F71 u16F72 u16F73 u16F74 u16F75 u16F76 u16F77 u16F78 u16F79 u16F7A u16F7B u16F7C u16F7D u16F7E u16F7F u16F80 u16F81 u16F82 u16F83 u16F84 u16F85 u16F86 u16F87]' lookup lookup_14 [u16F54.rht u16F55.rht u16F56.rht u16F57.rht u16F58.rht u16F59.rht u16F5A.rht u16F5B.rht u16F5C.rht u16F5D.rht u16F5E.rht u16F5F.rht u16F60.rht u16F61.rht u16F62.rht u16F63.rht u16F64.rht u16F65.rht u16F66.rht u16F67.rht u16F68.rht u16F69.rht u16F6A.rht u16F6B.rht u16F6C.rht u16F6D.rht u16F6E.rht u16F6F.rht u16F70.rht u16F71.rht u16F72.rht u16F73.rht u16F74.rht u16F75.rht u16F76.rht u16F77.rht u16F78.rht u16F79.rht u16F7A.rht u16F7B.rht u16F7C.rht u16F7D.rht u16F7E.rht u16F7F.rht u16F80.rht u16F81.rht u16F82.rht u16F83.rht u16F84.rht u16F85.rht u16F86.rht u16F87.rht]"]}],"2":[null,{"type":"chained_sequence_context","rules":["[u16F54 u16F55 u16F56 u16F57 u16F58 u16F59 u16F5A u16F5B u16F5C u16F5D u16F5E u16F5F u16F60 u16F61 u16F62 u16F63 u16F64 u16F65 u16F66 u16F67 u16F68 u16F69 u16F6A u16F6B u16F6C u16F6D u16F6E u16F6F u16F70 u16F71 u16F72 u16F73 u16F74 u16F75 u16F76 u16F77 u16F78 u16F79 u16F7A u16F7B u16F7C u16F7D u16F7E u16F7F u16F80 u16F81 u16F82 u16F83 u16F84 u16F85 u16F86 u16F87]' lookup lookup_15 [u16F54.abv u16F55.abv u16F56.abv u16F57.abv u16F58.abv u16F59.abv u16F5A.abv u16F5B.abv u16F5C.abv u16F5D.abv u16F5E.abv u16F5F.abv u16F60.abv u16F61.abv u16F62.abv u16F63.abv u16F64.abv u16F65.abv u16F66.abv u16F67.abv u16F68.abv u16F69.abv u16F6A.abv u16F6B.abv u16F6C.abv u16F6D.abv u16F6E.abv u16F6F.abv u16F70.abv u16F71.abv u16F72.abv u16F73.abv u16F74.abv u16F75.abv u16F76.abv u16F77.abv u16F78.abv u16F79.abv u16F7A.abv u16F7B.abv u16F7C.abv u16F7D.abv u16F7E.abv u16F7F.abv u16F80.abv u16F81.abv u16F82.abv u16F83.abv u16F84.abv u16F85.abv u16F86.abv u16F87.abv]"]}],"3":[null,{"type":"chained_sequence_context","rules":["[u16F54 u16F55 u16F56 u16F57 u16F58 u16F59 u16F5A u16F5B u16F5C u16F5D u16F5E u16F5F u16F60 u16F61 u16F62 u16F63 u16F64 u16F65 u16F66 u16F67 u16F68 u16F69 u16F6A u16F6B u16F6C u16F6D u16F6E u16F6F u16F70 u16F71 u16F72 u16F73 u16F74 u16F75 u16F76 u16F77 u16F78 u16F79 u16F7A u16F7B u16F7C u16F7D u16F7E u16F7F u16F80 u16F81 u16F82 u16F83 u16F84 u16F85 u16F86 u16F87]' lookup lookup_16 [u16F54.blw u16F55.blw u16F56.blw u16F57.blw u16F58.blw u16F59.blw u16F5A.blw u16F5B.blw u16F5C.blw u16F5D.blw u16F5E.blw u16F5F.blw u16F60.blw u16F61.blw u16F62.blw u16F63.blw u16F64.blw u16F65.blw u16F66.blw u16F67.blw u16F68.blw u16F69.blw u16F6A.blw u16F6B.blw u16F6C.blw u16F6D.blw u16F6E.blw u16F6F.blw u16F70.blw u16F71.blw u16F72.blw u16F73.blw u16F74.blw u16F75.blw u16F76.blw u16F77.blw u16F78.blw u16F79.blw u16F7A.blw u16F7B.blw u16F7C.blw u16F7D.blw u16F7E.blw u16F7F.blw u16F80.blw u16F81.blw u16F82.blw u16F83.blw u16F84.blw u16F85.blw u16F86.blw u16F87.blw]"]}]},"17":{"0":{"rules":{"0":["u16F53' lookup lookup_0 [u16F54.abv u16F55.abv u16F56.abv u16F57.abv u16F58.abv u16F59.abv u16F5A.abv u16F5B.abv u16F5C.abv u16F5D.abv u16F5E.abv u16F5F.abv u16F60.abv u16F61.abv u16F62.abv u16F63.abv u16F64.abv u16F65.abv u16F66.abv u16F67.abv u16F68.abv u16F69.abv u16F6A.abv u16F6B.abv u16F6C.abv u16F6D.abv u16F6E.abv u16F6F.abv u16F70.abv u16F71.abv u16F72.abv u16F73.abv u16F74.abv u16F75.abv u16F76.abv u16F77.abv u16F78.abv u16F79.abv u16F7A.abv u16F7B.abv u16F7C.abv u16F7D.abv u16F7E.abv u16F54.blw u16F55.blw u16F56.blw u16F57.blw u16F58.blw u16F59.blw u16F5A.blw u16F5B.blw u16F5C.blw u16F5D.blw u16F5E.blw u16F5F.blw u16F60.blw u16F61.blw u16F62.blw u16F63.blw u16F64.blw u16F65.blw u16F66.blw u16F67.blw u16F68.blw u16F69.blw u16F6A.blw u16F6B.blw u16F6C.blw u16F6D.blw u16F6E.blw u16F6F.blw u16F70.blw u16F71.blw u16F72.blw u16F73.blw u16F74.blw u16F75.blw u16F76.blw u16F77.blw u16F78.blw u16F79.blw u16F7A.blw u16F7B.blw u16F7C.blw u16F7D.blw u16F7E.blw u16F7F.abv u16F80.abv u16F81.abv u16F82.abv u16F83.abv u16F84.abv u16F85.abv u16F86.abv u16F87.abv u16F7F.blw u16F80.blw u16F81.blw u16F82.blw u16F83.blw u16F84.blw u16F85.blw u16F86.blw u16F87.blw]'  [u16F54.abv u16F55.abv u16F56.abv u16F57.abv u16F58.abv u16F59.abv u16F5A.abv u16F5B.abv u16F5C.abv u16F5D.abv u16F5E.abv u16F5F.abv u16F60.abv u16F61.abv u16F62.abv u16F63.abv u16F64.abv u16F65.abv u16F66.abv u16F67.abv u16F68.abv u16F69.abv u16F6A.abv u16F6B.abv u16F6C.abv u16F6D.abv u16F6E.abv u16F6F.abv u16F70.abv u16F71.abv u16F72.abv u16F73.abv u16F74.abv u16F75.abv u16F76.abv u16F77.abv u16F78.abv u16F79.abv u16F7A.abv u16F7B.abv u16F7C.abv u16F7D.abv u16F7E.abv u16F54.blw u16F55.blw u16F56.blw u16F57.blw u16F58.blw u16F59.blw u16F5A.blw u16F5B.blw u16F5C.blw u16F5D.blw u16F5E.blw u16F5F.blw u16F60.blw u16F61.blw u16F62.blw u16F63.blw u16F64.blw u16F65.blw u16F66.blw u16F67.blw u16F68.blw u16F69.blw u16F6A.blw u16F6B.blw u16F6C.blw u16F6D.blw u16F6E.blw u16F6F.blw u16F70.blw u16F71.blw u16F72.blw u16F73.blw u16F74.blw u16F75.blw u16F76.blw u16F77.blw u16F78.blw u16F79.blw u16F7A.blw u16F7B.blw u16F7C.blw u16F7D.blw u16F7E.blw u16F7F.abv u16F80.abv u16F81.abv u16F82.abv u16F83.abv u16F84.abv u16F85.abv u16F86.abv u16F87.abv u16F7F.blw u16F80.blw u16F81.blw u16F82.blw u16F83.blw u16F84.blw u16F85.blw u16F86.blw u16F87.blw]' lookup lookup_2","u16F51' lookup lookup_0 [u16F54.abv u16F55.abv u16F56.abv u16F57.abv u16F58.abv u16F59.abv u16F5A.abv u16F5B.abv u16F5C.abv u16F5D.abv u16F5E.abv u16F5F.abv u16F60.abv u16F61.abv u16F62.abv u16F63.abv u16F64.abv u16F65.abv u16F66.abv u16F67.abv u16F68.abv u16F69.abv u16F6A.abv u16F6B.abv u16F6C.abv u16F6D.abv u16F6E.abv u16F6F.abv u16F70.abv u16F71.abv u16F72.abv u16F73.abv u16F74.abv u16F75.abv u16F76.abv u16F77.abv u16F78.abv u16F79.abv u16F7A.abv u16F7B.abv u16F7C.abv u16F7D.abv u16F7E.abv u16F54.blw u16F55.blw u16F56.blw u16F57.blw u16F58.blw u16F59.blw u16F5A.blw u16F5B.blw u16F5C.blw u16F5D.blw u16F5E.blw u16F5F.blw u16F60.blw u16F61.blw u16F62.blw u16F63.blw u16F64.blw u16F65.blw u16F66.blw u16F67.blw u16F68.blw u16F69.blw u16F6A.blw u16F6B.blw u16F6C.blw u16F6D.blw u16F6E.blw u16F6F.blw u16F70.blw u16F71.blw u16F72.blw u16F73.blw u16F74.blw u16F75.blw u16F76.blw u16F77.blw u16F78.blw u16F79.blw u16F7A.blw u16F7B.blw u16F7C.blw u16F7D.blw u16F7E.blw u16F7F.abv u16F80.abv u16F81.abv u16F82.abv u16F83.abv u16F84.abv u16F85.abv u16F86.abv u16F87.abv u16F7F.blw u16F80.blw u16F81.blw u16F82.blw u16F83.blw u16F84.blw u16F85.blw u16F86.blw u16F87.blw]'  [u16F54.abv u16F55.abv u16F56.abv u16F57.abv u16F58.abv u16F59.abv u16F5A.abv u16F5B.abv u16F5C.abv u16F5D.abv u16F5E.abv u16F5F.abv u16F60.abv u16F61.abv u16F62.abv u16F63.abv u16F64.abv u16F65.abv u16F66.abv u16F67.abv u16F68.abv u16F69.abv u16F6A.abv u16F6B.abv u16F6C.abv u16F6D.abv u16F6E.abv u16F6F.abv u16F70.abv u16F71.abv u16F72.abv u16F73.abv u16F74.abv u16F75.abv u16F76.abv u16F77.abv u16F78.abv u16F79.abv u16F7A.abv u16F7B.abv u16F7C.abv u16F7D.abv u16F7E.abv u16F54.blw u16F55.blw u16F56.blw u16F57.blw u16F58.blw u16F59.blw u16F5A.blw u16F5B.blw u16F5C.blw u16F5D.blw u16F5E.blw u16F5F.blw u16F60.blw u16F61.blw u16F62.blw u16F63.blw u16F64.blw u16F65.blw u16F66.blw u16F67.blw u16F68.blw u16F69.blw u16F6A.blw u16F6B.blw u16F6C.blw u16F6D.blw u16F6E.blw u16F6F.blw u16F70.blw u16F71.blw u16F72.blw u16F73.blw u16F74.blw u16F75.blw u16F76.blw u16F77.blw u16F78.blw u16F79.blw u16F7A.blw u16F7B.blw u16F7C.blw u16F7D.blw u16F7E.blw u16F7F.abv u16F80.abv u16F81.abv u16F82.abv u16F83.abv u16F84.abv u16F85.abv u16F86.abv u16F87.abv u16F7F.blw u16F80.blw u16F81.blw u16F82.blw u16F83.blw u16F84.blw u16F85.blw u16F86.blw u16F87.blw]' lookup lookup_4"],"1":["u16F53' lookup lookup_0 [u16F54.abv u16F55.abv u16F56.abv u16F57.abv u16F58.abv u16F59.abv u16F5A.abv u16F5B.abv u16F5C.abv u16F5D.abv u16F5E.abv u16F5F.abv u16F60.abv u16F61.abv u16F62.abv u16F63.abv u16F64.abv u16F65.abv u16F66.abv u16F67.abv u16F68.abv u16F69.abv u16F6A.abv u16F6B.abv u16F6C.abv u16F6D.abv u16F6E.abv u16F6F.abv u16F70.abv u16F71.abv u16F72.abv u16F73.abv u16F74.abv u16F75.abv u16F76.abv u16F77.abv u16F78.abv u16F79.abv u16F7A.abv u16F7B.abv u16F7C.abv u16F7D.abv u16F7E.abv u16F54.blw u16F55.blw u16F56.blw u16F57.blw u16F58.blw u16F59.blw u16F5A.blw u16F5B.blw u16F5C.blw u16F5D.blw u16F5E.blw u16F5F.blw u16F60.blw u16F61.blw u16F62.blw u16F63.blw u16F64.blw u16F65.blw u16F66.blw u16F67.blw u16F68.blw u16F69.blw u16F6A.blw u16F6B.blw u16F6C.blw u16F6D.blw u16F6E.blw u16F6F.blw u16F70.blw u16F71.blw u16F72.blw u16F73.blw u16F74.blw u16F75.blw u16F76.blw u16F77.blw u16F78.blw u16F79.blw u16F7A.blw u16F7B.blw u16F7C.blw u16F7D.blw u16F7E.blw u16F7F.abv u16F80.abv u16F81.abv u16F82.abv u16F83.abv u16F84.abv u16F85.abv u16F86.abv u16F87.abv u16F7F.blw u16F80.blw u16F81.blw u16F82.blw u16F83.blw u16F84.blw u16F85.blw u16F86.blw u16F87.blw]' lookup lookup_2",null],"2":["u16F52' lookup lookup_0 [u16F54.abv u16F55.abv u16F56.abv u16F57.abv u16F58.abv u16F59.abv u16F5A.abv u16F5B.abv u16F5C.abv u16F5D.abv u16F5E.abv u16F5F.abv u16F60.abv u16F61.abv u16F62.abv u16F63.abv u16F64.abv u16F65.abv u16F66.abv u16F67.abv u16F68.abv u16F69.abv u16F6A.abv u16F6B.abv u16F6C.abv u16F6D.abv u16F6E.abv u16F6F.abv u16F70.abv u16F71.abv u16F72.abv u16F73.abv u16F74.abv u16F75.abv u16F76.abv u16F77.abv u16F78.abv u16F79.abv u16F7A.abv u16F7B.abv u16F7C.abv u16F7D.abv u16F7E.abv u16F54.blw u16F55.blw u16F56.blw u16F57.blw u16F58.blw u16F59.blw u16F5A.blw u16F5B.blw u16F5C.blw u16F5D.blw u16F5E.blw u16F5F.blw u16F60.blw u16F61.blw u16F62.blw u16F63.blw u16F64.blw u16F65.blw u16F66.blw u16F67.blw u16F68.blw u16F69.blw u16F6A.blw u16F6B.blw u16F6C.blw u16F6D.blw u16F6E.blw u16F6F.blw u16F70.blw u16F71.blw u16F72.blw u16F73.blw u16F74.blw u16F75.blw u16F76.blw u16F77.blw u16F78.blw u16F79.blw u16F7A.blw u16F7B.blw u16F7C.blw u16F7D.blw u16F7E.blw u16F7F.abv u16F80.abv u16F81.abv u16F82.abv u16F83.abv u16F84.abv u16F85.abv u16F86.abv u16F87.abv u16F7F.blw u16F80.blw u16F81.blw u16F82.blw u16F83.blw u16F84.blw u16F85.blw u16F86.blw u16F87.blw]'  [u16F54.abv u16F55.abv u16F56.abv u16F57.abv u16F58.abv u16F59.abv u16F5A.abv u16F5B.abv u16F5C.abv u16F5D.abv u16F5E.abv u16F5F.abv u16F60.abv u16F61.abv u16F62.abv u16F63.abv u16F64.abv u16F65.abv u16F66.abv u16F67.abv u16F68.abv u16F69.abv u16F6A.abv u16F6B.abv u16F6C.abv u16F6D.abv u16F6E.abv u16F6F.abv u16F70.abv u16F71.abv u16F72.abv u16F73.abv u16F74.abv u16F75.abv u16F76.abv u16F77.abv u16F78.abv u16F79.abv u16F7A.abv u16F7B.abv u16F7C.abv u16F7D.abv u16F7E.abv u16F54.blw u16F55.blw u16F56.blw u16F57.blw u16F58.blw u16F59.blw u16F5A.blw u16F5B.blw u16F5C.blw u16F5D.blw u16F5E.blw u16F5F.blw u16F60.blw u16F61.blw u16F62.blw u16F63.blw u16F64.blw u16F65.blw u16F66.blw u16F67.blw u16F68.blw u16F69.blw u16F6A.blw u16F6B.blw u16F6C.blw u16F6D.blw u16F6E.blw u16F6F.blw u16F70.blw u16F71.blw u16F72.blw u16F73.blw u16F74.blw u16F75.blw u16F76.blw u16F77.blw u16F78.blw u16F79.blw u16F7A.blw u16F7B.blw u16F7C.blw u16F7D.blw u16F7E.blw u16F7F.abv u16F80.abv u16F81.abv u16F82.abv u16F83.abv u16F84.abv u16F85.abv u16F86.abv u16F87.abv u16F7F.blw u16F80.blw u16F81.blw u16F82.blw u16F83.blw u16F84.blw u16F85.blw u16F86.blw u16F87.blw]' lookup lookup_3",null],"3":["u16F52' lookup lookup_0 [u16F54.abv u16F55.abv u16F56.abv u16F57.abv u16F58.abv u16F59.abv u16F5A.abv u16F5B.abv u16F5C.abv u16F5D.abv u16F5E.abv u16F5F.abv u16F60.abv u16F61.abv u16F62.abv u16F63.abv u16F64.abv u16F65.abv u16F66.abv u16F67.abv u16F68.abv u16F69.abv u16F6A.abv u16F6B.abv u16F6C.abv u16F6D.abv u16F6E.abv u16F6F.abv u16F70.abv u16F71.abv u16F72.abv u16F73.abv u16F74.abv u16F75.abv u16F76.abv u16F77.abv u16F78.abv u16F79.abv u16F7A.abv u16F7B.abv u16F7C.abv u16F7D.abv u16F7E.abv u16F54.blw u16F55.blw u16F56.blw u16F57.blw u16F58.blw u16F59.blw u16F5A.blw u16F5B.blw u16F5C.blw u16F5D.blw u16F5E.blw u16F5F.blw u16F60.blw u16F61.blw u16F62.blw u16F63.blw u16F64.blw u16F65.blw u16F66.blw u16F67.blw u16F68.blw u16F69.blw u16F6A.blw u16F6B.blw u16F6C.blw u16F6D.blw u16F6E.blw u16F6F.blw u16F70.blw u16F71.blw u16F72.blw u16F73.blw u16F74.blw u16F75.blw u16F76.blw u16F77.blw u16F78.blw u16F79.blw u16F7A.blw u16F7B.blw u16F7C.blw u16F7D.blw u16F7E.blw u16F7F.abv u16F80.abv u16F81.abv u16F82.abv u16F83.abv u16F84.abv u16F85.abv u16F86.abv u16F87.abv u16F7F.blw u16F80.blw u16F81.blw u16F82.blw u16F83.blw u16F84.blw u16F85.blw u16F86.blw u16F87.blw]' lookup lookup_3",null],"4":["u16F51' lookup lookup_0 [u16F54.abv u16F55.abv u16F56.abv u16F57.abv u16F58.abv u16F59.abv u16F5A.abv u16F5B.abv u16F5C.abv u16F5D.abv u16F5E.abv u16F5F.abv u16F60.abv u16F61.abv u16F62.abv u16F63.abv u16F64.abv u16F65.abv u16F66.abv u16F67.abv u16F68.abv u16F69.abv u16F6A.abv u16F6B.abv u16F6C.abv u16F6D.abv u16F6E.abv u16F6F.abv u16F70.abv u16F71.abv u16F72.abv u16F73.abv u16F74.abv u16F75.abv u16F76.abv u16F77.abv u16F78.abv u16F79.abv u16F7A.abv u16F7B.abv u16F7C.abv u16F7D.abv u16F7E.abv u16F54.blw u16F55.blw u16F56.blw u16F57.blw u16F58.blw u16F59.blw u16F5A.blw u16F5B.blw u16F5C.blw u16F5D.blw u16F5E.blw u16F5F.blw u16F60.blw u16F61.blw u16F62.blw u16F63.blw u16F64.blw u16F65.blw u16F66.blw u16F67.blw u16F68.blw u16F69.blw u16F6A.blw u16F6B.blw u16F6C.blw u16F6D.blw u16F6E.blw u16F6F.blw u16F70.blw u16F71.blw u16F72.blw u16F73.blw u16F74.blw u16F75.blw u16F76.blw u16F77.blw u16F78.blw u16F79.blw u16F7A.blw u16F7B.blw u16F7C.blw u16F7D.blw u16F7E.blw u16F7F.abv u16F80.abv u16F81.abv u16F82.abv u16F83.abv u16F84.abv u16F85.abv u16F86.abv u16F87.abv u16F7F.blw u16F80.blw u16F81.blw u16F82.blw u16F83.blw u16F84.blw u16F85.blw u16F86.blw u16F87.blw]'  [u16F54.abv u16F55.abv u16F56.abv u16F57.abv u16F58.abv u16F59.abv u16F5A.abv u16F5B.abv u16F5C.abv u16F5D.abv u16F5E.abv u16F5F.abv u16F60.abv u16F61.abv u16F62.abv u16F63.abv u16F64.abv u16F65.abv u16F66.abv u16F67.abv u16F68.abv u16F69.abv u16F6A.abv u16F6B.abv u16F6C.abv u16F6D.abv u16F6E.abv u16F6F.abv u16F70.abv u16F71.abv u16F72.abv u16F73.abv u16F74.abv u16F75.abv u16F76.abv u16F77.abv u16F78.abv u16F79.abv u16F7A.abv u16F7B.abv u16F7C.abv u16F7D.abv u16F7E.abv u16F54.blw u16F55.blw u16F56.blw u16F57.blw u16F58.blw u16F59.blw u16F5A.blw u16F5B.blw u16F5C.blw u16F5D.blw u16F5E.blw u16F5F.blw u16F60.blw u16F61.blw u16F62.blw u16F63.blw u16F64.blw u16F65.blw u16F66.blw u16F67.blw u16F68.blw u16F69.blw u16F6A.blw u16F6B.blw u16F6C.blw u16F6D.blw u16F6E.blw u16F6F.blw u16F70.blw u16F71.blw u16F72.blw u16F73.blw u16F74.blw u16F75.blw u16F76.blw u16F77.blw u16F78.blw u16F79.blw u16F7A.blw u16F7B.blw u16F7C.blw u16F7D.blw u16F7E.blw u16F7F.abv u16F80.abv u16F81.abv u16F82.abv u16F83.abv u16F84.abv u16F85.abv u16F86.abv u16F87.abv u16F7F.blw u16F80.blw u16F81.blw u16F82.blw u16F83.blw u16F84.blw u16F85.blw u16F86.blw u16F87.blw]' lookup lookup_4",null],"5":["u16F51' lookup lookup_0 [u16F54.abv u16F55.abv u16F56.abv u16F57.abv u16F58.abv u16F59.abv u16F5A.abv u16F5B.abv u16F5C.abv u16F5D.abv u16F5E.abv u16F5F.abv u16F60.abv u16F61.abv u16F62.abv u16F63.abv u16F64.abv u16F65.abv u16F66.abv u16F67.abv u16F68.abv u16F69.abv u16F6A.abv u16F6B.abv u16F6C.abv u16F6D.abv u16F6E.abv u16F6F.abv u16F70.abv u16F71.abv u16F72.abv u16F73.abv u16F74.abv u16F75.abv u16F76.abv u16F77.abv u16F78.abv u16F79.abv u16F7A.abv u16F7B.abv u16F7C.abv u16F7D.abv u16F7E.abv u16F54.blw u16F55.blw u16F56.blw u16F57.blw u16F58.blw u16F59.blw u16F5A.blw u16F5B.blw u16F5C.blw u16F5D.blw u16F5E.blw u16F5F.blw u16F60.blw u16F61.blw u16F62.blw u16F63.blw u16F64.blw u16F65.blw u16F66.blw u16F67.blw u16F68.blw u16F69.blw u16F6A.blw u16F6B.blw u16F6C.blw u16F6D.blw u16F6E.blw u16F6F.blw u16F70.blw u16F71.blw u16F72.blw u16F73.blw u16F74.blw u16F75.blw u16F76.blw u16F77.blw u16F78.blw u16F79.blw u16F7A.blw u16F7B.blw u16F7C.blw u16F7D.blw u16F7E.blw u16F7F.abv u16F80.abv u16F81.abv u16F82.abv u16F83.abv u16F84.abv u16F85.abv u16F86.abv u16F87.abv u16F7F.blw u16F80.blw u16F81.blw u16F82.blw u16F83.blw u16F84.blw u16F85.blw u16F86.blw u16F87.blw]' lookup lookup_4",null]}},"1":[null,{"type":"sequence_context","rules":["u16F51' lookup lookup_0 [u16F54.abv u16F55.abv u16F56.abv u16F57.abv u16F58.abv u16F59.abv u16F5A.abv u16F5B.abv u16F5C.abv u16F5D.abv u16F5E.abv u16F5F.abv u16F60.abv u16F61.abv u16F62.abv u16F63.abv u16F64.abv u16F65.abv u16F66.abv u16F67.abv u16F68.abv u16F69.abv u16F6A.abv u16F6B.abv u16F6C.abv u16F6D.abv u16F6E.abv u16F6F.abv u16F70.abv u16F71.abv u16F72.abv u16F73.abv u16F74.abv u16F75.abv u16F76.abv u16F77.abv u16F78.abv u16F79.abv u16F7A.abv u16F7B.abv u16F7C.abv u16F7D.abv u16F7E.abv u16F54.blw u16F55.blw u16F56.blw u16F57.blw u16F58.blw u16F59.blw u16F5A.blw u16F5B.blw u16F5C.blw u16F5D.blw u16F5E.blw u16F5F.blw u16F60.blw u16F61.blw u16F62.blw u16F63.blw u16F64.blw u16F65.blw u16F66.blw u16F67.blw u16F68.blw u16F69.blw u16F6A.blw u16F6B.blw u16F6C.blw u16F6D.blw u16F6E.blw u16F6F.blw u16F70.blw u16F71.blw u16F72.blw u16F73.blw u16F74.blw u16F75.blw u16F76.blw u16F77.blw u16F78.blw u16F79.blw u16F7A.blw u16F7B.blw u16F7C.blw u16F7D.blw u16F7E.blw u16F7F.abv u16F80.abv u16F81.abv u16F82.abv u16F83.abv u16F84.abv u16F85.abv u16F86.abv u16F87.abv u16F7F.blw u16F80.blw u16F81.blw u16F82.blw u16F83.blw u16F84.blw u16F85.blw u16F86.blw u16F87.blw]' lookup lookup_4"]}],"2":[null,{"type":"sequence_context","rules":["u16F52' lookup lookup_0 [u16F54.abv u16F55.abv u16F56.abv u16F57.abv u16F58.abv u16F59.abv u16F5A.abv u16F5B.abv u16F5C.abv u16F5D.abv u16F5E.abv u16F5F.abv u16F60.abv u16F61.abv u16F62.abv u16F63.abv u16F64.abv u16F65.abv u16F66.abv u16F67.abv u16F68.abv u16F69.abv u16F6A.abv u16F6B.abv u16F6C.abv u16F6D.abv u16F6E.abv u16F6F.abv u16F70.abv u16F71.abv u16F72.abv u16F73.abv u16F74.abv u16F75.abv u16F76.abv u16F77.abv u16F78.abv u16F79.abv u16F7A.abv u16F7B.abv u16F7C.abv u16F7D.abv u16F7E.abv u16F54.blw u16F55.blw u16F56.blw u16F57.blw u16F58.blw u16F59.blw u16F5A.blw u16F5B.blw u16F5C.blw u16F5D.blw u16F5E.blw u16F5F.blw u16F60.blw u16F61.blw u16F62.blw u16F63.blw u16F64.blw u16F65.blw u16F66.blw u16F67.blw u16F68.blw u16F69.blw u16F6A.blw u16F6B.blw u16F6C.blw u16F6D.blw u16F6E.blw u16F6F.blw u16F70.blw u16F71.blw u16F72.blw u16F73.blw u16F74.blw u16F75.blw u16F76.blw u16F77.blw u16F78.blw u16F79.blw u16F7A.blw u16F7B.blw u16F7C.blw u16F7D.blw u16F7E.blw u16F7F.abv u16F80.abv u16F81.abv u16F82.abv u16F83.abv u16F84.abv u16F85.abv u16F86.abv u16F87.abv u16F7F.blw u16F80.blw u16F81.blw u16F82.blw u16F83.blw u16F84.blw u16F85.blw u16F86.blw u16F87.blw]'  [u16F54.abv u16F55.abv u16F56.abv u16F57.abv u16F58.abv u16F59.abv u16F5A.abv u16F5B.abv u16F5C.abv u16F5D.abv u16F5E.abv u16F5F.abv u16F60.abv u16F61.abv u16F62.abv u16F63.abv u16F64.abv u16F65.abv u16F66.abv u16F67.abv u16F68.abv u16F69.abv u16F6A.abv u16F6B.abv u16F6C.abv u16F6D.abv u16F6E.abv u16F6F.abv u16F70.abv u16F71.abv u16F72.abv u16F73.abv u16F74.abv u16F75.abv u16F76.abv u16F77.abv u16F78.abv u16F79.abv u16F7A.abv u16F7B.abv u16F7C.abv u16F7D.abv u16F7E.abv u16F54.blw u16F55.blw u16F56.blw u16F57.blw u16F58.blw u16F59.blw u16F5A.blw u16F5B.blw u16F5C.blw u16F5D.blw u16F5E.blw u16F5F.blw u16F60.blw u16F61.blw u16F62.blw u16F63.blw u16F64.blw u16F65.blw u16F66.blw u16F67.blw u16F68.blw u16F69.blw u16F6A.blw u16F6B.blw u16F6C.blw u16F6D.blw u16F6E.blw u16F6F.blw u16F70.blw u16F71.blw u16F72.blw u16F73.blw u16F74.blw u16F75.blw u16F76.blw u16F77.blw u16F78.blw u16F79.blw u16F7A.blw u16F7B.blw u16F7C.blw u16F7D.blw u16F7E.blw u16F7F.abv u16F80.abv u16F81.abv u16F82.abv u16F83.abv u16F84.abv u16F85.abv u16F86.abv u16F87.abv u16F7F.blw u16F80.blw u16F81.blw u16F82.blw u16F83.blw u16F84.blw u16F85.blw u16F86.blw u16F87.blw]' lookup lookup_3"]}],"3":[null,{"type":"sequence_context","rules":["u16F52' lookup lookup_0 [u16F54.abv u16F55.abv u16F56.abv u16F57.abv u16F58.abv u16F59.abv u16F5A.abv u16F5B.abv u16F5C.abv u16F5D.abv u16F5E.abv u16F5F.abv u16F60.abv u16F61.abv u16F62.abv u16F63.abv u16F64.abv u16F65.abv u16F66.abv u16F67.abv u16F68.abv u16F69.abv u16F6A.abv u16F6B.abv u16F6C.abv u16F6D.abv u16F6E.abv u16F6F.abv u16F70.abv u16F71.abv u16F72.abv u16F73.abv u16F74.abv u16F75.abv u16F76.abv u16F77.abv u16F78.abv u16F79.abv u16F7A.abv u16F7B.abv u16F7C.abv u16F7D.abv u16F7E.abv u16F54.blw u16F55.blw u16F56.blw u16F57.blw u16F58.blw u16F59.blw u16F5A.blw u16F5B.blw u16F5C.blw u16F5D.blw u16F5E.blw u16F5F.blw u16F60.blw u16F61.blw u16F62.blw u16F63.blw u16F64.blw u16F65.blw u16F66.blw u16F67.blw u16F68.blw u16F69.blw u16F6A.blw u16F6B.blw u16F6C.blw u16F6D.blw u16F6E.blw u16F6F.blw u16F70.blw u16F71.blw u16F72.blw u16F73.blw u16F74.blw u16F75.blw u16F76.blw u16F77.blw u16F78.blw u16F79.blw u16F7A.blw u16F7B.blw u16F7C.blw u16F7D.blw u16F7E.blw u16F7F.abv u16F80.abv u16F81.abv u16F82.abv u16F83.abv u16F84.abv u16F85.abv u16F86.abv u16F87.abv u16F7F.blw u16F80.blw u16F81.blw u16F82.blw u16F83.blw u16F84.blw u16F85.blw u16F86.blw u16F87.blw]' lookup lookup_3"]}],"4":[null,{"type":"sequence_context","rules":["u16F53' lookup lookup_0 [u16F54.abv u16F55.abv u16F56.abv u16F57.abv u16F58.abv u16F59.abv u16F5A.abv u16F5B.abv u16F5C.abv u16F5D.abv u16F5E.abv u16F5F.abv u16F60.abv u16F61.abv u16F62.abv u16F63.abv u16F64.abv u16F65.abv u16F66.abv u16F67.abv u16F68.abv u16F69.abv u16F6A.abv u16F6B.abv u16F6C.abv u16F6D.abv u16F6E.abv u16F6F.abv u16F70.abv u16F71.abv u16F72.abv u16F73.abv u16F74.abv u16F75.abv u16F76.abv u16F77.abv u16F78.abv u16F79.abv u16F7A.abv u16F7B.abv u16F7C.abv u16F7D.abv u16F7E.abv u16F54.blw u16F55.blw u16F56.blw u16F57.blw u16F58.blw u16F59.blw u16F5A.blw u16F5B.blw u16F5C.blw u16F5D.blw u16F5E.blw u16F5F.blw u16F60.blw u16F61.blw u16F62.blw u16F63.blw u16F64.blw u16F65.blw u16F66.blw u16F67.blw u16F68.blw u16F69.blw u16F6A.blw u16F6B.blw u16F6C.blw u16F6D.blw u16F6E.blw u16F6F.blw u16F70.blw u16F71.blw u16F72.blw u16F73.blw u16F74.blw u16F75.blw u16F76.blw u16F77.blw u16F78.blw u16F79.blw u16F7A.blw u16F7B.blw u16F7C.blw u16F7D.blw u16F7E.blw u16F7F.abv u16F80.abv u16F81.abv u16F82.abv u16F83.abv u16F84.abv u16F85.abv u16F86.abv u16F87.abv u16F7F.blw u16F80.blw u16F81.blw u16F82.blw u16F83.blw u16F84.blw u16F85.blw u16F86.blw u16F87.blw]'  [u16F54.abv u16F55.abv u16F56.abv u16F57.abv u16F58.abv u16F59.abv u16F5A.abv u16F5B.abv u16F5C.abv u16F5D.abv u16F5E.abv u16F5F.abv u16F60.abv u16F61.abv u16F62.abv u16F63.abv u16F64.abv u16F65.abv u16F66.abv u16F67.abv u16F68.abv u16F69.abv u16F6A.abv u16F6B.abv u16F6C.abv u16F6D.abv u16F6E.abv u16F6F.abv u16F70.abv u16F71.abv u16F72.abv u16F73.abv u16F74.abv u16F75.abv u16F76.abv u16F77.abv u16F78.abv u16F79.abv u16F7A.abv u16F7B.abv u16F7C.abv u16F7D.abv u16F7E.abv u16F54.blw u16F55.blw u16F56.blw u16F57.blw u16F58.blw u16F59.blw u16F5A.blw u16F5B.blw u16F5C.blw u16F5D.blw u16F5E.blw u16F5F.blw u16F60.blw u16F61.blw u16F62.blw u16F63.blw u16F64.blw u16F65.blw u16F66.blw u16F67.blw u16F68.blw u16F69.blw u16F6A.blw u16F6B.blw u16F6C.blw u16F6D.blw u16F6E.blw u16F6F.blw u16F70.blw u16F71.blw u16F72.blw u16F73.blw u16F74.blw u16F75.blw u16F76.blw u16F77.blw u16F78.blw u16F79.blw u16F7A.blw u16F7B.blw u16F7C.blw u16F7D.blw u16F7E.blw u16F7F.abv u16F80.abv u16F81.abv u16F82.abv u16F83.abv u16F84.abv u16F85.abv u16F86.abv u16F87.abv u16F7F.blw u16F80.blw u16F81.blw u16F82.blw u16F83.blw u16F84.blw u16F85.blw u16F86.blw u16F87.blw]' lookup lookup_2"]}],"5":[null,{"type":"sequence_context","rules":["u16F53' lookup lookup_0 [u16F54.abv u16F55.abv u16F56.abv u16F57.abv u16F58.abv u16F59.abv u16F5A.abv u16F5B.abv u16F5C.abv u16F5D.abv u16F5E.abv u16F5F.abv u16F60.abv u16F61.abv u16F62.abv u16F63.abv u16F64.abv u16F65.abv u16F66.abv u16F67.abv u16F68.abv u16F69.abv u16F6A.abv u16F6B.abv u16F6C.abv u16F6D.abv u16F6E.abv u16F6F.abv u16F70.abv u16F71.abv u16F72.abv u16F73.abv u16F74.abv u16F75.abv u16F76.abv u16F77.abv u16F78.abv u16F79.abv u16F7A.abv u16F7B.abv u16F7C.abv u16F7D.abv u16F7E.abv u16F54.blw u16F55.blw u16F56.blw u16F57.blw u16F58.blw u16F59.blw u16F5A.blw u16F5B.blw u16F5C.blw u16F5D.blw u16F5E.blw u16F5F.blw u16F60.blw u16F61.blw u16F62.blw u16F63.blw u16F64.blw u16F65.blw u16F66.blw u16F67.blw u16F68.blw u16F69.blw u16F6A.blw u16F6B.blw u16F6C.blw u16F6D.blw u16F6E.blw u16F6F.blw u16F70.blw u16F71.blw u16F72.blw u16F73.blw u16F74.blw u16F75.blw u16F76.blw u16F77.blw u16F78.blw u16F79.blw u16F7A.blw u16F7B.blw u16F7C.blw u16F7D.blw u16F7E.blw u16F7F.abv u16F80.abv u16F81.abv u16F82.abv u16F83.abv u16F84.abv u16F85.abv u16F86.abv u16F87.abv u16F7F.blw u16F80.blw u16F81.blw u16F82.blw u16F83.blw u16F84.blw u16F85.blw u16F86.blw u16F87.blw]' lookup lookup_2"]}]},"18":[null,[{"type":"single","u16F04":"u16F04.lpo","u16F10":"u16F10.lpo","u16F23":"u16F23.lpo","u16F33":"u16F33.lpo","u16F39":"u16F39.lpo","u16F57":"u16F57.lpo","u16F58":"u16F58.lpo","u16F72":"u16F72.lpo","u16F7E":"u16F7E.lpo"}]]}},"OS/2":{"x_avg_char_width":[448,449]},"head":{"checksum_adjustment":[1151733598,3746549701],"modified":[3744605471,3813912067]},"hhea":{"caret_slope_rise":[1,1000],"number_of_long_metrics":[365,373]},"hmtx":{"u16F04.lpo":[null,{"width":637,"lsb":60}],"u16F10.lpo":[null,{"width":637,"lsb":60}],"u16F23.lpo":[null,{"width":657,"lsb":80}],"u16F33.lpo":[null,{"width":588,"lsb":30}],"u16F39.lpo":[null,{"width":468,"lsb":30}],"u16F57.lpo":[null,{"width":357,"lsb":0}],"u16F58.lpo":[null,{"width":406,"lsb":0}],"u16F72.lpo":[null,{"width":297,"lsb":0}]},"loca":{"offsets":{"366":[null,18942],"367":[null,19030],"368":[null,19152],"369":[null,19214],"370":[null,19258],"371":[null,19324],"372":[null,19444],"373":[null,19544],"374":[null,19646]}},"maxp":{"num_glyphs":[365,374]},"post":{"num_glyphs":[365,374],"glyph_name_index":{"365":[null,621],"366":[null,622],"367":[null,623],"368":[null,624],"369":[null,625],"370":[null,626],"371":[null,627],"372":[null,628],"373":[null,629]}}},"cmap_diff":{},"locations":[{"location":"Default","words":{}}]};
+		function buildLocation_statichtml(loc) {
+  // Set font styles to appropriate axis locations
+  let rule = document.styleSheets[0].cssRules[2].style;
+  let cssSetting = "";
+  let textLocation = "Default";
+  if (loc.coords) {
+    cssSetting = Object.entries(loc.coords)
+      .map(function ([axis, value]) {
+        return `"${axis}" ${value}`;
+      })
+      .join(", ");
+    textLocation = Object.entries(loc.coords)
+      .map(function ([axis, value]) {
+        return `${axis}=${value}`;
+      })
+      .join(" ");
+    rule.setProperty("font-variation-settings", cssSetting);
+  }
+
+  $("#main").empty();
+
+  $("#title").html(`<h4 class="mt-2">${textLocation}</h2>`);
+
+  if (loc.glyphs) {
+    $("#main").append("<h4>Modified Glyphs</h4>");
+    let glyphs = $("<div>");
+    for (let glyph of loc.glyphs) {
+      addAGlyph(glyph, glyphs);
+    }
+    $("#main").append(glyphs);
+  }
+
+  if (loc.words) {
+    $("#main").append("<h4>Modified Words</h4>");
+    for (let [script, words] of Object.entries(loc.words)) {
+      let scriptTitle = $(`<h6>${script}</h6>`);
+      $("#main").append(scriptTitle);
+      let worddiv = $("<div>");
+      for (let word of words) {
+        addAWord(word, worddiv);
+      }
+      $("#main").append(worddiv);
+    }
+  }
+  $('[data-toggle="tooltip"]').tooltip();
+}
+
+$(function () {
+  if (report["tables"]) {
+    diffTables(report);
+  }
+  if (report["kerns"]) {
+    diffKerns(report);
+  }
+  cmapDiff(report);
+  $('[data-toggle="tooltip"]').tooltip();
+  if (!report["locations"]) {
+    $("#title").html("<h4 class='mt-2'>No differences found</h4>");
+    $("#ui-nav").hide();
+    return;
+  }
+
+  for (var [index, loc] of report["locations"].entries()) {
+    var loc_nav = $(`<li class="nav-item">
+		<a class="nav-link text-secondary" href="#" data-index="${index}">${loc.location.replaceAll(
+      ",",
+      ",\u200b"
+    )}</a>
+	</li>`);
+    $("#locationnav").append(loc_nav);
+  }
+  $("#locationnav li a").on("click", function (e) {
+    $("#locationnav li a").removeClass("active");
+    $(this).addClass("active");
+    buildLocation_statichtml(report.locations[$(this).data("index")]);
+  });
+  $("#locationnav li a").eq(0).click();
+
+  document.styleSheets[0].cssRules[0].style.setProperty(
+    "src",
+    "url(old-NotoSansMiao-Regular.ttf)"
+  );
+  document.styleSheets[0].cssRules[1].style.setProperty(
+    "src",
+    "url(new-NotoSansMiao-Regular.ttf)"
+  );
+  setupAnimation();
+});
+
+	</script>
+</body>
+
+</html>
