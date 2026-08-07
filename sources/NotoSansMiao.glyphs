@@ -1,7 +1,10 @@
 {
-.appVersion = "3217";
+.appVersion = "3512";
 DisplayStrings = (
-"/u16F04.lpo/u16F10.lpo/u16F23.lpo/u16F33.lpo/u16F39.lpo/u16F57.lpo/u16F58.lpo/u16F72.lpo/u16F7E.lpo/space/space"
+"/u16F57/u16F10.lpo/u16F23.lpo/u16F33.lpo/u16F39.lpo/u16F57.lpo/u16F58.lpo/u16F72.lpo/u16F7E.lpo/space/space",
+"",
+"/u16F54.abv",
+"/u16F7E.lpo.blw"
 );
 classes = (
 {
@@ -9,23 +12,15 @@ code = "u16F00 u16F01 u16F02 u16F03 u16F04 u16F05 u16F06 u16F07 u16F08 u16F09 u1
 name = class1;
 },
 {
-code = "u16F54 u16F55 u16F56 u16F57 u16F58 u16F59 u16F5A u16F5B u16F5C u16F5D u16F5E u16F5F u16F60 u16F61 u16F62 u16F63 u16F64 u16F65 u16F66 u16F67 u16F68 u16F69 u16F6A u16F6B u16F6C u16F6D u16F6E u16F6F u16F70 u16F71 u16F72 u16F73 u16F74 u16F75 u16F76 u16F77 u16F78 u16F79 u16F7A u16F7B u16F7C u16F7D u16F7E u16F7F u16F80 u16F81 u16F82 u16F83 u16F84 u16F85 u16F86 u16F87";
+code = "u16F54 u16F55 u16F56 u16F57 u16F58 u16F59 u16F5A u16F5B u16F5C u16F5D u16F5E u16F5F u16F60 u16F61 u16F62 u16F63 u16F64 u16F65 u16F66 u16F67 u16F68 u16F69 u16F6A u16F6B u16F6C u16F6D u16F6E u16F6F u16F70 u16F71 u16F72 u16F73 u16F74 u16F75 u16F76 u16F77 u16F78 u16F79 u16F7A u16F7B u16F7C u16F7D u16F7E u16F7F u16F80 u16F81 u16F82 u16F83 u16F84 u16F85 u16F86 u16F87\012\012# Lipo vowels\012u16F57.lpo\012u16F58.lpo\012u16F72.lpo\012u16F7E.lpo\012";
 name = Vowels;
 },
 {
-code = "u16F54.cnt u16F55.cnt u16F56.cnt u16F57.cnt u16F58.cnt u16F59.cnt u16F5A.cnt u16F5B.cnt u16F5C.cnt u16F5D.cnt u16F5E.cnt u16F5F.cnt u16F60.cnt u16F61.cnt u16F62.cnt u16F63.cnt u16F64.cnt u16F65.cnt u16F66.cnt u16F67.cnt u16F68.cnt u16F69.cnt u16F6A.cnt u16F6B.cnt u16F6C.cnt u16F6D.cnt u16F6E.cnt u16F6F.cnt u16F70.cnt u16F71.cnt u16F72.cnt u16F73.cnt u16F74.cnt u16F75.cnt u16F76.cnt u16F77.cnt u16F78.cnt u16F79.cnt u16F7A.cnt u16F7B.cnt u16F7C.cnt u16F7D.cnt u16F7E.cnt u16F7F.cnt u16F80.cnt u16F81.cnt u16F82.cnt u16F83.cnt u16F84.cnt u16F85.cnt u16F86.cnt u16F87.cnt";
-name = VowelPlusCenteredTone;
-},
-{
-code = "u16F54.rht u16F55.rht u16F56.rht u16F57.rht u16F58.rht u16F59.rht u16F5A.rht u16F5B.rht u16F5C.rht u16F5D.rht u16F5E.rht u16F5F.rht u16F60.rht u16F61.rht u16F62.rht u16F63.rht u16F64.rht u16F65.rht u16F66.rht u16F67.rht u16F68.rht u16F69.rht u16F6A.rht u16F6B.rht u16F6C.rht u16F6D.rht u16F6E.rht u16F6F.rht u16F70.rht u16F71.rht u16F72.rht u16F73.rht u16F74.rht u16F75.rht u16F76.rht u16F77.rht u16F78.rht u16F79.rht u16F7A.rht u16F7B.rht u16F7C.rht u16F7D.rht u16F7E.rht u16F7F.rht u16F80.rht u16F81.rht u16F82.rht u16F83.rht u16F84.rht u16F85.rht u16F86.rht u16F87.rht";
-name = VowelPlusRightTone;
-},
-{
-code = "u16F54.abv u16F55.abv u16F56.abv u16F57.abv u16F58.abv u16F59.abv u16F5A.abv u16F5B.abv u16F5C.abv u16F5D.abv u16F5E.abv u16F5F.abv u16F60.abv u16F61.abv u16F62.abv u16F63.abv u16F64.abv u16F65.abv u16F66.abv u16F67.abv u16F68.abv u16F69.abv u16F6A.abv u16F6B.abv u16F6C.abv u16F6D.abv u16F6E.abv u16F6F.abv u16F70.abv u16F71.abv u16F72.abv u16F73.abv u16F74.abv u16F75.abv u16F76.abv u16F77.abv u16F78.abv u16F79.abv u16F7A.abv u16F7B.abv u16F7C.abv u16F7D.abv u16F7E.abv u16F7F.abv u16F80.abv u16F81.abv u16F82.abv u16F83.abv u16F84.abv u16F85.abv u16F86.abv u16F87.abv";
+code = "u16F54.abv u16F55.abv u16F56.abv u16F57.abv u16F58.abv u16F59.abv u16F5A.abv u16F5B.abv u16F5C.abv u16F5D.abv u16F5E.abv u16F5F.abv u16F60.abv u16F61.abv u16F62.abv u16F63.abv u16F64.abv u16F65.abv u16F66.abv u16F67.abv u16F68.abv u16F69.abv u16F6A.abv u16F6B.abv u16F6C.abv u16F6D.abv u16F6E.abv u16F6F.abv u16F70.abv u16F71.abv u16F72.abv u16F73.abv u16F74.abv u16F75.abv u16F76.abv u16F77.abv u16F78.abv u16F79.abv u16F7A.abv u16F7B.abv u16F7C.abv u16F7D.abv u16F7E.abv u16F7F.abv u16F80.abv u16F81.abv u16F82.abv u16F83.abv u16F84.abv u16F85.abv u16F86.abv u16F87.abv\012# Lipo vowels\012u16F57.lpo.abv\012u16F58.lpo.abv\012u16F72.lpo.abv\012u16F7E.lpo.abv";
 name = VowelPlusAboveTone;
 },
 {
-code = "u16F54.blw u16F55.blw u16F56.blw u16F57.blw u16F58.blw u16F59.blw u16F5A.blw u16F5B.blw u16F5C.blw u16F5D.blw u16F5E.blw u16F5F.blw u16F60.blw u16F61.blw u16F62.blw u16F63.blw u16F64.blw u16F65.blw u16F66.blw u16F67.blw u16F68.blw u16F69.blw u16F6A.blw u16F6B.blw u16F6C.blw u16F6D.blw u16F6E.blw u16F6F.blw u16F70.blw u16F71.blw u16F72.blw u16F73.blw u16F74.blw u16F75.blw u16F76.blw u16F77.blw u16F78.blw u16F79.blw u16F7A.blw u16F7B.blw u16F7C.blw u16F7D.blw u16F7E.blw u16F7F.blw u16F80.blw u16F81.blw u16F82.blw u16F83.blw u16F84.blw u16F85.blw u16F86.blw u16F87.blw";
+code = "u16F54.blw u16F55.blw u16F56.blw u16F57.blw u16F58.blw u16F59.blw u16F5A.blw u16F5B.blw u16F5C.blw u16F5D.blw u16F5E.blw u16F5F.blw u16F60.blw u16F61.blw u16F62.blw u16F63.blw u16F64.blw u16F65.blw u16F66.blw u16F67.blw u16F68.blw u16F69.blw u16F6A.blw u16F6B.blw u16F6C.blw u16F6D.blw u16F6E.blw u16F6F.blw u16F70.blw u16F71.blw u16F72.blw u16F73.blw u16F74.blw u16F75.blw u16F76.blw u16F77.blw u16F78.blw u16F79.blw u16F7A.blw u16F7B.blw u16F7C.blw u16F7D.blw u16F7E.blw u16F7F.blw u16F80.blw u16F81.blw u16F82.blw u16F83.blw u16F84.blw u16F85.blw u16F86.blw u16F87.blw\012# Lipo vowels\012u16F57.lpo.blw\012u16F58.lpo.blw\012u16F72.lpo.blw\012u16F7E.lpo.blw";
 name = VowelPlusBelowTone;
 },
 {
@@ -493,7 +488,7 @@ name = Languagesystems;
 );
 features = (
 {
-code = "# Reorder modifier bar to before base\012\012lookup ContextualGSUB1 {\012    lookupflag UseMarkFilteringSet [u16F4F];\012    sub @class1' lookup MultipleSubstitution19 u16F4F';\012} ContextualGSUB1;\012lookup ContextualGSUB1a {\012    lookupflag UseMarkFilteringSet [u16F4F NullMk];\012	sub u16F4F.sp @class1 u16F4F' by NullMk;\012} ContextualGSUB1a;\012\012lookup RightTones {\012    sub u16F54 u16F8F by u16F54.cnt;\012    sub u16F55 u16F8F by u16F55.cnt;\012    sub u16F56 u16F8F by u16F56.cnt;\012    sub u16F57 u16F8F by u16F57.cnt;\012    sub u16F58 u16F8F by u16F58.cnt;\012    sub u16F59 u16F8F by u16F59.cnt;\012    sub u16F5A u16F8F by u16F5A.cnt;\012    sub u16F5B u16F8F by u16F5B.cnt;\012    sub u16F5C u16F8F by u16F5C.cnt;\012    sub u16F5D u16F8F by u16F5D.cnt;\012    sub u16F5E u16F8F by u16F5E.cnt;\012    sub u16F5F u16F8F by u16F5F.cnt;\012    sub u16F60 u16F8F by u16F60.cnt;\012    sub u16F61 u16F8F by u16F61.cnt;\012    sub u16F62 u16F8F by u16F62.cnt;\012    sub u16F63 u16F8F by u16F63.cnt;\012    sub u16F64 u16F8F by u16F64.cnt;\012    sub u16F65 u16F8F by u16F65.cnt;\012    sub u16F66 u16F8F by u16F66.cnt;\012    sub u16F67 u16F8F by u16F67.cnt;\012    sub u16F68 u16F8F by u16F68.cnt;\012    sub u16F69 u16F8F by u16F69.cnt;\012    sub u16F6A u16F8F by u16F6A.cnt;\012    sub u16F6B u16F8F by u16F6B.cnt;\012    sub u16F6C u16F8F by u16F6C.cnt;\012    sub u16F6D u16F8F by u16F6D.cnt;\012    sub u16F6E u16F8F by u16F6E.cnt;\012    sub u16F6F u16F8F by u16F6F.cnt;\012    sub u16F70 u16F8F by u16F70.cnt;\012    sub u16F71 u16F8F by u16F71.cnt;\012    sub u16F72 u16F8F by u16F72.cnt;\012    sub u16F73 u16F8F by u16F73.cnt;\012    sub u16F74 u16F8F by u16F74.cnt;\012    sub u16F75 u16F8F by u16F75.cnt;\012    sub u16F76 u16F8F by u16F76.cnt;\012    sub u16F77 u16F8F by u16F77.cnt;\012    sub u16F78 u16F8F by u16F78.cnt;\012    sub u16F79 u16F8F by u16F79.cnt;\012    sub u16F7A u16F8F by u16F7A.cnt;\012    sub u16F7B u16F8F by u16F7B.cnt;\012    sub u16F7C u16F8F by u16F7C.cnt;\012    sub u16F7D u16F8F by u16F7D.cnt;\012    sub u16F7E u16F8F by u16F7E.cnt;\012    sub u16F7F u16F8F by u16F7F.cnt;\012    sub u16F80 u16F8F by u16F80.cnt;\012    sub u16F81 u16F8F by u16F81.cnt;\012    sub u16F82 u16F8F by u16F82.cnt;\012    sub u16F83 u16F8F by u16F83.cnt;\012    sub u16F84 u16F8F by u16F84.cnt;\012    sub u16F85 u16F8F by u16F85.cnt;\012    sub u16F86 u16F8F by u16F86.cnt;\012    sub u16F87 u16F8F by u16F87.cnt;\012} RightTones;\012\012lookup TopRightTones {\012    sub u16F54 u16F90 by u16F54.rht;\012    sub u16F55 u16F90 by u16F55.rht;\012    sub u16F56 u16F90 by u16F56.rht;\012    sub u16F57 u16F90 by u16F57.rht;\012    sub u16F58 u16F90 by u16F58.rht;\012    sub u16F59 u16F90 by u16F59.rht;\012    sub u16F5A u16F90 by u16F5A.rht;\012    sub u16F5B u16F90 by u16F5B.rht;\012    sub u16F5C u16F90 by u16F5C.rht;\012    sub u16F5D u16F90 by u16F5D.rht;\012    sub u16F5E u16F90 by u16F5E.rht;\012    sub u16F5F u16F90 by u16F5F.rht;\012    sub u16F60 u16F90 by u16F60.rht;\012    sub u16F61 u16F90 by u16F61.rht;\012    sub u16F62 u16F90 by u16F62.rht;\012    sub u16F63 u16F90 by u16F63.rht;\012    sub u16F64 u16F90 by u16F64.rht;\012    sub u16F65 u16F90 by u16F65.rht;\012    sub u16F66 u16F90 by u16F66.rht;\012    sub u16F67 u16F90 by u16F67.rht;\012    sub u16F68 u16F90 by u16F68.rht;\012    sub u16F69 u16F90 by u16F69.rht;\012    sub u16F6A u16F90 by u16F6A.rht;\012    sub u16F6B u16F90 by u16F6B.rht;\012    sub u16F6C u16F90 by u16F6C.rht;\012    sub u16F6D u16F90 by u16F6D.rht;\012    sub u16F6E u16F90 by u16F6E.rht;\012    sub u16F6F u16F90 by u16F6F.rht;\012    sub u16F70 u16F90 by u16F70.rht;\012    sub u16F71 u16F90 by u16F71.rht;\012    sub u16F72 u16F90 by u16F72.rht;\012    sub u16F73 u16F90 by u16F73.rht;\012    sub u16F74 u16F90 by u16F74.rht;\012    sub u16F75 u16F90 by u16F75.rht;\012    sub u16F76 u16F90 by u16F76.rht;\012    sub u16F77 u16F90 by u16F77.rht;\012    sub u16F78 u16F90 by u16F78.rht;\012    sub u16F79 u16F90 by u16F79.rht;\012    sub u16F7A u16F90 by u16F7A.rht;\012    sub u16F7B u16F90 by u16F7B.rht;\012    sub u16F7C u16F90 by u16F7C.rht;\012    sub u16F7D u16F90 by u16F7D.rht;\012    sub u16F7E u16F90 by u16F7E.rht;\012    sub u16F7F u16F90 by u16F7F.rht;\012    sub u16F80 u16F90 by u16F80.rht;\012    sub u16F81 u16F90 by u16F81.rht;\012    sub u16F82 u16F90 by u16F82.rht;\012    sub u16F83 u16F90 by u16F83.rht;\012    sub u16F84 u16F90 by u16F84.rht;\012    sub u16F85 u16F90 by u16F85.rht;\012    sub u16F86 u16F90 by u16F86.rht;\012    sub u16F87 u16F90 by u16F87.rht;\012} TopRightTones;\012\012lookup AboveTones {\012    lookupflag 0;\012    ;\012    # Original source: 3 \012    sub u16F54 u16F91 by u16F54.abv;\012    sub u16F55 u16F91 by u16F55.abv;\012    sub u16F56 u16F91 by u16F56.abv;\012    sub u16F57 u16F91 by u16F57.abv;\012    sub u16F58 u16F91 by u16F58.abv;\012    sub u16F59 u16F91 by u16F59.abv;\012    sub u16F5A u16F91 by u16F5A.abv;\012    sub u16F5B u16F91 by u16F5B.abv;\012    sub u16F5C u16F91 by u16F5C.abv;\012    sub u16F5D u16F91 by u16F5D.abv;\012    sub u16F5E u16F91 by u16F5E.abv;\012    sub u16F5F u16F91 by u16F5F.abv;\012    sub u16F60 u16F91 by u16F60.abv;\012    sub u16F61 u16F91 by u16F61.abv;\012    sub u16F62 u16F91 by u16F62.abv;\012    sub u16F63 u16F91 by u16F63.abv;\012    sub u16F64 u16F91 by u16F64.abv;\012    sub u16F65 u16F91 by u16F65.abv;\012    sub u16F66 u16F91 by u16F66.abv;\012    sub u16F67 u16F91 by u16F67.abv;\012    sub u16F68 u16F91 by u16F68.abv;\012    sub u16F69 u16F91 by u16F69.abv;\012    sub u16F6A u16F91 by u16F6A.abv;\012    sub u16F6B u16F91 by u16F6B.abv;\012    sub u16F6C u16F91 by u16F6C.abv;\012    sub u16F6D u16F91 by u16F6D.abv;\012    sub u16F6E u16F91 by u16F6E.abv;\012    sub u16F6F u16F91 by u16F6F.abv;\012    sub u16F70 u16F91 by u16F70.abv;\012    sub u16F71 u16F91 by u16F71.abv;\012    sub u16F72 u16F91 by u16F72.abv;\012    sub u16F73 u16F91 by u16F73.abv;\012    sub u16F74 u16F91 by u16F74.abv;\012    sub u16F75 u16F91 by u16F75.abv;\012    sub u16F76 u16F91 by u16F76.abv;\012    sub u16F77 u16F91 by u16F77.abv;\012    sub u16F78 u16F91 by u16F78.abv;\012    sub u16F79 u16F91 by u16F79.abv;\012    sub u16F7A u16F91 by u16F7A.abv;\012    sub u16F7B u16F91 by u16F7B.abv;\012    sub u16F7C u16F91 by u16F7C.abv;\012    sub u16F7D u16F91 by u16F7D.abv;\012    sub u16F7E u16F91 by u16F7E.abv;\012    sub u16F7F u16F91 by u16F7F.abv;\012    sub u16F80 u16F91 by u16F80.abv;\012    sub u16F81 u16F91 by u16F81.abv;\012    sub u16F82 u16F91 by u16F82.abv;\012    sub u16F83 u16F91 by u16F83.abv;\012    sub u16F84 u16F91 by u16F84.abv;\012    sub u16F85 u16F91 by u16F85.abv;\012    sub u16F86 u16F91 by u16F86.abv;\012    sub u16F87 u16F91 by u16F87.abv;\012} AboveTones;\012\012lookup BelowTones {\012    lookupflag 0;\012    ;\012    # Original source: 4 \012    sub u16F54 u16F92 by u16F54.blw;\012    sub u16F55 u16F92 by u16F55.blw;\012    sub u16F56 u16F92 by u16F56.blw;\012    sub u16F57 u16F92 by u16F57.blw;\012    sub u16F58 u16F92 by u16F58.blw;\012    sub u16F59 u16F92 by u16F59.blw;\012    sub u16F5A u16F92 by u16F5A.blw;\012    sub u16F5B u16F92 by u16F5B.blw;\012    sub u16F5C u16F92 by u16F5C.blw;\012    sub u16F5D u16F92 by u16F5D.blw;\012    sub u16F5E u16F92 by u16F5E.blw;\012    sub u16F5F u16F92 by u16F5F.blw;\012    sub u16F60 u16F92 by u16F60.blw;\012    sub u16F61 u16F92 by u16F61.blw;\012    sub u16F62 u16F92 by u16F62.blw;\012    sub u16F63 u16F92 by u16F63.blw;\012    sub u16F64 u16F92 by u16F64.blw;\012    sub u16F65 u16F92 by u16F65.blw;\012    sub u16F66 u16F92 by u16F66.blw;\012    sub u16F67 u16F92 by u16F67.blw;\012    sub u16F68 u16F92 by u16F68.blw;\012    sub u16F69 u16F92 by u16F69.blw;\012    sub u16F6A u16F92 by u16F6A.blw;\012    sub u16F6B u16F92 by u16F6B.blw;\012    sub u16F6C u16F92 by u16F6C.blw;\012    sub u16F6D u16F92 by u16F6D.blw;\012    sub u16F6E u16F92 by u16F6E.blw;\012    sub u16F6F u16F92 by u16F6F.blw;\012    sub u16F70 u16F92 by u16F70.blw;\012    sub u16F71 u16F92 by u16F71.blw;\012    sub u16F72 u16F92 by u16F72.blw;\012    sub u16F73 u16F92 by u16F73.blw;\012    sub u16F74 u16F92 by u16F74.blw;\012    sub u16F75 u16F92 by u16F75.blw;\012    sub u16F76 u16F92 by u16F76.blw;\012    sub u16F77 u16F92 by u16F77.blw;\012    sub u16F78 u16F92 by u16F78.blw;\012    sub u16F79 u16F92 by u16F79.blw;\012    sub u16F7A u16F92 by u16F7A.blw;\012    sub u16F7B u16F92 by u16F7B.blw;\012    sub u16F7C u16F92 by u16F7C.blw;\012    sub u16F7D u16F92 by u16F7D.blw;\012    sub u16F7E u16F92 by u16F7E.blw;\012    sub u16F7F u16F92 by u16F7F.blw;\012    sub u16F80 u16F92 by u16F80.blw;\012    sub u16F81 u16F92 by u16F81.blw;\012    sub u16F82 u16F92 by u16F82.blw;\012    sub u16F83 u16F92 by u16F83.blw;\012    sub u16F84 u16F92 by u16F84.blw;\012    sub u16F85 u16F92 by u16F85.blw;\012    sub u16F86 u16F92 by u16F86.blw;\012    sub u16F87 u16F92 by u16F87.blw;\012} BelowTones;\012\012sub @Vowels' @VowelPlusCenteredTone by @VowelPlusCenteredTone;\012sub @Vowels' @VowelPlusRightTone by @VowelPlusRightTone;\012sub @Vowels' @VowelPlusAboveTone by @VowelPlusAboveTone;\012sub @Vowels' @VowelPlusBelowTone by @VowelPlusBelowTone;\012\012lookup ContextualGSUB14 {\012    sub u16F51' lookup SingleSubstitution15 @class10' @class10' lookup MultipleSubstitution16;\012    sub u16F51' lookup SingleSubstitution15 @class10' lookup MultipleSubstitution16;\012    sub u16F52' lookup SingleSubstitution15 @class10' @class10' lookup MultipleSubstitution17;\012    sub u16F52' lookup SingleSubstitution15 @class10' lookup MultipleSubstitution17;\012    sub u16F53' lookup SingleSubstitution15 @class10' @class10' lookup MultipleSubstitution18;\012    sub u16F53' lookup SingleSubstitution15 @class10' lookup MultipleSubstitution18;\012} ContextualGSUB14;\012";
+code = "# Reorder modifier bar to before base\012\012lookup ContextualGSUB1 {\012    lookupflag UseMarkFilteringSet [u16F4F];\012    sub @class1' lookup MultipleSubstitution19 u16F4F';\012} ContextualGSUB1;\012lookup ContextualGSUB1a {\012    lookupflag UseMarkFilteringSet [u16F4F NullMk];\012	sub u16F4F.sp @class1 u16F4F' by NullMk;\012} ContextualGSUB1a;\012\012lookup RightAndTopRightTones {\012    sub @Vowels u16F8F' by rightToneNullMk;\012    sub @Vowels u16F90' by topRightToneNullMk;\012} RightAndTopRightTones;\012\012lookup AboveTones {\012    lookupflag 0;\012    ;\012    # Original source: 3 \012    sub u16F54 u16F91 by u16F54.abv;\012    sub u16F55 u16F91 by u16F55.abv;\012    sub u16F56 u16F91 by u16F56.abv;\012    sub u16F57 u16F91 by u16F57.abv;\012    sub u16F58 u16F91 by u16F58.abv;\012    sub u16F59 u16F91 by u16F59.abv;\012    sub u16F5A u16F91 by u16F5A.abv;\012    sub u16F5B u16F91 by u16F5B.abv;\012    sub u16F5C u16F91 by u16F5C.abv;\012    sub u16F5D u16F91 by u16F5D.abv;\012    sub u16F5E u16F91 by u16F5E.abv;\012    sub u16F5F u16F91 by u16F5F.abv;\012    sub u16F60 u16F91 by u16F60.abv;\012    sub u16F61 u16F91 by u16F61.abv;\012    sub u16F62 u16F91 by u16F62.abv;\012    sub u16F63 u16F91 by u16F63.abv;\012    sub u16F64 u16F91 by u16F64.abv;\012    sub u16F65 u16F91 by u16F65.abv;\012    sub u16F66 u16F91 by u16F66.abv;\012    sub u16F67 u16F91 by u16F67.abv;\012    sub u16F68 u16F91 by u16F68.abv;\012    sub u16F69 u16F91 by u16F69.abv;\012    sub u16F6A u16F91 by u16F6A.abv;\012    sub u16F6B u16F91 by u16F6B.abv;\012    sub u16F6C u16F91 by u16F6C.abv;\012    sub u16F6D u16F91 by u16F6D.abv;\012    sub u16F6E u16F91 by u16F6E.abv;\012    sub u16F6F u16F91 by u16F6F.abv;\012    sub u16F70 u16F91 by u16F70.abv;\012    sub u16F71 u16F91 by u16F71.abv;\012    sub u16F72 u16F91 by u16F72.abv;\012    sub u16F73 u16F91 by u16F73.abv;\012    sub u16F74 u16F91 by u16F74.abv;\012    sub u16F75 u16F91 by u16F75.abv;\012    sub u16F76 u16F91 by u16F76.abv;\012    sub u16F77 u16F91 by u16F77.abv;\012    sub u16F78 u16F91 by u16F78.abv;\012    sub u16F79 u16F91 by u16F79.abv;\012    sub u16F7A u16F91 by u16F7A.abv;\012    sub u16F7B u16F91 by u16F7B.abv;\012    sub u16F7C u16F91 by u16F7C.abv;\012    sub u16F7D u16F91 by u16F7D.abv;\012    sub u16F7E u16F91 by u16F7E.abv;\012    sub u16F7F u16F91 by u16F7F.abv;\012    sub u16F80 u16F91 by u16F80.abv;\012    sub u16F81 u16F91 by u16F81.abv;\012    sub u16F82 u16F91 by u16F82.abv;\012    sub u16F83 u16F91 by u16F83.abv;\012    sub u16F84 u16F91 by u16F84.abv;\012    sub u16F85 u16F91 by u16F85.abv;\012    sub u16F86 u16F91 by u16F86.abv;\012    sub u16F87 u16F91 by u16F87.abv;\012} AboveTones;\012\012lookup BelowTones {\012    lookupflag 0;\012    ;\012    # Original source: 4 \012    sub u16F54 u16F92 by u16F54.blw;\012    sub u16F55 u16F92 by u16F55.blw;\012    sub u16F56 u16F92 by u16F56.blw;\012    sub u16F57 u16F92 by u16F57.blw;\012    sub u16F58 u16F92 by u16F58.blw;\012    sub u16F59 u16F92 by u16F59.blw;\012    sub u16F5A u16F92 by u16F5A.blw;\012    sub u16F5B u16F92 by u16F5B.blw;\012    sub u16F5C u16F92 by u16F5C.blw;\012    sub u16F5D u16F92 by u16F5D.blw;\012    sub u16F5E u16F92 by u16F5E.blw;\012    sub u16F5F u16F92 by u16F5F.blw;\012    sub u16F60 u16F92 by u16F60.blw;\012    sub u16F61 u16F92 by u16F61.blw;\012    sub u16F62 u16F92 by u16F62.blw;\012    sub u16F63 u16F92 by u16F63.blw;\012    sub u16F64 u16F92 by u16F64.blw;\012    sub u16F65 u16F92 by u16F65.blw;\012    sub u16F66 u16F92 by u16F66.blw;\012    sub u16F67 u16F92 by u16F67.blw;\012    sub u16F68 u16F92 by u16F68.blw;\012    sub u16F69 u16F92 by u16F69.blw;\012    sub u16F6A u16F92 by u16F6A.blw;\012    sub u16F6B u16F92 by u16F6B.blw;\012    sub u16F6C u16F92 by u16F6C.blw;\012    sub u16F6D u16F92 by u16F6D.blw;\012    sub u16F6E u16F92 by u16F6E.blw;\012    sub u16F6F u16F92 by u16F6F.blw;\012    sub u16F70 u16F92 by u16F70.blw;\012    sub u16F71 u16F92 by u16F71.blw;\012    sub u16F72 u16F92 by u16F72.blw;\012    sub u16F73 u16F92 by u16F73.blw;\012    sub u16F74 u16F92 by u16F74.blw;\012    sub u16F75 u16F92 by u16F75.blw;\012    sub u16F76 u16F92 by u16F76.blw;\012    sub u16F77 u16F92 by u16F77.blw;\012    sub u16F78 u16F92 by u16F78.blw;\012    sub u16F79 u16F92 by u16F79.blw;\012    sub u16F7A u16F92 by u16F7A.blw;\012    sub u16F7B u16F92 by u16F7B.blw;\012    sub u16F7C u16F92 by u16F7C.blw;\012    sub u16F7D u16F92 by u16F7D.blw;\012    sub u16F7E u16F92 by u16F7E.blw;\012    sub u16F7F u16F92 by u16F7F.blw;\012    sub u16F80 u16F92 by u16F80.blw;\012    sub u16F81 u16F92 by u16F81.blw;\012    sub u16F82 u16F92 by u16F82.blw;\012    sub u16F83 u16F92 by u16F83.blw;\012    sub u16F84 u16F92 by u16F84.blw;\012    sub u16F85 u16F92 by u16F85.blw;\012    sub u16F86 u16F92 by u16F86.blw;\012    sub u16F87 u16F92 by u16F87.blw;\012} BelowTones;\012\012sub @Vowels' @VowelPlusAboveTone by @VowelPlusAboveTone;\012sub @Vowels' @VowelPlusBelowTone by @VowelPlusBelowTone;\012\012lookup ContextualGSUB14 {\012    sub u16F51' lookup SingleSubstitution15 @class10' @class10' lookup MultipleSubstitution16;\012    sub u16F51' lookup SingleSubstitution15 @class10' lookup MultipleSubstitution16;\012    sub u16F52' lookup SingleSubstitution15 @class10' @class10' lookup MultipleSubstitution17;\012    sub u16F52' lookup SingleSubstitution15 @class10' lookup MultipleSubstitution17;\012    sub u16F53' lookup SingleSubstitution15 @class10' @class10' lookup MultipleSubstitution18;\012    sub u16F53' lookup SingleSubstitution15 @class10' lookup MultipleSubstitution18;\012} ContextualGSUB14;\012";
 name = ccmp;
 },
 {
@@ -501,7 +496,7 @@ code = "# Automatic Code Start\012";
 name = mark;
 },
 {
-code = "# Automatic Code Start\012\012lookupflag MarkAttachmentType @VowelPlusAboveTone;\012pos @VowelPlusAboveTone' <-150 0 0 0> @VowelPlusAboveTone';\012\012\012lookupflag MarkAttachmentType @VowelPlusBelowTone;\012pos @VowelPlusBelowTone' <-150 0 0 0> @VowelPlusBelowTone';\012";
+code = "# Automatic Code Start\012\012lookupflag MarkAttachmentType @VowelPlusAboveTone;\012pos @VowelPlusAboveTone' <-150 0 0 0> @VowelPlusAboveTone';\012\012\012lookupflag MarkAttachmentType @VowelPlusBelowTone;\012pos @VowelPlusBelowTone' <-150 0 0 0> @VowelPlusBelowTone';\012\012lookupflag 0;\012pos @Vowels' <0 248 0 0>  rightToneNullMk;\012pos @Vowels' <0 456 0 0>  topRightToneNullMk;";
 name = kern;
 },
 {
@@ -509,7 +504,7 @@ code = "# Automatic Code Start\012";
 name = mkmk;
 },
 {
-code = "script plrd;\012language LPO;\012\012sub [u16F04 u16F10 u16F23 u16F33 u16F39 u16F57 u16F58 u16F72 u16F7E ] by\012    [u16F04.lpo u16F10.lpo u16F23.lpo u16F33.lpo u16F39.lpo u16F57.lpo u16F58.lpo u16F72.lpo u16F7E.lpo];\012";
+code = "script plrd;\012language LPO;\012\012sub [u16F04 u16F10 u16F23 u16F33 u16F39 u16F57 u16F58 u16F72 u16F7E ] by\012    [u16F04.lpo u16F10.lpo u16F23.lpo u16F33.lpo u16F39.lpo u16F57.lpo u16F58.lpo u16F72.lpo u16F7E.lpo];\012# Above and below marks\012sub [u16F57.abv u16F58.abv u16F72.abv u16F7E.abv] by\012[u16F57.lpo.abv u16F58.lpo.abv u16F72.lpo.abv u16F7E.lpo.abv];\012sub [u16F57.blw u16F58.blw u16F72.blw u16F7E.blw] by\012[u16F57.lpo.blw u16F58.lpo.blw u16F72.lpo.blw u16F7E.lpo.blw];";
 name = locl;
 }
 );
@@ -8595,1468 +8590,6 @@ width = 358;
 );
 },
 {
-glyphname = u16F54.cnt;
-lastChange = "2019-09-10 21:03:33 +0000";
-layers = (
-{
-components = (
-{
-name = u16F54;
-transform = "{1, 0, 0, 1, 0, 300}";
-}
-);
-layerId = UUID0;
-width = 314;
-}
-);
-category = Letter;
-},
-{
-glyphname = u16F55.cnt;
-lastChange = "2019-09-10 21:03:33 +0000";
-layers = (
-{
-components = (
-{
-name = u16F55;
-transform = "{1, 0, 0, 1, 0, 200}";
-}
-);
-layerId = UUID0;
-width = 511;
-}
-);
-category = Letter;
-},
-{
-glyphname = u16F56.cnt;
-lastChange = "2019-09-10 21:03:33 +0000";
-layers = (
-{
-components = (
-{
-name = u16F56;
-transform = "{1, 0, 0, 1, 0, 200}";
-}
-);
-layerId = UUID0;
-width = 307;
-}
-);
-category = Letter;
-},
-{
-glyphname = u16F57.cnt;
-lastChange = "2024-09-03 18:11:24 +0000";
-layers = (
-{
-components = (
-{
-name = u16F57;
-transform = "{1, 0, 0, 1, 0, 200}";
-}
-);
-layerId = UUID0;
-width = 402;
-}
-);
-category = Letter;
-},
-{
-glyphname = u16F58.cnt;
-lastChange = "2024-09-03 18:11:24 +0000";
-layers = (
-{
-components = (
-{
-name = u16F58;
-transform = "{1, 0, 0, 1, 0, 200}";
-}
-);
-layerId = UUID0;
-width = 393;
-}
-);
-category = Letter;
-},
-{
-glyphname = u16F59.cnt;
-lastChange = "2019-09-10 21:03:33 +0000";
-layers = (
-{
-components = (
-{
-name = u16F59;
-transform = "{1, 0, 0, 1, 0, 200}";
-}
-);
-layerId = UUID0;
-width = 328;
-}
-);
-category = Letter;
-},
-{
-glyphname = u16F5A.cnt;
-lastChange = "2019-09-10 21:03:33 +0000";
-layers = (
-{
-components = (
-{
-name = u16F5A;
-transform = "{1, 0, 0, 1, 0, 200}";
-}
-);
-layerId = UUID0;
-width = 448;
-}
-);
-category = Letter;
-},
-{
-glyphname = u16F5B.cnt;
-lastChange = "2019-09-10 21:03:33 +0000";
-layers = (
-{
-components = (
-{
-name = u16F5B;
-transform = "{1, 0, 0, 1, 0, 200}";
-}
-);
-layerId = UUID0;
-width = 328;
-}
-);
-category = Letter;
-},
-{
-glyphname = u16F5C.cnt;
-lastChange = "2019-09-10 21:03:33 +0000";
-layers = (
-{
-components = (
-{
-name = u16F5C;
-transform = "{1, 0, 0, 1, 0, 200}";
-}
-);
-layerId = UUID0;
-width = 331;
-}
-);
-category = Letter;
-},
-{
-glyphname = u16F5D.cnt;
-lastChange = "2019-09-10 21:03:33 +0000";
-layers = (
-{
-components = (
-{
-name = u16F5D;
-transform = "{1, 0, 0, 1, 0, 200}";
-}
-);
-layerId = UUID0;
-width = 351;
-}
-);
-category = Letter;
-},
-{
-glyphname = u16F5E.cnt;
-lastChange = "2019-09-10 21:03:33 +0000";
-layers = (
-{
-components = (
-{
-name = u16F5E;
-transform = "{1, 0, 0, 1, 0, 200}";
-}
-);
-layerId = UUID0;
-width = 313;
-}
-);
-category = Letter;
-},
-{
-glyphname = u16F5F.cnt;
-lastChange = "2019-09-10 21:03:33 +0000";
-layers = (
-{
-components = (
-{
-name = u16F5F;
-transform = "{1, 0, 0, 1, 0, 200}";
-}
-);
-layerId = UUID0;
-width = 449;
-}
-);
-category = Letter;
-},
-{
-glyphname = u16F60.cnt;
-lastChange = "2019-09-10 21:03:33 +0000";
-layers = (
-{
-components = (
-{
-name = u16F60;
-transform = "{1, 0, 0, 1, 0, 200}";
-}
-);
-layerId = UUID0;
-width = 331;
-}
-);
-category = Letter;
-},
-{
-glyphname = u16F61.cnt;
-lastChange = "2019-09-10 21:03:33 +0000";
-layers = (
-{
-components = (
-{
-name = u16F61;
-transform = "{1, 0, 0, 1, 0, 200}";
-}
-);
-layerId = UUID0;
-width = 307;
-}
-);
-category = Letter;
-},
-{
-glyphname = u16F62.cnt;
-lastChange = "2019-09-10 21:03:33 +0000";
-layers = (
-{
-components = (
-{
-name = u16F62;
-transform = "{1, 0, 0, 1, 0, 200}";
-}
-);
-layerId = UUID0;
-width = 461;
-}
-);
-category = Letter;
-},
-{
-glyphname = u16F63.cnt;
-lastChange = "2019-09-10 21:03:33 +0000";
-layers = (
-{
-components = (
-{
-name = u16F63;
-transform = "{1, 0, 0, 1, 0, 200}";
-}
-);
-layerId = UUID0;
-width = 599;
-}
-);
-category = Letter;
-},
-{
-glyphname = u16F64.cnt;
-lastChange = "2019-09-10 21:03:33 +0000";
-layers = (
-{
-components = (
-{
-name = u16F64;
-transform = "{1, 0, 0, 1, 0, 200}";
-}
-);
-layerId = UUID0;
-width = 590;
-}
-);
-category = Letter;
-},
-{
-glyphname = u16F65.cnt;
-lastChange = "2019-09-10 21:03:33 +0000";
-layers = (
-{
-components = (
-{
-name = u16F65;
-transform = "{1, 0, 0, 1, 0, 200}";
-}
-);
-layerId = UUID0;
-width = 521;
-}
-);
-category = Letter;
-},
-{
-glyphname = u16F66.cnt;
-lastChange = "2019-09-10 21:03:33 +0000";
-layers = (
-{
-components = (
-{
-name = u16F66;
-transform = "{1, 0, 0, 1, 0, 200}";
-}
-);
-layerId = UUID0;
-width = 274;
-}
-);
-category = Letter;
-},
-{
-glyphname = u16F67.cnt;
-lastChange = "2019-09-10 21:03:33 +0000";
-layers = (
-{
-components = (
-{
-name = u16F67;
-transform = "{1, 0, 0, 1, 0, 200}";
-}
-);
-layerId = UUID0;
-width = 500;
-}
-);
-category = Letter;
-},
-{
-glyphname = u16F68.cnt;
-lastChange = "2019-09-10 21:03:33 +0000";
-layers = (
-{
-components = (
-{
-name = u16F68;
-transform = "{1, 0, 0, 1, 0, 200}";
-}
-);
-layerId = UUID0;
-width = 500;
-}
-);
-category = Letter;
-},
-{
-glyphname = u16F69.cnt;
-lastChange = "2019-09-10 21:03:33 +0000";
-layers = (
-{
-components = (
-{
-name = u16F69;
-transform = "{1, 0, 0, 1, 0, 200}";
-}
-);
-layerId = UUID0;
-width = 512;
-}
-);
-category = Letter;
-},
-{
-glyphname = u16F6A.cnt;
-lastChange = "2019-09-10 21:03:33 +0000";
-layers = (
-{
-components = (
-{
-name = u16F6A;
-transform = "{1, 0, 0, 1, 0, 200}";
-}
-);
-layerId = UUID0;
-width = 307;
-}
-);
-category = Letter;
-},
-{
-glyphname = u16F6B.cnt;
-lastChange = "2019-09-10 21:03:33 +0000";
-layers = (
-{
-components = (
-{
-name = u16F6B;
-transform = "{1, 0, 0, 1, 0, 200}";
-}
-);
-layerId = UUID0;
-width = 461;
-}
-);
-category = Letter;
-},
-{
-glyphname = u16F6C.cnt;
-lastChange = "2019-09-10 21:03:33 +0000";
-layers = (
-{
-components = (
-{
-name = u16F6C;
-transform = "{1, 0, 0, 1, 0, 200}";
-}
-);
-layerId = UUID0;
-width = 639;
-}
-);
-category = Letter;
-},
-{
-glyphname = u16F6D.cnt;
-lastChange = "2019-09-10 21:03:33 +0000";
-layers = (
-{
-components = (
-{
-name = u16F6D;
-transform = "{1, 0, 0, 1, 0, 200}";
-}
-);
-layerId = UUID0;
-width = 630;
-}
-);
-category = Letter;
-},
-{
-glyphname = u16F6E.cnt;
-lastChange = "2019-09-10 21:03:33 +0000";
-layers = (
-{
-components = (
-{
-name = u16F6E;
-transform = "{1, 0, 0, 1, 0, 200}";
-}
-);
-layerId = UUID0;
-width = 500;
-}
-);
-category = Letter;
-},
-{
-glyphname = u16F6F.cnt;
-lastChange = "2019-09-10 21:03:33 +0000";
-layers = (
-{
-components = (
-{
-name = u16F6F;
-transform = "{1, 0, 0, 1, 0, 200}";
-}
-);
-layerId = UUID0;
-width = 500;
-}
-);
-category = Letter;
-},
-{
-glyphname = u16F70.cnt;
-lastChange = "2019-09-10 21:03:33 +0000";
-layers = (
-{
-components = (
-{
-name = u16F70;
-transform = "{1, 0, 0, 1, 0, 200}";
-}
-);
-layerId = UUID0;
-width = 529;
-}
-);
-category = Letter;
-},
-{
-glyphname = u16F71.cnt;
-lastChange = "2019-09-10 21:03:33 +0000";
-layers = (
-{
-components = (
-{
-name = u16F71;
-transform = "{1, 0, 0, 1, 0, 200}";
-}
-);
-layerId = UUID0;
-width = 351;
-}
-);
-category = Letter;
-},
-{
-glyphname = u16F72.cnt;
-lastChange = "2024-09-03 18:11:24 +0000";
-layers = (
-{
-components = (
-{
-name = u16F72;
-transform = "{1, 0, 0, 1, 0, 200}";
-}
-);
-layerId = UUID0;
-width = 321;
-}
-);
-category = Letter;
-},
-{
-glyphname = u16F73.cnt;
-lastChange = "2019-09-10 21:03:33 +0000";
-layers = (
-{
-components = (
-{
-name = u16F73;
-transform = "{1, 0, 0, 1, 0, 200}";
-}
-);
-layerId = UUID0;
-width = 331;
-}
-);
-category = Letter;
-},
-{
-glyphname = u16F74.cnt;
-lastChange = "2019-09-10 21:03:33 +0000";
-layers = (
-{
-components = (
-{
-name = u16F74;
-transform = "{1, 0, 0, 1, 0, 200}";
-}
-);
-layerId = UUID0;
-width = 331;
-}
-);
-category = Letter;
-},
-{
-glyphname = u16F75.cnt;
-lastChange = "2019-09-10 21:03:33 +0000";
-layers = (
-{
-components = (
-{
-name = u16F75;
-transform = "{1, 0, 0, 1, 0, 200}";
-}
-);
-layerId = UUID0;
-width = 264;
-}
-);
-category = Letter;
-},
-{
-glyphname = u16F76.cnt;
-lastChange = "2019-09-10 21:03:33 +0000";
-layers = (
-{
-components = (
-{
-name = u16F76;
-transform = "{1, 0, 0, 1, 0, 200}";
-}
-);
-layerId = UUID0;
-width = 307;
-}
-);
-category = Letter;
-},
-{
-glyphname = u16F77.cnt;
-lastChange = "2019-09-10 21:03:33 +0000";
-layers = (
-{
-components = (
-{
-name = u16F77;
-transform = "{1, 0, 0, 1, 0, 200}";
-}
-);
-layerId = UUID0;
-width = 264;
-}
-);
-category = Letter;
-},
-{
-glyphname = u16F78.cnt;
-lastChange = "2019-09-10 21:03:33 +0000";
-layers = (
-{
-components = (
-{
-name = u16F78;
-transform = "{1, 0, 0, 1, 0, 200}";
-}
-);
-layerId = UUID0;
-width = 307;
-}
-);
-category = Letter;
-},
-{
-glyphname = u16F79.cnt;
-lastChange = "2019-09-10 21:03:33 +0000";
-layers = (
-{
-components = (
-{
-name = u16F79;
-transform = "{1, 0, 0, 1, 0, 200}";
-}
-);
-layerId = UUID0;
-width = 114;
-}
-);
-category = Letter;
-},
-{
-glyphname = u16F7A.cnt;
-lastChange = "2019-09-10 21:03:33 +0000";
-layers = (
-{
-components = (
-{
-name = u16F7A;
-transform = "{1, 0, 0, 1, 0, 200}";
-}
-);
-layerId = UUID0;
-width = 307;
-}
-);
-category = Letter;
-},
-{
-glyphname = u16F7B.cnt;
-lastChange = "2019-09-10 21:03:33 +0000";
-layers = (
-{
-components = (
-{
-name = u16F7B;
-transform = "{1, 0, 0, 1, 0, 200}";
-}
-);
-layerId = UUID0;
-width = 284;
-}
-);
-category = Letter;
-},
-{
-glyphname = u16F7C.cnt;
-lastChange = "2019-09-10 21:03:33 +0000";
-layers = (
-{
-components = (
-{
-name = u16F7C;
-transform = "{1, 0, 0, 1, 0, 200}";
-}
-);
-layerId = UUID0;
-width = 328;
-}
-);
-category = Letter;
-},
-{
-glyphname = u16F7D.cnt;
-lastChange = "2019-09-10 21:03:33 +0000";
-layers = (
-{
-components = (
-{
-name = u16F7D;
-transform = "{1, 0, 0, 1, 0, 200}";
-}
-);
-layerId = UUID0;
-width = 327;
-}
-);
-category = Letter;
-},
-{
-glyphname = u16F7E.cnt;
-lastChange = "2024-09-03 18:11:24 +0000";
-layers = (
-{
-components = (
-{
-name = u16F7E;
-transform = "{1, 0, 0, 1, 0, 200}";
-}
-);
-layerId = UUID0;
-width = 319;
-}
-);
-category = Letter;
-},
-{
-glyphname = u16F54.rht;
-lastChange = "2019-09-10 21:03:33 +0000";
-layers = (
-{
-components = (
-{
-name = u16F54;
-transform = "{1, 0, 0, 1, 0, 654}";
-}
-);
-layerId = UUID0;
-width = 314;
-}
-);
-category = Letter;
-},
-{
-glyphname = u16F55.rht;
-lastChange = "2019-09-10 21:03:33 +0000";
-layers = (
-{
-components = (
-{
-name = u16F55;
-transform = "{1, 0, 0, 1, 0, 456}";
-}
-);
-layerId = UUID0;
-width = 511;
-}
-);
-category = Letter;
-},
-{
-glyphname = u16F56.rht;
-lastChange = "2019-09-10 21:03:33 +0000";
-layers = (
-{
-components = (
-{
-name = u16F56;
-transform = "{1, 0, 0, 1, 0, 456}";
-}
-);
-layerId = UUID0;
-width = 307;
-}
-);
-category = Letter;
-},
-{
-glyphname = u16F57.rht;
-lastChange = "2024-09-03 18:11:24 +0000";
-layers = (
-{
-components = (
-{
-name = u16F57;
-transform = "{1, 0, 0, 1, 0, 456}";
-}
-);
-layerId = UUID0;
-width = 402;
-}
-);
-category = Letter;
-},
-{
-glyphname = u16F58.rht;
-lastChange = "2024-09-03 18:11:24 +0000";
-layers = (
-{
-components = (
-{
-name = u16F58;
-transform = "{1, 0, 0, 1, 0, 456}";
-}
-);
-layerId = UUID0;
-width = 393;
-}
-);
-category = Letter;
-},
-{
-glyphname = u16F59.rht;
-lastChange = "2019-09-10 21:03:33 +0000";
-layers = (
-{
-components = (
-{
-name = u16F59;
-transform = "{1, 0, 0, 1, 0, 456}";
-}
-);
-layerId = UUID0;
-width = 328;
-}
-);
-category = Letter;
-},
-{
-glyphname = u16F5A.rht;
-lastChange = "2019-09-10 21:03:33 +0000";
-layers = (
-{
-components = (
-{
-name = u16F5A;
-transform = "{1, 0, 0, 1, 0, 456}";
-}
-);
-layerId = UUID0;
-width = 448;
-}
-);
-category = Letter;
-},
-{
-glyphname = u16F5B.rht;
-lastChange = "2019-09-10 21:03:33 +0000";
-layers = (
-{
-components = (
-{
-name = u16F5B;
-transform = "{1, 0, 0, 1, 0, 456}";
-}
-);
-layerId = UUID0;
-width = 328;
-}
-);
-category = Letter;
-},
-{
-glyphname = u16F5C.rht;
-lastChange = "2019-09-10 21:03:33 +0000";
-layers = (
-{
-components = (
-{
-name = u16F5C;
-transform = "{1, 0, 0, 1, 0, 456}";
-}
-);
-layerId = UUID0;
-width = 331;
-}
-);
-category = Letter;
-},
-{
-glyphname = u16F5D.rht;
-lastChange = "2019-09-10 21:03:33 +0000";
-layers = (
-{
-components = (
-{
-name = u16F5D;
-transform = "{1, 0, 0, 1, 0, 456}";
-}
-);
-layerId = UUID0;
-width = 351;
-}
-);
-category = Letter;
-},
-{
-glyphname = u16F5E.rht;
-lastChange = "2019-09-10 21:03:33 +0000";
-layers = (
-{
-components = (
-{
-name = u16F5E;
-transform = "{1, 0, 0, 1, 0, 456}";
-}
-);
-layerId = UUID0;
-width = 313;
-}
-);
-category = Letter;
-},
-{
-glyphname = u16F5F.rht;
-lastChange = "2019-09-10 21:03:33 +0000";
-layers = (
-{
-components = (
-{
-name = u16F5F;
-transform = "{1, 0, 0, 1, 0, 456}";
-}
-);
-layerId = UUID0;
-width = 449;
-}
-);
-category = Letter;
-},
-{
-glyphname = u16F60.rht;
-lastChange = "2019-09-10 21:03:33 +0000";
-layers = (
-{
-components = (
-{
-name = u16F60;
-transform = "{1, 0, 0, 1, 0, 456}";
-}
-);
-layerId = UUID0;
-width = 331;
-}
-);
-category = Letter;
-},
-{
-glyphname = u16F61.rht;
-lastChange = "2019-09-10 21:03:33 +0000";
-layers = (
-{
-components = (
-{
-name = u16F61;
-transform = "{1, 0, 0, 1, 0, 456}";
-}
-);
-layerId = UUID0;
-width = 307;
-}
-);
-category = Letter;
-},
-{
-glyphname = u16F62.rht;
-lastChange = "2019-09-10 21:03:33 +0000";
-layers = (
-{
-components = (
-{
-name = u16F62;
-transform = "{1, 0, 0, 1, 0, 456}";
-}
-);
-layerId = UUID0;
-width = 461;
-}
-);
-category = Letter;
-},
-{
-glyphname = u16F63.rht;
-lastChange = "2019-09-10 21:03:33 +0000";
-layers = (
-{
-components = (
-{
-name = u16F63;
-transform = "{1, 0, 0, 1, 0, 456}";
-}
-);
-layerId = UUID0;
-width = 599;
-}
-);
-category = Letter;
-},
-{
-glyphname = u16F64.rht;
-lastChange = "2019-09-10 21:03:33 +0000";
-layers = (
-{
-components = (
-{
-name = u16F64;
-transform = "{1, 0, 0, 1, 0, 456}";
-}
-);
-layerId = UUID0;
-width = 590;
-}
-);
-category = Letter;
-},
-{
-glyphname = u16F65.rht;
-lastChange = "2019-09-10 21:03:33 +0000";
-layers = (
-{
-components = (
-{
-name = u16F65;
-transform = "{1, 0, 0, 1, 0, 456}";
-}
-);
-layerId = UUID0;
-width = 521;
-}
-);
-category = Letter;
-},
-{
-glyphname = u16F66.rht;
-lastChange = "2019-09-10 21:03:33 +0000";
-layers = (
-{
-components = (
-{
-name = u16F66;
-transform = "{1, 0, 0, 1, 0, 456}";
-}
-);
-layerId = UUID0;
-width = 274;
-}
-);
-category = Letter;
-},
-{
-glyphname = u16F67.rht;
-lastChange = "2019-09-10 21:03:33 +0000";
-layers = (
-{
-components = (
-{
-name = u16F67;
-transform = "{1, 0, 0, 1, 0, 456}";
-}
-);
-layerId = UUID0;
-width = 500;
-}
-);
-category = Letter;
-},
-{
-glyphname = u16F68.rht;
-lastChange = "2019-09-10 21:03:33 +0000";
-layers = (
-{
-components = (
-{
-name = u16F68;
-transform = "{1, 0, 0, 1, 0, 456}";
-}
-);
-layerId = UUID0;
-width = 500;
-}
-);
-category = Letter;
-},
-{
-glyphname = u16F69.rht;
-lastChange = "2019-09-10 21:03:33 +0000";
-layers = (
-{
-components = (
-{
-name = u16F69;
-transform = "{1, 0, 0, 1, 0, 456}";
-}
-);
-layerId = UUID0;
-width = 512;
-}
-);
-category = Letter;
-},
-{
-glyphname = u16F6A.rht;
-lastChange = "2019-09-10 21:03:33 +0000";
-layers = (
-{
-components = (
-{
-name = u16F6A;
-transform = "{1, 0, 0, 1, 0, 456}";
-}
-);
-layerId = UUID0;
-width = 307;
-}
-);
-category = Letter;
-},
-{
-glyphname = u16F6B.rht;
-lastChange = "2019-09-10 21:03:33 +0000";
-layers = (
-{
-components = (
-{
-name = u16F6B;
-transform = "{1, 0, 0, 1, 0, 456}";
-}
-);
-layerId = UUID0;
-width = 461;
-}
-);
-category = Letter;
-},
-{
-glyphname = u16F6C.rht;
-lastChange = "2019-09-10 21:03:33 +0000";
-layers = (
-{
-components = (
-{
-name = u16F6C;
-transform = "{1, 0, 0, 1, 0, 456}";
-}
-);
-layerId = UUID0;
-width = 639;
-}
-);
-category = Letter;
-},
-{
-glyphname = u16F6D.rht;
-lastChange = "2019-09-10 21:03:33 +0000";
-layers = (
-{
-components = (
-{
-name = u16F6D;
-transform = "{1, 0, 0, 1, 0, 456}";
-}
-);
-layerId = UUID0;
-width = 630;
-}
-);
-category = Letter;
-},
-{
-glyphname = u16F6E.rht;
-lastChange = "2019-09-10 21:03:33 +0000";
-layers = (
-{
-components = (
-{
-name = u16F6E;
-transform = "{1, 0, 0, 1, 0, 456}";
-}
-);
-layerId = UUID0;
-width = 500;
-}
-);
-category = Letter;
-},
-{
-glyphname = u16F6F.rht;
-lastChange = "2019-09-10 21:03:33 +0000";
-layers = (
-{
-components = (
-{
-name = u16F6F;
-transform = "{1, 0, 0, 1, 0, 456}";
-}
-);
-layerId = UUID0;
-width = 500;
-}
-);
-category = Letter;
-},
-{
-glyphname = u16F70.rht;
-lastChange = "2019-09-10 21:03:33 +0000";
-layers = (
-{
-components = (
-{
-name = u16F70;
-transform = "{1, 0, 0, 1, 0, 456}";
-}
-);
-layerId = UUID0;
-width = 529;
-}
-);
-category = Letter;
-},
-{
-glyphname = u16F71.rht;
-lastChange = "2019-09-10 21:03:33 +0000";
-layers = (
-{
-components = (
-{
-name = u16F71;
-transform = "{1, 0, 0, 1, 0, 456}";
-}
-);
-layerId = UUID0;
-width = 351;
-}
-);
-category = Letter;
-},
-{
-glyphname = u16F72.rht;
-lastChange = "2024-09-03 18:11:41 +0000";
-layers = (
-{
-components = (
-{
-name = u16F72;
-transform = "{1, 0, 0, 1, 0, 456}";
-}
-);
-layerId = UUID0;
-width = 321;
-}
-);
-category = Letter;
-},
-{
-glyphname = u16F73.rht;
-lastChange = "2019-09-10 21:03:33 +0000";
-layers = (
-{
-components = (
-{
-name = u16F73;
-transform = "{1, 0, 0, 1, 0, 456}";
-}
-);
-layerId = UUID0;
-width = 331;
-}
-);
-category = Letter;
-},
-{
-glyphname = u16F74.rht;
-lastChange = "2019-09-10 21:03:33 +0000";
-layers = (
-{
-components = (
-{
-name = u16F74;
-transform = "{1, 0, 0, 1, 0, 456}";
-}
-);
-layerId = UUID0;
-width = 331;
-}
-);
-category = Letter;
-},
-{
-glyphname = u16F75.rht;
-lastChange = "2019-09-10 21:03:33 +0000";
-layers = (
-{
-components = (
-{
-name = u16F75;
-transform = "{1, 0, 0, 1, 0, 456}";
-}
-);
-layerId = UUID0;
-width = 264;
-}
-);
-category = Letter;
-},
-{
-glyphname = u16F76.rht;
-lastChange = "2019-09-10 21:03:33 +0000";
-layers = (
-{
-components = (
-{
-name = u16F76;
-transform = "{1, 0, 0, 1, 0, 456}";
-}
-);
-layerId = UUID0;
-width = 307;
-}
-);
-category = Letter;
-},
-{
-glyphname = u16F77.rht;
-lastChange = "2019-09-10 21:03:33 +0000";
-layers = (
-{
-components = (
-{
-name = u16F77;
-transform = "{1, 0, 0, 1, 0, 456}";
-}
-);
-layerId = UUID0;
-width = 264;
-}
-);
-category = Letter;
-},
-{
-glyphname = u16F78.rht;
-lastChange = "2019-09-10 21:03:33 +0000";
-layers = (
-{
-components = (
-{
-name = u16F78;
-transform = "{1, 0, 0, 1, 0, 456}";
-}
-);
-layerId = UUID0;
-width = 307;
-}
-);
-category = Letter;
-},
-{
-glyphname = u16F79.rht;
-lastChange = "2019-09-10 21:03:33 +0000";
-layers = (
-{
-components = (
-{
-name = u16F79;
-transform = "{1, 0, 0, 1, 0, 456}";
-}
-);
-layerId = UUID0;
-width = 114;
-}
-);
-category = Letter;
-},
-{
-glyphname = u16F7A.rht;
-lastChange = "2019-09-10 21:03:33 +0000";
-layers = (
-{
-components = (
-{
-name = u16F7A;
-transform = "{1, 0, 0, 1, 0, 456}";
-}
-);
-layerId = UUID0;
-width = 307;
-}
-);
-category = Letter;
-},
-{
-glyphname = u16F7B.rht;
-lastChange = "2019-09-10 21:03:33 +0000";
-layers = (
-{
-components = (
-{
-name = u16F7B;
-transform = "{1, 0, 0, 1, 0, 456}";
-}
-);
-layerId = UUID0;
-width = 284;
-}
-);
-category = Letter;
-},
-{
-glyphname = u16F7C.rht;
-lastChange = "2019-09-10 21:03:33 +0000";
-layers = (
-{
-components = (
-{
-name = u16F7C;
-transform = "{1, 0, 0, 1, 0, 456}";
-}
-);
-layerId = UUID0;
-width = 328;
-}
-);
-category = Letter;
-},
-{
-glyphname = u16F7D.rht;
-lastChange = "2019-09-10 21:03:33 +0000";
-layers = (
-{
-components = (
-{
-name = u16F7D;
-transform = "{1, 0, 0, 1, 0, 456}";
-}
-);
-layerId = UUID0;
-width = 327;
-}
-);
-category = Letter;
-},
-{
-glyphname = u16F7E.rht;
-lastChange = "2024-09-03 18:11:41 +0000";
-layers = (
-{
-components = (
-{
-name = u16F7E;
-transform = "{1, 0, 0, 1, 0, 456}";
-}
-);
-layerId = UUID0;
-width = 319;
-}
-);
-category = Letter;
-},
-{
 glyphname = u16F54.abv;
 lastChange = "2019-09-10 21:03:33 +0000";
 layers = (
@@ -13500,660 +12033,6 @@ unicode = 16F87;
 category = Letter;
 },
 {
-glyphname = u16F7F.cnt;
-lastChange = "2019-09-10 21:03:33 +0000";
-layers = (
-{
-layerId = UUID0;
-paths = (
-{
-closed = 1;
-nodes = (
-"64 200 LINE",
-"64 312 LINE",
-"130 312 LINE SMOOTH",
-"243 312 OFFCURVE",
-"281 354 OFFCURVE",
-"281 426 CURVE SMOOTH",
-"281 494 OFFCURVE",
-"244 541 OFFCURVE",
-"130 541 CURVE SMOOTH",
-"0 541 LINE",
-"0 481 LINE",
-"141 481 LINE SMOOTH",
-"189 481 OFFCURVE",
-"213 469 OFFCURVE",
-"213 426 CURVE SMOOTH",
-"213 387 OFFCURVE",
-"189 372 OFFCURVE",
-"140 372 CURVE SMOOTH",
-"0 372 LINE",
-"0 200 LINE"
-);
-},
-{
-closed = 1;
-nodes = (
-"0 313 LINE",
-"64 313 LINE",
-"64 511 LINE",
-"0 511 LINE"
-);
-}
-);
-width = 331;
-}
-);
-category = Letter;
-},
-{
-glyphname = u16F80.cnt;
-lastChange = "2019-09-10 21:03:33 +0000";
-layers = (
-{
-layerId = UUID0;
-paths = (
-{
-closed = 1;
-nodes = (
-"201 190 OFFCURVE",
-"257 222 OFFCURVE",
-"257 331 CURVE SMOOTH",
-"257 458 LINE",
-"193 458 LINE",
-"193 327 LINE SMOOTH",
-"193 278 OFFCURVE",
-"168 254 OFFCURVE",
-"129 254 CURVE SMOOTH",
-"86 254 OFFCURVE",
-"64 278 OFFCURVE",
-"64 326 CURVE SMOOTH",
-"64 458 LINE",
-"0 458 LINE",
-"0 331 LINE SMOOTH",
-"0 217 OFFCURVE",
-"61 190 OFFCURVE",
-"129 190 CURVE SMOOTH"
-);
-},
-{
-closed = 1;
-nodes = (
-"0 493 LINE",
-"64 493 LINE",
-"64 541 LINE",
-"0 541 LINE"
-);
-},
-{
-closed = 1;
-nodes = (
-"193 493 LINE",
-"257 493 LINE",
-"257 541 LINE",
-"193 541 LINE"
-);
-}
-);
-width = 307;
-}
-);
-category = Letter;
-},
-{
-glyphname = u16F81.cnt;
-lastChange = "2019-09-10 21:06:28 +0000";
-layers = (
-{
-layerId = UUID0;
-paths = (
-{
-closed = 1;
-nodes = (
-"230 299 LINE",
-"211 274 OFFCURVE",
-"176 254 OFFCURVE",
-"138 254 CURVE SMOOTH",
-"98 254 OFFCURVE",
-"68 284 OFFCURVE",
-"68 325 CURVE SMOOTH",
-"68 375 OFFCURVE",
-"98 430 OFFCURVE",
-"141 430 CURVE SMOOTH",
-"161 430 OFFCURVE",
-"172 418 OFFCURVE",
-"172 402 CURVE SMOOTH",
-"172 388 OFFCURVE",
-"164 370 OFFCURVE",
-"147 356 CURVE",
-"194 311 LINE",
-"231 338 OFFCURVE",
-"249 373 OFFCURVE",
-"249 404 CURVE SMOOTH",
-"249 450 OFFCURVE",
-"211 489 OFFCURVE",
-"150 489 CURVE SMOOTH",
-"66 489 OFFCURVE",
-"0 415 OFFCURVE",
-"0 320 CURVE SMOOTH",
-"0 242 OFFCURVE",
-"63 190 OFFCURVE",
-"138 190 CURVE SMOOTH",
-"204 190 OFFCURVE",
-"250 219 OFFCURVE",
-"275 252 CURVE"
-);
-}
-);
-width = 325;
-}
-);
-category = Letter;
-},
-{
-glyphname = u16F82.cnt;
-lastChange = "2019-09-10 21:03:33 +0000";
-layers = (
-{
-components = (
-{
-name = u16F77;
-transform = "{1, 0, 0, -1, 0, 458}";
-}
-);
-layerId = UUID0;
-width = 264;
-}
-);
-category = Letter;
-},
-{
-glyphname = u16F83.cnt;
-lastChange = "2019-09-10 21:03:33 +0000";
-layers = (
-{
-layerId = UUID0;
-paths = (
-{
-closed = 1;
-nodes = (
-"217 200 LINE",
-"348 458 LINE",
-"271 458 LINE",
-"154 212 LINE",
-"197 212 LINE",
-"77 458 LINE",
-"0 458 LINE",
-"132 200 LINE"
-);
-}
-);
-width = 398;
-}
-);
-category = Letter;
-},
-{
-glyphname = u16F84.cnt;
-lastChange = "2019-09-10 21:03:33 +0000";
-layers = (
-{
-layerId = UUID0;
-paths = (
-{
-closed = 1;
-nodes = (
-"0 200 LINE",
-"77 200 LINE",
-"197 446 LINE",
-"154 446 LINE",
-"271 200 LINE",
-"348 200 LINE",
-"217 458 LINE",
-"132 458 LINE"
-);
-}
-);
-width = 398;
-}
-);
-category = Letter;
-},
-{
-glyphname = u16F85.cnt;
-lastChange = "2019-09-10 21:03:33 +0000";
-layers = (
-{
-layerId = UUID0;
-paths = (
-{
-closed = 1;
-nodes = (
-"0 369 LINE",
-"140 369 LINE SMOOTH",
-"189 369 OFFCURVE",
-"213 354 OFFCURVE",
-"213 315 CURVE SMOOTH",
-"213 272 OFFCURVE",
-"189 260 OFFCURVE",
-"141 260 CURVE SMOOTH",
-"0 260 LINE",
-"0 200 LINE",
-"130 200 LINE SMOOTH",
-"244 200 OFFCURVE",
-"281 247 OFFCURVE",
-"281 315 CURVE SMOOTH",
-"281 387 OFFCURVE",
-"243 429 OFFCURVE",
-"130 429 CURVE SMOOTH",
-"64 429 LINE",
-"64 541 LINE",
-"0 541 LINE"
-);
-},
-{
-closed = 1;
-nodes = (
-"64 230 LINE",
-"64 428 LINE",
-"0 428 LINE",
-"0 230 LINE"
-);
-}
-);
-width = 331;
-}
-);
-category = Letter;
-},
-{
-glyphname = u16F86.cnt;
-lastChange = "2019-09-10 21:06:28 +0000";
-layers = (
-{
-layerId = UUID0;
-paths = (
-{
-closed = 1;
-nodes = (
-"283 200 LINE",
-"283 541 LINE",
-"219 541 LINE",
-"219 200 LINE"
-);
-},
-{
-closed = 1;
-nodes = (
-"65 528 LINE",
-"22 491 OFFCURVE",
-"0 452 OFFCURVE",
-"0 414 CURVE SMOOTH",
-"0 342 OFFCURVE",
-"33 286 OFFCURVE",
-"142 286 CURVE SMOOTH",
-"269 286 LINE",
-"269 350 LINE",
-"138 350 LINE SMOOTH",
-"89 350 OFFCURVE",
-"65 375 OFFCURVE",
-"65 414 CURVE SMOOTH",
-"65 441 OFFCURVE",
-"80 466 OFFCURVE",
-"108 486 CURVE"
-);
-}
-);
-width = 333;
-}
-);
-category = Letter;
-},
-{
-glyphname = u16F87.cnt;
-lastChange = "2019-09-10 21:03:33 +0000";
-layers = (
-{
-components = (
-{
-name = u16F68;
-transform = "{-1, 0, 0, 1, 450, 200}";
-}
-);
-layerId = UUID0;
-width = 500;
-}
-);
-category = Letter;
-},
-{
-glyphname = u16F7F.rht;
-lastChange = "2019-09-10 21:03:33 +0000";
-layers = (
-{
-layerId = UUID0;
-paths = (
-{
-closed = 1;
-nodes = (
-"64 446 LINE",
-"64 558 LINE",
-"130 558 LINE SMOOTH",
-"243 558 OFFCURVE",
-"281 600 OFFCURVE",
-"281 672 CURVE SMOOTH",
-"281 740 OFFCURVE",
-"244 787 OFFCURVE",
-"130 787 CURVE SMOOTH",
-"0 787 LINE",
-"0 727 LINE",
-"141 727 LINE SMOOTH",
-"189 727 OFFCURVE",
-"213 715 OFFCURVE",
-"213 672 CURVE SMOOTH",
-"213 633 OFFCURVE",
-"189 618 OFFCURVE",
-"140 618 CURVE SMOOTH",
-"0 618 LINE",
-"0 446 LINE"
-);
-},
-{
-closed = 1;
-nodes = (
-"0 559 LINE",
-"64 559 LINE",
-"64 757 LINE",
-"0 757 LINE"
-);
-}
-);
-width = 331;
-}
-);
-category = Letter;
-},
-{
-glyphname = u16F80.rht;
-lastChange = "2019-09-10 21:03:33 +0000";
-layers = (
-{
-layerId = UUID0;
-paths = (
-{
-closed = 1;
-nodes = (
-"201 446 OFFCURVE",
-"257 478 OFFCURVE",
-"257 587 CURVE SMOOTH",
-"257 714 LINE",
-"193 714 LINE",
-"193 583 LINE SMOOTH",
-"193 534 OFFCURVE",
-"168 510 OFFCURVE",
-"129 510 CURVE SMOOTH",
-"86 510 OFFCURVE",
-"64 534 OFFCURVE",
-"64 582 CURVE SMOOTH",
-"64 714 LINE",
-"0 714 LINE",
-"0 587 LINE SMOOTH",
-"0 473 OFFCURVE",
-"61 446 OFFCURVE",
-"129 446 CURVE SMOOTH"
-);
-},
-{
-closed = 1;
-nodes = (
-"0 749 LINE",
-"64 749 LINE",
-"64 797 LINE",
-"0 797 LINE"
-);
-},
-{
-closed = 1;
-nodes = (
-"193 749 LINE",
-"257 749 LINE",
-"257 797 LINE",
-"193 797 LINE"
-);
-}
-);
-width = 307;
-}
-);
-category = Letter;
-},
-{
-glyphname = u16F81.rht;
-lastChange = "2019-09-10 21:06:28 +0000";
-layers = (
-{
-layerId = UUID0;
-paths = (
-{
-closed = 1;
-nodes = (
-"230 555 LINE",
-"211 530 OFFCURVE",
-"176 510 OFFCURVE",
-"138 510 CURVE SMOOTH",
-"98 510 OFFCURVE",
-"68 540 OFFCURVE",
-"68 581 CURVE SMOOTH",
-"68 631 OFFCURVE",
-"98 686 OFFCURVE",
-"141 686 CURVE SMOOTH",
-"161 686 OFFCURVE",
-"172 674 OFFCURVE",
-"172 658 CURVE SMOOTH",
-"172 644 OFFCURVE",
-"164 626 OFFCURVE",
-"147 612 CURVE",
-"194 567 LINE",
-"231 594 OFFCURVE",
-"249 629 OFFCURVE",
-"249 660 CURVE SMOOTH",
-"249 706 OFFCURVE",
-"211 745 OFFCURVE",
-"150 745 CURVE SMOOTH",
-"66 745 OFFCURVE",
-"0 671 OFFCURVE",
-"0 576 CURVE SMOOTH",
-"0 498 OFFCURVE",
-"63 446 OFFCURVE",
-"138 446 CURVE SMOOTH",
-"204 446 OFFCURVE",
-"250 475 OFFCURVE",
-"275 508 CURVE"
-);
-}
-);
-width = 325;
-}
-);
-category = Letter;
-},
-{
-glyphname = u16F82.rht;
-lastChange = "2019-09-10 21:03:33 +0000";
-layers = (
-{
-components = (
-{
-name = u16F77;
-transform = "{1, 0, 0, -1, 0, 714}";
-}
-);
-layerId = UUID0;
-width = 264;
-}
-);
-category = Letter;
-},
-{
-glyphname = u16F83.rht;
-lastChange = "2019-09-10 21:03:33 +0000";
-layers = (
-{
-layerId = UUID0;
-paths = (
-{
-closed = 1;
-nodes = (
-"217 456 LINE",
-"348 714 LINE",
-"271 714 LINE",
-"154 468 LINE",
-"197 468 LINE",
-"77 714 LINE",
-"0 714 LINE",
-"132 456 LINE"
-);
-}
-);
-width = 398;
-}
-);
-category = Letter;
-},
-{
-glyphname = u16F84.rht;
-lastChange = "2019-09-10 21:03:33 +0000";
-layers = (
-{
-layerId = UUID0;
-paths = (
-{
-closed = 1;
-nodes = (
-"0 456 LINE",
-"77 456 LINE",
-"197 702 LINE",
-"154 702 LINE",
-"271 456 LINE",
-"348 456 LINE",
-"217 714 LINE",
-"132 714 LINE"
-);
-}
-);
-width = 398;
-}
-);
-category = Letter;
-},
-{
-glyphname = u16F85.rht;
-lastChange = "2019-09-10 21:03:33 +0000";
-layers = (
-{
-layerId = UUID0;
-paths = (
-{
-closed = 1;
-nodes = (
-"0 625 LINE",
-"140 625 LINE SMOOTH",
-"189 625 OFFCURVE",
-"213 610 OFFCURVE",
-"213 571 CURVE SMOOTH",
-"213 528 OFFCURVE",
-"189 516 OFFCURVE",
-"141 516 CURVE SMOOTH",
-"0 516 LINE",
-"0 456 LINE",
-"130 456 LINE SMOOTH",
-"244 456 OFFCURVE",
-"281 503 OFFCURVE",
-"281 571 CURVE SMOOTH",
-"281 643 OFFCURVE",
-"243 685 OFFCURVE",
-"130 685 CURVE SMOOTH",
-"64 685 LINE",
-"64 797 LINE",
-"0 797 LINE"
-);
-},
-{
-closed = 1;
-nodes = (
-"64 486 LINE",
-"64 684 LINE",
-"0 684 LINE",
-"0 486 LINE"
-);
-}
-);
-width = 331;
-}
-);
-category = Letter;
-},
-{
-glyphname = u16F86.rht;
-lastChange = "2019-09-10 21:06:28 +0000";
-layers = (
-{
-layerId = UUID0;
-paths = (
-{
-closed = 1;
-nodes = (
-"283 456 LINE",
-"283 797 LINE",
-"219 797 LINE",
-"219 456 LINE"
-);
-},
-{
-closed = 1;
-nodes = (
-"65 784 LINE",
-"22 747 OFFCURVE",
-"0 708 OFFCURVE",
-"0 670 CURVE SMOOTH",
-"0 598 OFFCURVE",
-"33 542 OFFCURVE",
-"142 542 CURVE SMOOTH",
-"269 542 LINE",
-"269 606 LINE",
-"138 606 LINE SMOOTH",
-"89 606 OFFCURVE",
-"65 631 OFFCURVE",
-"65 670 CURVE SMOOTH",
-"65 697 OFFCURVE",
-"80 722 OFFCURVE",
-"108 742 CURVE"
-);
-}
-);
-width = 333;
-}
-);
-category = Letter;
-},
-{
-glyphname = u16F87.rht;
-lastChange = "2019-09-10 21:03:33 +0000";
-layers = (
-{
-components = (
-{
-name = u16F68;
-transform = "{-1, 0, 0, 1, 450, 456}";
-}
-);
-layerId = UUID0;
-width = 500;
-}
-);
-category = Letter;
-},
-{
 glyphname = u16F7F.abv;
 lastChange = "2019-09-10 21:03:33 +0000";
 layers = (
@@ -15958,6 +13837,286 @@ width = 297;
 }
 );
 category = Letter;
+},
+{
+glyphname = rightToneNullMk;
+lastChange = "2026-08-07 10:43:30 +0000";
+layers = (
+{
+layerId = UUID0;
+width = 600;
+}
+);
+category = Mark;
+subCategory = Nonspacing;
+},
+{
+glyphname = topRightToneNullMk;
+lastChange = "2026-08-07 10:43:30 +0000";
+layers = (
+{
+layerId = UUID0;
+width = 600;
+}
+);
+category = Mark;
+subCategory = Nonspacing;
+},
+{
+glyphname = u16F57.lpo.abv;
+lastChange = "2026-08-07 10:59:13 +0000";
+layers = (
+{
+anchors = (
+{
+name = Anchor9;
+position = "{280, 0}";
+},
+{
+name = _Anchor2;
+position = "{0, 785}";
+},
+{
+name = _Anchor9;
+position = "{-235, 0}";
+}
+);
+components = (
+{
+name = u16F57.lpo;
+transform = "{1, 0, 0, 1, -153, 800}";
+}
+);
+layerId = UUID0;
+width = 0;
+}
+);
+category = Mark;
+subCategory = Nonspacing;
+},
+{
+glyphname = u16F58.lpo.abv;
+lastChange = "2026-08-07 10:59:29 +0000";
+layers = (
+{
+anchors = (
+{
+name = Anchor9;
+position = "{280, 0}";
+},
+{
+name = _Anchor2;
+position = "{0, 785}";
+},
+{
+name = _Anchor9;
+position = "{-235, 0}";
+}
+);
+components = (
+{
+name = u16F58.lpo;
+transform = "{1, 0, 0, 1, -180, 800}";
+}
+);
+layerId = UUID0;
+width = 0;
+}
+);
+category = Mark;
+subCategory = Nonspacing;
+},
+{
+glyphname = u16F72.lpo.abv;
+lastChange = "2026-08-07 10:58:45 +0000";
+layers = (
+{
+anchors = (
+{
+name = Anchor9;
+position = "{280, 0}";
+},
+{
+name = _Anchor2;
+position = "{0, 785}";
+},
+{
+name = _Anchor9;
+position = "{-235, 0}";
+}
+);
+components = (
+{
+name = u16F72.lpo;
+transform = "{1, 0, 0, 1, -123, 800}";
+}
+);
+layerId = UUID0;
+width = 0;
+}
+);
+category = Mark;
+subCategory = Nonspacing;
+},
+{
+glyphname = u16F7E.lpo.abv;
+lastChange = "2026-08-07 10:59:42 +0000";
+layers = (
+{
+anchors = (
+{
+name = Anchor9;
+position = "{280, 0}";
+},
+{
+name = _Anchor2;
+position = "{0, 785}";
+},
+{
+name = _Anchor9;
+position = "{-235, 0}";
+}
+);
+components = (
+{
+name = u16F7E.lpo;
+transform = "{1, 0, 0, 1, -123, 800}";
+}
+);
+layerId = UUID0;
+width = 0;
+}
+);
+category = Mark;
+subCategory = Nonspacing;
+},
+{
+glyphname = u16F57.lpo.blw;
+lastChange = "2026-08-07 10:54:58 +0000";
+layers = (
+{
+anchors = (
+{
+name = Anchor11;
+position = "{180, 0}";
+},
+{
+name = _Anchor11;
+position = "{-145, 0}";
+},
+{
+name = _Anchor4;
+position = "{-20, 0}";
+}
+);
+components = (
+{
+name = u16F57.lpo;
+transform = "{1, 0, 0, 1, -170, -338}";
+}
+);
+layerId = UUID0;
+width = 0;
+}
+);
+category = Mark;
+subCategory = Nonspacing;
+},
+{
+glyphname = u16F58.lpo.blw;
+lastChange = "2026-08-07 10:55:18 +0000";
+layers = (
+{
+anchors = (
+{
+name = Anchor11;
+position = "{180, 0}";
+},
+{
+name = _Anchor11;
+position = "{-145, 0}";
+},
+{
+name = _Anchor4;
+position = "{-20, 0}";
+}
+);
+components = (
+{
+name = u16F58.lpo;
+transform = "{1, 0, 0, 1, -180, -338}";
+}
+);
+layerId = UUID0;
+width = 0;
+}
+);
+category = Mark;
+subCategory = Nonspacing;
+},
+{
+glyphname = u16F72.lpo.blw;
+lastChange = "2026-08-07 10:55:31 +0000";
+layers = (
+{
+anchors = (
+{
+name = Anchor11;
+position = "{180, 0}";
+},
+{
+name = _Anchor11;
+position = "{-145, 0}";
+},
+{
+name = _Anchor4;
+position = "{-20, 0}";
+}
+);
+components = (
+{
+name = u16F72.lpo;
+transform = "{1, 0, 0, 1, -170, -338}";
+}
+);
+layerId = UUID0;
+width = 0;
+}
+);
+category = Mark;
+subCategory = Nonspacing;
+},
+{
+glyphname = u16F7E.lpo.blw;
+lastChange = "2026-08-07 10:55:46 +0000";
+layers = (
+{
+anchors = (
+{
+name = Anchor11;
+position = "{180, 0}";
+},
+{
+name = _Anchor11;
+position = "{-145, 0}";
+},
+{
+name = _Anchor4;
+position = "{-20, 0}";
+}
+);
+components = (
+{
+name = u16F7E.lpo;
+transform = "{1, 0, 0, 1, -170, -338}";
+}
+);
+layerId = UUID0;
+width = 0;
+}
+);
+category = Mark;
+subCategory = Nonspacing;
 }
 );
 instances = (
